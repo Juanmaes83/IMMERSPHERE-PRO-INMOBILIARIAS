@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
+    <title>IMMERSPHERE PRO · Visualización Inmobiliaria Premium</title>
+    <meta name="description" content="IMMERSPHERE PRO - Visualización inmobiliaria de nueva generación. Tours virtuales, renders fotorrealistas y experiencias inmersivas." />
+    <meta name="theme-color" content="#060A10" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23060A10%22 stroke=%22%2300D4FF%22 stroke-width=%223%22/><text x=%2250%22 y=%2265%22 font-family=%22sans-serif%22 font-size=%2240%22 font-weight=%22900%22 fill=%22%2300D4FF%22 text-anchor=%22middle%22>I</text></svg>" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --bg-primary: #060A10;
+            --bg-secondary: #0D1520;
+            --bg-tertiary: #111B28;
+            --accent: #00D4FF;
+            --accent-deep: #0068FF;
+            --accent-warm: #FFB800;
+            --gold: #C9A96E;
+            --text-primary: #EDF1F5;
+            --text-secondary: #8A9BB5;
+            --text-muted: #5A6B80;
+            --glass-border: rgba(255,255,255,0.06);
+            --glass-bg: rgba(13,21,32,0.85);
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --transition-micro: 0.35s cubic-bezier(0.22,1,0.36,1);
+            --transition-macro: 0.6s cubic-bezier(0.22,1,0.36,1);
+            --transition-out: 0.8s cubic-bezier(0.55,0,0.1,1);
+            --transition-spring: 0.7s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth;scroll-snap-type:y proximity;scroll-padding-top:0}
+        body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-primary);overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;cursor:none}
+        body.mobile{cursor:auto}
+        body.mobile .custom-cursor{display:none!important}
+        button,input,select,textarea{font:inherit}
+        button{min-height:44px;cursor:pointer}
+        img,video{max-width:100%}
+        a{color:var(--accent);text-decoration:none}
+        :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+        .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+        .custom-cursor{position:fixed;width:28px;height:28px;border:2px solid var(--accent);border-radius:50%;pointer-events:none!important;z-index:9999;transition:width var(--transition-micro),height var(--transition-micro),background var(--transition-micro),border-color var(--transition-micro);transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:.55rem;color:var(--bg-primary);letter-spacing:1px;opacity:0;backdrop-filter:blur(0px);mix-blend-mode:normal}
+        .custom-cursor.visible{opacity:1}
+        .custom-cursor.hover-expand{width:72px;height:72px;background:var(--accent);border-color:var(--accent);mix-blend-mode:normal;backdrop-filter:blur(8px)}
+        .custom-cursor.hover-expand::after{content:'VER';display:block;font-weight:700}
+        .custom-cursor.hover-play{width:80px;height:80px;background:var(--accent);border-color:var(--accent)}
+        .custom-cursor.hover-play::after{content:'▶';display:block;font-size:.8rem}
+        .custom-cursor.hover-cta{width:100px;height:100px;background:var(--accent);border-color:var(--accent);animation:cursorPulse 1.5s ease-in-out infinite}
+        .custom-cursor.hover-cta::after{content:'GO';display:block;font-weight:700;font-size:.7rem}
+        @keyframes cursorPulse{0%,100%{box-shadow:0 0 0 rgba(0,212,255,0)}50%{box-shadow:0 0 32px rgba(0,212,255,.5)}}
+        .cursor-trail{position:fixed;pointer-events:none;z-index:9998;border-radius:50%;background:var(--accent);opacity:.15;transition:opacity .3s}
+        .cursor-trail.dimmed{opacity:.04}
+
+        .scroll-progress{position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-deep),var(--accent));z-index:1002;transition:width .1s linear;box-shadow:0 0 16px var(--accent),0 0 4px rgba(0,212,255,.6)}
+        .scroll-progress::after{content:'';position:absolute;right:-4px;top:-3px;width:10px;height:10px;background:var(--accent);border-radius:50%;box-shadow:0 0 12px var(--accent)}
+
+        .preloader{position:fixed;inset:0;z-index:10000;background:var(--bg-primary);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;transition:opacity var(--transition-out),transform var(--transition-out)}
+        .preloader.hidden{opacity:0;pointer-events:none;transform:scale(1.05)}
+        .preloader-sphere{width:70px;height:70px;border:2px solid var(--accent);border-radius:50%;animation:sphereSpin 2.5s linear infinite;position:relative}
+        .preloader-sphere::before{content:'';position:absolute;inset:6px;border:1px solid rgba(0,212,255,.3);border-radius:50%;animation:sphereSpin 1.5s linear infinite reverse}
+        .preloader-sphere::after{content:'';position:absolute;top:-5px;left:50%;transform:translateX(-50%);width:10px;height:10px;background:var(--accent);border-radius:50%;box-shadow:0 0 20px var(--accent),0 0 40px var(--accent)}
+        @keyframes sphereSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+        .preloader-text{font-family:var(--font-display);font-size:1.3rem;color:var(--accent);letter-spacing:10px;text-transform:uppercase;animation:preloaderFade 2s ease-in-out infinite}
+        @keyframes preloaderFade{0%,100%{opacity:.5}50%{opacity:1}}
+
+        .navbar-sticky{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:14px 28px;background:transparent;backdrop-filter:blur(0px);-webkit-backdrop-filter:blur(0px);border-bottom:1px solid transparent;transform:translateY(0);transition:all var(--transition-macro);gap:12px}
+        .navbar-sticky.scrolled{background:var(--glass-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-border)}
+        .nav-links-desktop{display:none;gap:20px;flex-wrap:wrap}
+        .nav-link{font-family:var(--font-mono);font-size:.6rem;color:var(--text-secondary);cursor:pointer;transition:all var(--transition-micro);text-transform:uppercase;letter-spacing:1.5px;background:none;border:none;padding:6px 10px;white-space:nowrap;position:relative;border-radius:4px}
+        .nav-link::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%) scaleX(0);width:60%;height:1px;background:var(--accent);transition:transform var(--transition-micro);transform-origin:center}
+        .nav-link:hover,.nav-link.active{color:var(--accent)}
+        .nav-link:hover::after,.nav-link.active::after{transform:translateX(-50%) scaleX(1)}
+        .lang-toggle{background:var(--bg-secondary);border:1px solid rgba(255,255,255,.15);color:var(--text-primary);padding:7px 16px;border-radius:24px;cursor:pointer;font-family:var(--font-mono);font-size:.6rem;transition:all var(--transition-micro);display:flex;align-items:center;gap:6px;letter-spacing:1px}
+        .lang-toggle:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 0 16px rgba(0,212,255,.15)}
+        .hamburger-btn{display:flex;background:none;border:none;color:var(--text-primary);font-size:1.5rem;cursor:pointer;padding:4px 8px;align-items:center;justify-content:center;transition:color var(--transition-micro)}
+        .hamburger-btn:hover{color:var(--accent)}
+        .mobile-menu{display:none;flex-direction:column;width:100%;gap:2px;padding-top:8px}
+        .mobile-menu.open{display:flex}
+        .navbar-logo{font-family:var(--font-display);font-size:1.3rem;font-weight:700;letter-spacing:3px;color:var(--text-primary);transition:all var(--transition-macro)}
+        .navbar-logo span{color:var(--accent);transition:color var(--transition-micro)}
+        @media(min-width:769px){.nav-links-desktop{display:flex}.hamburger-btn{display:none}.mobile-menu{display:none!important}}
+        @media(max-width:768px){.navbar-sticky{padding:12px 18px}.navbar-logo{font-size:1rem!important;letter-spacing:1px!important}}
+
+        .hero-section{position:relative;height:100vh;height:100dvh;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--bg-primary);scroll-snap-align:start}
+        .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45;pointer-events:none}
+        .hero-overlay{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 0%,rgba(6,10,16,.9) 75%)}
+        .hero-particles{position:absolute;inset:0;z-index:2;pointer-events:none}
+        .hero-content{position:relative;z-index:3;text-align:center;padding:0 1.5rem;max-width:950px}
+        .hero-badge{display:inline-block;font-family:var(--font-mono);font-size:.55rem;color:var(--accent);letter-spacing:4px;text-transform:uppercase;margin-bottom:1rem;border:1px solid rgba(0,212,255,.3);padding:6px 16px;border-radius:24px;animation:heroBadgeIn .8s cubic-bezier(0.22,1,0.36,1) .3s both;backdrop-filter:blur(8px);background:rgba(0,212,255,.05)}
+        @keyframes heroBadgeIn{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
+        .hero-title{font-family:var(--font-display);font-size:clamp(2.8rem,9vw,6rem);font-weight:700;color:var(--text-primary);line-height:1.05;margin-bottom:1.5rem;letter-spacing:-2px}
+        .hero-title .char{display:inline-block;opacity:0;transform:translateY(40px);animation:charReveal .6s cubic-bezier(0.22,1,0.36,1) forwards}
+        @keyframes charReveal{0%{opacity:0;transform:translateY(40px);filter:blur(8px)}100%{opacity:1;transform:translateY(0);filter:blur(0)}}
+        .hero-title span.gradient{background:linear-gradient(135deg,var(--accent),var(--accent-deep),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero-subtitle{font-family:var(--font-body);font-size:clamp(.95rem,2vw,1.2rem);color:var(--text-secondary);margin-bottom:2.5rem;font-weight:300;opacity:0;animation:fadeInUp .6s ease-out .8s forwards}
+        @keyframes fadeInUp{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
+        .hero-cta{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:var(--bg-primary);padding:16px 36px;border-radius:48px;font-family:var(--font-display);font-size:1rem;font-weight:600;letter-spacing:1.5px;transition:all var(--transition-micro);text-transform:uppercase;opacity:0;animation:fadeInUp .6s ease-out 1.1s forwards;position:relative;overflow:hidden;border:none}
+        .hero-cta::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent,rgba(255,255,255,.2),transparent);transform:translateX(-100%);transition:transform .6s}
+        .hero-cta:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,212,255,.35)}
+        .hero-cta:hover::before{transform:translateX(100%)}
+        .hero-cta-arrow{display:inline-block;transition:transform var(--transition-micro)}
+        .hero-cta:hover .hero-cta-arrow{transform:translateX(4px)}
+        .scroll-hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:fadeInUp .6s ease-out 1.5s forwards}
+        .scroll-hint-text{font-family:var(--font-mono);font-size:.5rem;color:var(--text-muted);letter-spacing:3px;text-transform:uppercase}
+        .scroll-hint-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--accent),transparent);animation:scrollHintPulse 2s ease-in-out infinite}
+        @keyframes scrollHintPulse{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.5)}}
+
+        .section-full{min-height:100vh;min-height:100dvh;display:flex;align-items:center;position:relative;overflow:hidden;scroll-snap-align:start}
+        .section-container{padding:7rem 2rem;max-width:1400px;margin:0 auto;width:100%}
+        .section-alt{background:var(--bg-secondary)}
+        .section-dark{background:var(--bg-primary)}
+
+        .section-header{text-align:center;margin-bottom:3rem}
+        .section-badge{display:inline-block;font-family:var(--font-mono);font-size:.55rem;color:var(--accent);letter-spacing:4px;text-transform:uppercase;margin-bottom:.6rem;border:1px solid rgba(0,212,255,.25);padding:5px 14px;border-radius:20px;opacity:0;transform:translateY(20px);transition:all .7s cubic-bezier(0.22,1,0.36,1)}
+        .section-badge.revealed{opacity:1;transform:translateY(0)}
+        .section-title{font-family:var(--font-display);font-size:clamp(2.2rem,5.5vw,4rem);font-weight:700;color:var(--text-primary);margin-bottom:.6rem;letter-spacing:-1.5px;opacity:0;transform:translateY(20px);transition:all .7s cubic-bezier(0.22,1,0.36,1) .15s}
+        .section-title.revealed{opacity:1;transform:translateY(0)}
+        .section-subtitle{font-family:var(--font-body);font-size:1rem;color:var(--text-secondary);max-width:600px;margin:0 auto;font-weight:300;line-height:1.7;opacity:0;transform:translateY(20px);transition:all .7s cubic-bezier(0.22,1,0.36,1) .3s}
+        .section-subtitle.revealed{opacity:1;transform:translateY(0)}
+
+        .parallax-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
+        .parallax-shape{position:absolute;border-radius:50%;opacity:.03;filter:blur(60px)}
+        .parallax-shape-1{width:500px;height:500px;background:var(--accent);top:-10%;left:-15%}
+        .parallax-shape-2{width:350px;height:350px;background:var(--accent-deep);bottom:-8%;right:-10%}
+        .parallax-shape-3{width:250px;height:250px;background:var(--accent-warm);top:50%;left:60%}
+
+        .manifesto-section{background:var(--bg-secondary);text-align:center;padding:8rem 2rem;position:relative;overflow:hidden}
+        .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;max-width:700px;margin:2.5rem auto 0}
+        .stat-number{font-family:var(--font-display);font-size:clamp(2.8rem,7vw,4.5rem);font-weight:700;color:var(--accent);line-height:1}
+        .stat-label{font-family:var(--font-mono);font-size:.6rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:3px;margin-top:.5rem}
+        .manifesto-text{max-width:680px;margin:2.5rem auto 0;font-size:1.15rem;color:var(--text-secondary);line-height:1.9;font-weight:300}
+
+        .benefits-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-bottom:3.5rem}
+        .benefit-card{background:var(--bg-tertiary);border:1px solid var(--glass-border);border-radius:20px;padding:2rem;transition:all var(--transition-spring);opacity:0;transform:translateY(40px);position:relative;overflow:hidden;cursor:pointer}
+        .benefit-card.revealed{opacity:1;transform:translateY(0)}
+        .benefit-card::before{content:'';position:absolute;inset:0;border-radius:20px;padding:1px;background:linear-gradient(135deg,transparent,rgba(0,212,255,.08),transparent);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+        .benefit-card:hover{transform:translateY(-6px);border-color:rgba(0,212,255,.25);box-shadow:0 20px 48px rgba(0,0,0,.4),0 0 0 1px rgba(0,212,255,.1) inset}
+        .benefit-card h4{font-family:var(--font-display);font-size:1.1rem;color:var(--accent);margin-bottom:.6rem;letter-spacing:.5px}
+        .benefit-card h5{font-family:var(--font-display);font-size:.85rem;color:var(--text-primary);margin-bottom:.6rem}
+        .benefit-card p{font-family:var(--font-body);font-size:.82rem;color:var(--text-secondary);line-height:1.6;font-weight:300}
+        @media(min-width:768px){.benefits-grid{grid-template-columns:repeat(3,1fr)}}
+
+        .video-grid{display:grid;grid-template-columns:1fr;gap:10px}
+        .video-card{position:relative;overflow:hidden;background:var(--bg-secondary);border-radius:12px;cursor:pointer;aspect-ratio:16/9;opacity:0;transform:translateY(40px) scale(.96);transition:all .7s cubic-bezier(0.22,1,0.36,1);border:1px solid var(--glass-border)}
+        .video-card.revealed{opacity:1;transform:translateY(0) scale(1)}
+        .video-card video{width:100%;height:100%;object-fit:cover;filter:brightness(.75) saturate(.7);transition:all .6s cubic-bezier(0.22,1,0.36,1)}
+        .video-card:hover video{filter:brightness(1.05) saturate(1.1);transform:scale(1.04)}
+        .video-card.dimmed video{filter:brightness(.3) saturate(.3);transform:scale(.96)}
+        .video-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,10,16,.96) 0%,rgba(6,10,16,.2) 50%,transparent 100%);opacity:0;transition:opacity .5s ease;display:flex;flex-direction:column;justify-content:flex-end;padding:18px 22px}
+        .video-card:hover .video-overlay{opacity:1}
+        .video-overlay-title{font-family:var(--font-display);font-size:1.1rem;color:var(--text-primary);letter-spacing:.5px}
+        .video-overlay-subtitle{font-family:var(--font-mono);font-size:.5rem;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+        @media(min-width:640px){.video-grid{grid-template-columns:repeat(2,1fr)}}
+        @media(min-width:1024px){.video-grid{grid-template-columns:repeat(3,1fr)}.video-card.featured{grid-column:span 2;grid-row:span 2}}
+
+        .lightbox{position:fixed;inset:0;z-index:800;background:rgba(0,0,0,.96);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity var(--transition-macro);padding:1rem}
+        .lightbox.open{opacity:1;pointer-events:auto}
+        .lightbox-content{max-width:90vw;max-height:85vh;position:relative}
+        .lightbox-content video{width:100%;max-height:80vh;border-radius:12px;border:1px solid var(--glass-border)}
+        .lightbox-close{position:absolute;top:-50px;right:0;background:var(--accent);color:var(--bg-primary);border:none;width:44px;height:44px;border-radius:50%;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all var(--transition-micro);z-index:10}
+        .lightbox-close:hover{transform:scale(1.1);box-shadow:0 0 20px var(--accent)}
+        .lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.2);color:var(--text-primary);width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all var(--transition-micro);z-index:10}
+        .lightbox-nav:hover{background:var(--accent);color:var(--bg-primary)}
+        .lightbox-prev{left:-60px}.lightbox-next{right:-60px}
+        .lightbox-counter{position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:.6rem;color:var(--text-muted);letter-spacing:2px}
+        @media(max-width:768px){.lightbox-prev{left:10px}.lightbox-next{right:10px}.lightbox-close{top:-44px;right:10px}}
+
+        .showreel-section{background:var(--bg-secondary);padding:7rem 2rem}
+        .showreel-tabs{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:2.5rem}
+        .showreel-tab{background:transparent;border:1px solid rgba(255,255,255,.1);color:var(--text-secondary);padding:9px 16px;border-radius:24px;cursor:pointer;font-family:var(--font-mono);font-size:.55rem;text-transform:uppercase;letter-spacing:1.5px;transition:all var(--transition-micro);position:relative;overflow:hidden}
+        .showreel-tab::before{content:'';position:absolute;inset:0;background:var(--accent);opacity:0;transition:opacity var(--transition-micro);border-radius:24px}
+        .showreel-tab:hover,.showreel-tab.active{color:var(--bg-primary);border-color:var(--accent)}
+        .showreel-tab.active::before{opacity:1}
+        .showreel-tab.active{position:relative;z-index:1}
+
+        .cta-section{background:linear-gradient(180deg,var(--bg-secondary),var(--bg-primary));padding:8rem 2rem;text-align:center;position:relative;overflow:hidden}
+        .social-proof{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin:2rem 0}
+        .social-proof-item{text-align:center}
+        .social-proof-number{font-family:var(--font-display);font-size:1.8rem;color:var(--accent);font-weight:700}
+        .social-proof-label{font-family:var(--font-mono);font-size:.5rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:2px}
+        .urgency-badge{display:inline-block;background:rgba(255,184,0,.1);border:1px solid rgba(255,184,0,.3);color:var(--accent-warm);font-family:var(--font-mono);font-size:.55rem;padding:6px 16px;border-radius:20px;letter-spacing:2px;margin-bottom:1.5rem;animation:urgencyPulse 2s ease-in-out infinite}
+        @keyframes urgencyPulse{0%,100%{box-shadow:0 0 0 rgba(255,184,0,0)}50%{box-shadow:0 0 16px rgba(255,184,0,.2)}}
+        .cta-form{max-width:520px;margin:2rem auto 0;display:flex;flex-direction:column;gap:12px}
+        .cta-form input,.cta-form select,.cta-form textarea{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);color:var(--text-primary);padding:14px 18px;border-radius:10px;font-size:.9rem;outline:none;transition:all var(--transition-micro)}
+        .cta-form input:focus,.cta-form select:focus,.cta-form textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(0,212,255,.06)}
+        .cta-form textarea{min-height:100px;resize:vertical}
+        .cta-form button{background:var(--accent);color:var(--bg-primary);border:none;padding:16px;border-radius:10px;font-family:var(--font-display);font-size:1rem;font-weight:600;cursor:pointer;transition:all var(--transition-micro);text-transform:uppercase;letter-spacing:2px;position:relative;overflow:hidden}
+        .cta-form button::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent,rgba(255,255,255,.25),transparent);transform:translateX(-100%);transition:transform .6s}
+        .cta-form button:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,212,255,.3)}
+        .cta-form button:hover::before{transform:translateX(100%)}
+
+        .footer-section{background:var(--bg-primary);border-top:1px solid var(--glass-border);padding:5rem 2rem;text-align:center;position:relative}
+        .footer-marquee{overflow:hidden;padding:1.5rem 0;margin-bottom:2rem;border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border)}
+        .footer-marquee-inner{display:flex;gap:3rem;animation:marquee 30s linear infinite;white-space:nowrap}
+        @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+        .footer-marquee span{font-family:var(--font-display);font-size:1.5rem;color:var(--text-muted);opacity:.3;letter-spacing:3px;text-transform:uppercase}
+        .footer-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;max-width:1000px;margin:0 auto 2rem;text-align:left}
+        .footer-col h4{font-family:var(--font-display);font-size:.85rem;color:var(--text-primary);margin-bottom:1rem;letter-spacing:1.5px}
+        .footer-col a{display:block;font-family:var(--font-body);font-size:.78rem;color:var(--text-secondary);margin-bottom:.5rem;transition:color var(--transition-micro)}
+        .footer-col a:hover{color:var(--accent);padding-left:4px}
+        .footer-brand{font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--text-primary);margin-bottom:.5rem}
+        .footer-brand span{color:var(--accent)}
+        .footer-copy{font-family:var(--font-mono);font-size:.65rem;color:var(--text-muted);margin-top:.5rem}
+        .footer-credits{font-family:var(--font-display);font-size:.95rem;color:var(--gold);letter-spacing:2px;margin-top:.6rem}
+        .footer-cta{display:inline-block;margin-top:1.5rem;background:var(--accent);color:var(--bg-primary);padding:10px 24px;border-radius:24px;font-family:var(--font-display);font-size:.85rem;font-weight:600;letter-spacing:1px;transition:all var(--transition-micro)}
+        .footer-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,212,255,.25)}
+        @media(min-width:640px){.footer-grid{grid-template-columns:repeat(3,1fr)}}
+
+        .toast{position:fixed;bottom:120px;left:50%;transform:translateX(-50%);z-index:300;background:var(--accent);color:var(--bg-primary);font-family:var(--font-display);font-size:.85rem;padding:14px 28px;border-radius:40px;opacity:0;transition:all var(--transition-spring);pointer-events:none;max-width:90vw;text-align:center;box-shadow:0 8px 32px rgba(0,212,255,.3)}
+        .toast.show{opacity:1;transform:translateX(-50%) translateY(-12px)}
+        .back-to-top{position:fixed;bottom:36px;right:28px;z-index:90;width:48px;height:48px;border-radius:50%;background:var(--accent);color:var(--bg-primary);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:0;transform:translateY(20px) scale(.8);pointer-events:none;transition:all var(--transition-spring);box-shadow:0 6px 20px rgba(0,212,255,.3)}
+        .back-to-top.visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+        .back-to-top:hover{transform:scale(1.1);box-shadow:0 8px 28px rgba(0,212,255,.5)}
+
+        @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+    </style>
+</head>
+<body>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+    <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
+    <div class="cursor-trail" id="cursorTrail" aria-hidden="true"></div>
+    <div class="preloader" id="preloader" aria-hidden="true"><div class="preloader-sphere"></div><span class="preloader-text">IMMERSPHERE</span></div>
+
+    <nav class="navbar-sticky" id="navbarSticky" aria-label="Navegación principal">
+        <span class="navbar-logo">IMMER<span>SPHERE</span></span>
+        <div class="nav-links-desktop" id="navLinksDesktop"></div>
+        <div style="display:flex;gap:8px;align-items:center"><button class="lang-toggle" id="langToggle" aria-label="Cambiar idioma">🇪🇸 ES</button><button class="hamburger-btn" id="hamburgerBtn" aria-label="Menú" aria-expanded="false">☰</button></div>
+        <div class="mobile-menu" id="mobileMenu"></div>
+    </nav>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+
+    <main>
+        <section class="hero-section" id="hero">
+            <video class="hero-video" id="heroVideo" autoplay loop muted playsinline preload="metadata"><source src="https://raw.githubusercontent.com/Juanmaes83/IMMERSPHERE-PRO-INMOBILIARIAS/main/01.mp4" type="video/mp4" /></video>
+            <canvas class="hero-particles" id="heroParticles"></canvas>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-badge" data-i18n="hero_badge">IMMERSPHERE PRO · 2025</div>
+                <h1 class="hero-title" id="heroTitle" data-i18n="hero_title">El futuro de la <span class="gradient">visualización inmobiliaria</span></h1>
+                <p class="hero-subtitle" data-i18n="hero_subtitle">Donde los proyectos cobran vida antes de existir</p>
+                <a href="#sectores" class="hero-cta"><span data-i18n="hero_cta">Explorar proyectos</span><span class="hero-cta-arrow">→</span></a>
+            </div>
+            <div class="scroll-hint"><span class="scroll-hint-text" data-i18n="scroll_hint">Desliza para descubrir</span><div class="scroll-hint-line"></div></div>
+        </section>
+
+        <section class="manifesto-section" id="manifesto">
+            <div class="parallax-bg"><div class="parallax-shape parallax-shape-1"></div><div class="parallax-shape parallax-shape-2"></div></div>
+            <div class="section-header"><span class="section-badge" data-i18n="manifesto_badge">MANIFIESTO · MANIFESTO</span><h2 class="section-title" data-i18n="manifesto_title">IMMERSPHERE PRO</h2><p class="manifesto-text" data-i18n="manifesto_text">Nace en la intersección entre arquitectura, tecnología y emoción. No hacemos renders. Creamos realidades paralelas donde cada proyecto cobra vida antes de existir.</p></div>
+            <div class="stats-grid"><div class="stat-item"><div class="stat-number">40+</div><div class="stat-label" data-i18n="stat_projects">Proyectos</div></div><div class="stat-item"><div class="stat-number">6</div><div class="stat-label" data-i18n="stat_sectors">Sectores</div></div><div class="stat-item"><div class="stat-number">1</div><div class="stat-label" data-i18n="stat_vision">Visión</div></div></div>
+        </section>
+
+        <div id="sectores">
+            <section class="section-full section-dark" id="arquitectura"><div class="section-container"><div class="section-header"><span class="section-badge" data-i18n="arch_badge">ARQUITECTURA · ARCHITECTURE</span><h2 class="section-title" data-i18n="arch_title">Estudios de Arquitectura</h2><p class="section-subtitle" data-i18n="arch_subtitle">Visualización fotorrealista que convierte planos en experiencias inmersivas antes de la primera piedra.</p></div><div class="benefits-grid" id="benefitsArquitectura"></div><div class="video-grid" id="gridArquitectura"></div></div></section>
+            <section class="section-full section-alt" id="inmobiliarias"><div class="section-container"><div class="section-header"><span class="section-badge" data-i18n="realestate_badge">INMOBILIARIAS · REAL ESTATE</span><h2 class="section-title" data-i18n="realestate_title">Inmobiliarias</h2><p class="section-subtitle" data-i18n="realestate_subtitle">Tours virtuales que aceleran decisiones, eliminan dudas y multiplican visitas cualificadas.</p></div><div class="benefits-grid" id="benefitsInmobiliarias"></div><div class="video-grid" id="gridInmobiliarias"></div></div></section>
+            <section class="section-full section-dark" id="constructoras"><div class="section-container"><div class="section-header"><span class="section-badge" data-i18n="reformas_badge">REFORMAS · RENOVATIONS</span><h2 class="section-title" data-i18n="reformas_title">Constructoras / Reformas</h2><p class="section-subtitle" data-i18n="reformas_subtitle">Del plano al fotorrealismo. Seguimiento visual de obra con precisión milimétrica y reformas integrales.</p></div><div class="benefits-grid" id="benefitsConstructoras"></div><div class="video-grid" id="gridConstructoras"></div></div></section>
+            <section class="section-full section-alt" id="promotoras"><div class="section-container"><div class="section-header"><span class="section-badge" data-i18n="developers_badge">PROMOTORAS · DEVELOPERS</span><h2 class="section-title" data-i18n="developers_title">Promotoras</h2><p class="section-subtitle" data-i18n="developers_subtitle">Presentaciones que captan inversores al instante. Visualiza el retorno antes de la inversión.</p></div><div class="benefits-grid" id="benefitsPromotoras"></div><div class="video-grid" id="gridPromotoras"></div></div></section>
+            <section class="section-full section-dark" id="decoradores"><div class="section-container"><div class="section-header"><span class="section-badge" data-i18n="designers_badge">DECORADORES · DESIGNERS</span><h2 class="section-title" data-i18n="designers_title">Decoradores e Interioristas</h2><p class="section-subtitle" data-i18n="designers_subtitle">Cada textura, cada luz, cada detalle. Ambientes que emocionan con un realismo absoluto.</p></div><div class="benefits-grid" id="benefitsDecoradores"></div><div class="video-grid" id="gridDecoradores"></div></div></section>
+            <section class="section-full section-alt" id="singulares"><div class="section-container"><div class="section-header"><span class="section-badge" data-i18n="singular_badge">SINGULARES · SINGULAR</span><h2 class="section-title" data-i18n="singular_title">Proyectos Singulares</h2><p class="section-subtitle" data-i18n="singular_subtitle">Cuando lo convencional no basta. Visualizaciones que expanden los límites de lo posible.</p></div><div class="video-grid" id="gridSingulares"></div></div></section>
+        </div>
+
+        <section class="showreel-section" id="showreel"><div class="section-container"><div class="section-header"><span class="section-badge" data-i18n="showreel_badge">SHOWREEL COMPLETO</span><h2 class="section-title" data-i18n="showreel_title">Todos los proyectos</h2></div><div class="showreel-tabs" id="showreelTabs"></div><div class="video-grid" id="gridShowreel"></div></div></section>
+
+        <section class="cta-section" id="contacto">
+            <div class="section-container"><div class="section-header"><span class="section-badge" data-i18n="cta_badge">CONTACTO · CONTACT</span><h2 class="section-title" data-i18n="cta_title">¿Listo para visualizar tu próximo proyecto?</h2></div>
+            <div class="urgency-badge" data-i18n="urgency">⚡ Quedan 2 slots para proyectos en Q3 2025</div>
+            <div class="social-proof"><div class="social-proof-item"><div class="social-proof-number">3</div><div class="social-proof-label" data-i18n="proof_demos">Demos esta semana</div></div><div class="social-proof-item"><div class="social-proof-number">98%</div><div class="social-proof-label" data-i18n="proof_satisfaction">Satisfacción</div></div><div class="social-proof-item"><div class="social-proof-number">24h</div><div class="social-proof-label" data-i18n="proof_response">Respuesta</div></div></div>
+            <form class="cta-form" id="ctaForm"><input type="text" id="ctaName" required data-i18n-placeholder="form_name" /><input type="email" id="ctaEmail" required data-i18n-placeholder="form_email" /><select id="ctaSector" required><option value="" data-i18n="form_sector_default">Selecciona un sector</option><option value="arquitectura">Arquitectura</option><option value="inmobiliarias">Inmobiliarias</option><option value="constructoras">Constructoras / Reformas</option><option value="promotoras">Promotoras</option><option value="decoradores">Decoradores</option></select><textarea id="ctaMessage" data-i18n-placeholder="form_message"></textarea><button type="submit" data-i18n="form_submit">Solicitar demostración</button></form></div>
+        </section>
+    </main>
+
+    <footer class="footer-section">
+        <div class="footer-marquee"><div class="footer-marquee-inner"><span>Arquitectura</span><span>Inmobiliarias</span><span>Reformas</span><span>Promotoras</span><span>Decoradores</span><span>Proyectos Singulares</span><span>Visualización 3D</span><span>Tours Virtuales</span><span>Renders Premium</span><span>Arquitectura</span><span>Inmobiliarias</span><span>Reformas</span><span>Promotoras</span><span>Decoradores</span></div></div>
+        <div class="footer-grid"><div><span class="footer-brand">IMMER<span>SPHERE</span></span><p style="color:var(--text-secondary);font-size:.8rem;margin-top:.5rem" data-i18n="footer_desc">Visualización inmobiliaria de nueva generación</p></div><div class="footer-col"><h4 data-i18n="footer_sectors">Sectores</h4><a href="#arquitectura" data-i18n="footer_arch">Arquitectura</a><a href="#inmobiliarias" data-i18n="footer_realestate">Inmobiliarias</a><a href="#constructoras" data-i18n="footer_reformas">Constructoras / Reformas</a><a href="#promotoras" data-i18n="footer_developers">Promotoras</a><a href="#decoradores" data-i18n="footer_designers">Decoradores</a></div><div class="footer-col"><h4 data-i18n="footer_contact">Contacto</h4><a href="tel:629554870">629 554 870</a><a href="mailto:info@immersphere.pro">info@immersphere.pro</a><p style="color:var(--text-secondary);font-size:.75rem">Alicante, España</p></div></div>
+        <p class="footer-credits">IDEA BY RUBIK SOTA · 629 554 870</p>
+        <p class="footer-copy">© 2025 IMMERSPHERE PRO · <span data-i18n="footer_rights">Todos los derechos reservados</span></p>
+        <a href="#hero" class="footer-cta" data-i18n="footer_cta">Volver al inicio ↑</a>
+    </footer>
+
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">×</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev">←</button>
+        <button class="lightbox-nav lightbox-next" id="lightboxNext">→</button>
+        <div class="lightbox-content"><video id="lightboxVideo" controls muted playsinline></video></div>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+
+    <script>
+        (function(){
+            const $=(s,r=document)=>r.querySelector(s);const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+            const isTouch='ontouchstart' in window||!window.matchMedia('(hover:fine) and (pointer:fine)').matches;
+            if(isTouch){document.body.classList.add('mobile')}
+            function storageGet(k,f){try{const r=localStorage.getItem(k);return r?JSON.parse(r):f}catch(e){return f}}
+            function storageSet(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+            const baseURL='https://raw.githubusercontent.com/Juanmaes83/IMMERSPHERE-PRO-INMOBILIARIAS/main/';
+            function videoURL(n){return baseURL+n+'.mp4'}
+
+            const i18n={es:{hero_badge:'IMMERSPHERE PRO · 2025',hero_title:'El futuro de la <span class="gradient">visualización inmobiliaria</span>',hero_subtitle:'Donde los proyectos cobran vida antes de existir',hero_cta:'Explorar proyectos',scroll_hint:'Desliza para descubrir',manifesto_badge:'MANIFIESTO · MANIFESTO',manifesto_title:'IMMERSPHERE PRO',manifesto_text:'Nace en la intersección entre arquitectura, tecnología y emoción. No hacemos renders. Creamos realidades paralelas donde cada proyecto cobra vida antes de existir.',stat_projects:'Proyectos',stat_sectors:'Sectores',stat_vision:'Visión',arch_badge:'ARQUITECTURA · ARCHITECTURE',arch_title:'Estudios de Arquitectura',arch_subtitle:'Visualización fotorrealista que convierte planos en experiencias inmersivas antes de la primera piedra.',arch_branding_title:'Branding',arch_branding_1_title:'Diferenciación radical',arch_branding_1_text:'Tu estudio no presenta planos. Presenta realidades. El vídeo branding posiciona tu firma como referente de innovación.',arch_branding_2_title:'Conexión emocional instantánea',arch_branding_2_text:'Un vídeo corporativo transmite la filosofía del estudio en 60 segundos. Los clientes eligen por emoción.',arch_branding_3_title:'Memorabilidad competitiva',arch_branding_3_text:'El estudio que se mueve es el estudio que se recuerda. El 90% de la información que retiene el cerebro es visual.',arch_demo_title:'Demostración',arch_demo_1_title:'Recorridos inmersivos',arch_demo_1_text:'El cliente pasea por su futuro proyecto antes de construirse. Las dudas desaparecen.',arch_demo_2_title:'Validación de diseño en tiempo real',arch_demo_2_text:'Detecta mejoras, ajusta proporciones y confirma decisiones sobre la marcha.',arch_demo_3_title:'Reducción de modificaciones',arch_demo_3_text:'Cuando el cliente ha visto y aprobado cada rincón virtualmente, los cambios de última hora se reducen drásticamente.',arch_renders_title:'Renders',arch_renders_1_title:'Fotorrealismo que cierra contratos',arch_renders_1_text:'Un render de calidad arquitectónica no se distingue de la fotografía real.',arch_renders_2_title:'Versatilidad de formatos',arch_renders_2_text:'Redes sociales, dossier impreso, web. Un mismo render se adapta a todos los canales.',arch_renders_3_title:'Ahorro en maquetas físicas',arch_renders_3_text:'Sustituye costosas maquetas por visualizaciones actualizables al instante.',realestate_badge:'INMOBILIARIAS · REAL ESTATE',realestate_title:'Inmobiliarias',realestate_subtitle:'Tours virtuales que aceleran decisiones, eliminan dudas y multiplican visitas cualificadas.',realestate_branding_title:'Branding',realestate_branding_1_title:'Autoridad de marca',realestate_branding_1_text:'Una inmobiliaria con vídeo corporativo profesional transmite solvencia y capacidad tecnológica.',realestate_branding_2_title:'Captación de propietarios',realestate_branding_2_text:'Los propietarios eligen la agencia que mejor presenta su propiedad.',realestate_branding_3_title:'Estilo de vida aspiracional',realestate_branding_3_text:'No vendes metros cuadrados. Vendes el desayuno en esa terraza, la luz de la tarde en ese salón.',realestate_demo_title:'Demostración',realestate_demo_1_title:'Visitas virtuales 24/7',realestate_demo_1_text:'La propiedad se enseña mientras duermes, mientras el cliente viaja.',realestate_demo_2_title:'Filtro de clientes cualificados',realestate_demo_2_text:'Solo visita físicamente quien ya ha recorrido virtualmente.',realestate_demo_3_title:'Alcance geográfico',realestate_demo_3_text:'Comprador internacional, inversor de otra provincia. El vídeo derriba fronteras.',realestate_renders_title:'Renders',realestate_renders_1_title:'Home staging virtual',realestate_renders_1_text:'Amuebla, decora y ambienta cualquier propiedad sin mover un solo mueble real.',realestate_renders_2_title:'Antes/Después impactante',realestate_renders_2_text:'El contraste visual es el argumento de venta más poderoso.',realestate_renders_3_title:'Consistencia de catálogo',realestate_renders_3_text:'Todas las propiedades con el mismo estilo visual. Tu marca se reconoce al instante.',reformas_badge:'REFORMAS · RENOVATIONS',reformas_title:'Constructoras / Reformas',reformas_subtitle:'Del plano al fotorrealismo. Seguimiento visual de obra con precisión milimétrica y reformas integrales.',reformas_branding_title:'Branding',reformas_branding_1_title:'Confianza estructural',reformas_branding_1_text:'Mostrar el proceso constructivo transmite rigor, transparencia y control.',reformas_branding_2_title:'Cultura de empresa visual',reformas_branding_2_text:'Equipos trabajando, maquinaria en movimiento. El vídeo convierte la constructora en una historia.',reformas_branding_3_title:'Diferenciación en licitaciones',reformas_branding_3_text:'Una licitación con vídeo destaca sobre 50 documentos PDF.',reformas_demo_title:'Demostración',reformas_demo_1_title:'Seguimiento documentado',reformas_demo_1_text:'Cada fase registrada con vídeo aéreo y terrestre.',reformas_demo_2_title:'Detección de interferencias',reformas_demo_2_text:'Visualización 3D sobre vídeo real identifica conflictos antes de obra.',reformas_demo_3_title:'Memoria histórica',reformas_demo_3_text:'Archivo visual completo desde movimiento de tierras hasta entrega de llaves.',reformas_renders_title:'Renders',reformas_renders_1_title:'Infografías de proceso',reformas_renders_1_text:'Visualiza fases y sistemas constructivos con claridad didáctica.',reformas_renders_2_title:'Simulación de acabados',reformas_renders_2_text:'Compara texturas, colores y materiales con certeza visual absoluta.',reformas_renders_3_title:'Integración en el entorno',reformas_renders_3_text:'Renderiza el edificio en su contexto urbano real.',developers_badge:'PROMOTORAS · DEVELOPERS',developers_title:'Promotoras',developers_subtitle:'Presentaciones que captan inversores al instante.',developers_branding_title:'Branding',developers_branding_1_title:'Imán de inversores',developers_branding_1_text:'Una promotora con vídeo profesional proyecta solidez y capacidad de ejecución.',developers_branding_2_title:'Storytelling de promoción',developers_branding_2_text:'Cada promoción tiene una historia. El vídeo la cuenta desde el concepto.',developers_branding_3_title:'Pre-venta emocional',developers_branding_3_text:'Vender sobre plano requiere fe. El vídeo sustituye la fe por certeza visual.',developers_demo_title:'Demostración',developers_demo_1_title:'Tour virtual de promociones',developers_demo_1_text:'Recorre zonas comunes, piscina y apartamento piloto sin obra terminada.',developers_demo_2_title:'Simulación de calidades',developers_demo_2_text:'Muestra cada acabado antes de ejecutarlo.',developers_demo_3_title:'Presentaciones interactivas',developers_demo_3_text:'Herramienta visual que responde a objeciones con imágenes.',developers_renders_title:'Renders',developers_renders_1_title:'Vistas panorámicas 360°',developers_renders_1_text:'El comprador elige las vistas antes de que existan.',developers_renders_2_title:'Fotomontajes comerciales',developers_renders_2_text:'Inserta la promoción en fotos reales del entorno.',developers_renders_3_title:'Catálogo visual unificado',developers_renders_3_text:'Todas tus promociones bajo el mismo estándar de calidad.',designers_badge:'DECORADORES · DESIGNERS',designers_title:'Decoradores e Interioristas',designers_subtitle:'Cada textura, cada luz, cada detalle. Ambientes que emocionan.',designers_branding_title:'Branding',designers_branding_1_title:'Firma de autor',designers_branding_1_text:'El vídeo muestra tu estilo, tu criterio, tu universo estético.',designers_branding_2_title:'Portfolio que enamora',designers_branding_2_text:'Un reel en vídeo vale más que 100 fotos estáticas.',designers_branding_3_title:'Diferenciación en redes',designers_branding_3_text:'El vídeo de interiorismo bien producido es el contenido más compartido.',designers_demo_title:'Demostración',designers_demo_1_title:'Recorrido por ambientes',designers_demo_1_text:'El cliente recorre virtualmente el espacio decorado.',designers_demo_2_title:'Cambios de iluminación',designers_demo_2_text:'Muestra cómo cambia el ambiente con luz natural.',designers_demo_3_title:'Selección interactiva',designers_demo_3_text:'El cliente cambia texturas, colores y piezas sobre la marcha.',designers_renders_title:'Renders',designers_renders_1_title:'Fotorrealismo de detalle',designers_renders_1_text:'La veta de la madera, el brillo del mármol. Cada textura con fidelidad.',designers_renders_2_title:'Comparativas de estilos',designers_renders_2_text:'Un mismo espacio con 3 estilos diferentes.',designers_renders_3_title:'Iluminación natural',designers_renders_3_text:'Simula la luz real según orientación, estación y hora del día.',singular_badge:'SINGULARES · SINGULAR',singular_title:'Proyectos Singulares',singular_subtitle:'Cuando lo convencional no basta. Visualizaciones que expanden los límites de lo posible.',showreel_badge:'SHOWREEL COMPLETO',showreel_title:'Todos los proyectos',cta_badge:'CONTACTO · CONTACT',cta_title:'¿Listo para visualizar tu próximo proyecto?',urgency:'⚡ Quedan 2 slots para proyectos en Q3 2025',proof_demos:'Demos esta semana',proof_satisfaction:'Satisfacción',proof_response:'Respuesta',form_name:'Nombre',form_email:'Email',form_sector_default:'Selecciona un sector',form_message:'Mensaje',form_submit:'Solicitar demostración',footer_desc:'Visualización inmobiliaria de nueva generación',footer_sectors:'Sectores',footer_arch:'Arquitectura',footer_realestate:'Inmobiliarias',footer_reformas:'Constructoras / Reformas',footer_developers:'Promotoras',footer_designers:'Decoradores',footer_contact:'Contacto',footer_rights:'Todos los derechos reservados',footer_cta:'Volver al inicio ↑',tab_all:'Todos',tab_arquitectura:'Arquitectura',tab_inmobiliarias:'Inmobiliarias',tab_reformas:'Reformas',tab_promotoras:'Promotoras',tab_decoradores:'Decoradores',tab_singulares:'Singulares',toast_sent:'Solicitud enviada. Te contactaremos pronto.',nav_arquitectura:'Arquitectura',nav_inmobiliarias:'Inmobiliarias',nav_reformas:'Reformas',nav_promotoras:'Promotoras',nav_decoradores:'Decoradores',nav_showreel:'Showreel',nav_contacto:'Contacto'},en:{hero_badge:'IMMERSPHERE PRO · 2025',hero_title:'The future of <span class="gradient">real estate visualization</span>',hero_subtitle:'Where projects come to life before they exist',hero_cta:'Explore projects',scroll_hint:'Scroll to discover',manifesto_badge:'MANIFESTO',manifesto_title:'IMMERSPHERE PRO',manifesto_text:'Born at the intersection of architecture, technology and emotion. We don\'t make renders. We create parallel realities.',stat_projects:'Projects',stat_sectors:'Sectors',stat_vision:'Vision',arch_badge:'ARCHITECTURE',arch_title:'Architecture Studios',arch_subtitle:'Photorealistic visualization that turns blueprints into immersive experiences.',arch_branding_title:'Branding',arch_branding_1_title:'Radical differentiation',arch_branding_1_text:'Your studio presents realities. Video branding positions your firm as an innovation benchmark.',arch_branding_2_title:'Instant emotional connection',arch_branding_2_text:'Clients choose by emotion and justify by reason.',arch_branding_3_title:'Competitive memorability',arch_branding_3_text:'The studio that moves is the studio remembered.',arch_demo_title:'Demo',arch_demo_1_title:'Immersive walkthroughs',arch_demo_1_text:'The client walks through their future project before it\'s built.',arch_demo_2_title:'Real-time design validation',arch_demo_2_text:'Detect improvements and confirm decisions on the fly.',arch_demo_3_title:'Reduction of modifications',arch_demo_3_text:'Last-minute changes are drastically reduced.',arch_renders_title:'Renders',arch_renders_1_title:'Photorealism that closes',arch_renders_1_text:'A quality render is indistinguishable from real photography.',arch_renders_2_title:'Format versatility',arch_renders_2_text:'The same render adapts to all channels.',arch_renders_3_title:'Savings on physical models',arch_renders_3_text:'Replace expensive models with updatable visualizations.',realestate_badge:'REAL ESTATE',realestate_title:'Real Estate Agencies',realestate_subtitle:'Virtual tours that accelerate decisions.',realestate_branding_title:'Branding',realestate_branding_1_title:'Brand authority',realestate_branding_1_text:'Professional video transmits solvency and technological capability.',realestate_branding_2_title:'Owner acquisition',realestate_branding_2_text:'Owners choose the agency that best presents their property.',realestate_branding_3_title:'Aspirational lifestyle',realestate_branding_3_text:'You sell the breakfast on that terrace.',realestate_demo_title:'Demo',realestate_demo_1_title:'24/7 virtual visits',realestate_demo_1_text:'The property is shown while you sleep.',realestate_demo_2_title:'Qualified client filtering',realestate_demo_2_text:'Only those who have toured virtually visit physically.',realestate_demo_3_title:'Geographic reach',realestate_demo_3_text:'Video breaks down borders.',realestate_renders_title:'Renders',realestate_renders_1_title:'Virtual home staging',realestate_renders_1_text:'Furnish without moving a single real piece.',realestate_renders_2_title:'Impactful Before/After',realestate_renders_2_text:'Visual contrast is the most powerful sales argument.',realestate_renders_3_title:'Catalog consistency',realestate_renders_3_text:'Your brand is instantly recognized.',reformas_badge:'RENOVATIONS',reformas_title:'Construction / Renovations',reformas_subtitle:'From blueprint to photorealism. Visual work monitoring with millimetric precision.',reformas_branding_title:'Branding',reformas_branding_1_title:'Structural trust',reformas_branding_1_text:'Showing the process transmits rigor and transparency.',reformas_branding_2_title:'Visual company culture',reformas_branding_2_text:'Video turns the company into a story of creation.',reformas_branding_3_title:'Differentiation in tenders',reformas_branding_3_text:'A tender with video stands out among 50 PDFs.',reformas_demo_title:'Demo',reformas_demo_1_title:'Documented monitoring',reformas_demo_1_text:'Each phase recorded with aerial and ground video.',reformas_demo_2_title:'Interference detection',reformas_demo_2_text:'3D visualization identifies conflicts before site.',reformas_demo_3_title:'Historical memory',reformas_demo_3_text:'Complete visual archive from earthmoving to handover.',reformas_renders_title:'Renders',reformas_renders_1_title:'Process infographics',reformas_renders_1_text:'Visualize phases with didactic clarity.',reformas_renders_2_title:'Finish simulation',reformas_renders_2_text:'Compare textures with absolute visual certainty.',reformas_renders_3_title:'Environmental integration',reformas_renders_3_text:'Render the building in its real urban context.',developers_badge:'DEVELOPERS',developers_title:'Real Estate Developers',developers_subtitle:'Presentations that capture investors instantly.',developers_branding_title:'Branding',developers_branding_1_title:'Investor magnet',developers_branding_1_text:'Professional video projects solidity and execution capability.',developers_branding_2_title:'Promotion storytelling',developers_branding_2_text:'Each development has a story.',developers_branding_3_title:'Emotional pre-sale',developers_branding_3_text:'Video replaces faith with visual certainty.',developers_demo_title:'Demo',developers_demo_1_title:'Virtual development tours',developers_demo_1_text:'Tour common areas without construction finished.',developers_demo_2_title:'Quality simulation',developers_demo_2_text:'Show every finish before executing it.',developers_demo_3_title:'Interactive presentations',developers_demo_3_text:'Visual tool that responds to objections with images.',developers_renders_title:'Renders',developers_renders_1_title:'360° panoramic views',developers_renders_1_text:'The buyer chooses views before they exist.',developers_renders_2_title:'Commercial photomontages',developers_renders_2_text:'Insert the development into real photos.',developers_renders_3_title:'Unified visual catalog',developers_renders_3_text:'All developments under the same quality standard.',designers_badge:'DESIGNERS',designers_title:'Decorators & Interior Designers',designers_subtitle:'Every texture, every light, every detail.',designers_branding_title:'Branding',designers_branding_1_title:'Author\'s signature',designers_branding_1_text:'The video shows your aesthetic universe.',designers_branding_2_title:'Portfolio that enchants',designers_branding_2_text:'A video reel is worth more than 100 photos.',designers_branding_3_title:'Social media differentiation',designers_branding_3_text:'Interior design video is the most shared content.',designers_demo_title:'Demo',designers_demo_1_title:'Environment walkthrough',designers_demo_1_text:'The client virtually tours the decorated space.',designers_demo_2_title:'Lighting changes',designers_demo_2_text:'Show how the atmosphere changes with light.',designers_demo_3_title:'Interactive selection',designers_demo_3_text:'Change textures, colors and pieces on the fly.',designers_renders_title:'Renders',designers_renders_1_title:'Detail photorealism',designers_renders_1_text:'Wood grain, marble shine with eye-deceiving fidelity.',designers_renders_2_title:'Style comparisons',designers_renders_2_text:'The same space with 3 different styles.',designers_renders_3_title:'Natural lighting',designers_renders_3_text:'Simulates real light by orientation and season.',singular_badge:'SINGULAR',singular_title:'Singular Projects',singular_subtitle:'When conventional is not enough.',showreel_badge:'FULL SHOWREEL',showreel_title:'All projects',cta_badge:'CONTACT',cta_title:'Ready to visualize your next project?',urgency:'⚡ Only 2 slots left for Q3 2025',proof_demos:'Demos this week',proof_satisfaction:'Satisfaction',proof_response:'Response',form_name:'Name',form_email:'Email',form_sector_default:'Select a sector',form_message:'Message',form_submit:'Request demo',footer_desc:'Next generation real estate visualization',footer_sectors:'Sectors',footer_arch:'Architecture',footer_realestate:'Real Estate',footer_reformas:'Construction / Renovations',footer_developers:'Developers',footer_designers:'Designers',footer_contact:'Contact',footer_rights:'All rights reserved',footer_cta:'Back to top ↑',tab_all:'All',tab_arquitectura:'Architecture',tab_inmobiliarias:'Real Estate',tab_reformas:'Renovations',tab_promotoras:'Developers',tab_decoradores:'Designers',tab_singulares:'Singular',toast_sent:'Request sent. We will contact you soon.',nav_arquitectura:'Architecture',nav_inmobiliarias:'Real Estate',nav_reformas:'Renovations',nav_promotoras:'Developers',nav_decoradores:'Designers',nav_showreel:'Showreel',nav_contacto:'Contact'}};
+            let lang=storageGet('lang','es');function t(k){return i18n[lang]?.[k]??i18n.es[k]??k}
+
+            const videoData={arquitectura:['TM-BUILDING_ARQUITECTO_VIDEO_4','TM-BUILDING_ARQUITECTO_VIDEO_6','TM-BUILDING_ARQUITECTO_VIDEO_7','ARQUITECTURA_CHALETS-REFORMAS_VIDEO_3'],inmobiliarias:['03_01','03_02','03_03','INMOBILIARIAS_GENERICO_VIDEO_2','INMOBILIARIAS_GENERICO_VIDEO_3','INMOBILIARIAS_GENERICO_VIDEO_7'],constructoras:['04_01','04_02','04_03','04_04','04_05','TM-BUILDING_ARQUITECTO_VIDEO_10','TM-BUILDING_ARQUITECTO_VIDEO_23','TM-BUILDING_ARQUITECTO_VIDEO_32','ARQUITECTURA_PARKING_VIDEO_1','ARQUITECTURA_CHALETS-REFORMAS_VIDEO_3','ARQUITECTURA_INFRAESTRUCTURAS_VIDEO_1','ARQUITECTURA_INGENIERIA-OBRA-CIVIL_VIDEO_3','ARQUITECTURA_OFICINAS_VIDEO_3','VIDEO11','VIDEO12'],promotoras:['05_01','05_02','05_03','05_04','05_05','05_06'],decoradores:['06_01','06_02','06_03','06_04','06_05'],singulares:['111','113']};
+
+            const cursor=$('#customCursor');const trail=$('#cursorTrail');let trailX=0,trailY=0;
+            if(!isTouch){document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';cursor.classList.add('visible');trailX=e.clientX;trailY=e.clientY});document.addEventListener('mouseover',e=>{const tgt=e.target.closest('.video-card');const cta=e.target.closest('.hero-cta,.cta-form button,.footer-cta');if(cta){cursor.className='custom-cursor visible hover-cta'}else if(tgt){cursor.className='custom-cursor visible hover-play'}else if(e.target.closest('a,button,.nav-link,.benefit-card,.showreel-tab')){cursor.className='custom-cursor visible hover-expand'}else{cursor.className='custom-cursor visible'}});
+            function updateTrail(){trail.style.left=trailX+'px';trail.style.top=trailY+'px';trail.style.width='40px';trail.style.height='40px';trail.style.transform='translate(-50%,-50%)';trail.classList.toggle('dimmed',!cursor.classList.contains('visible'));requestAnimationFrame(updateTrail)}updateTrail()}
+
+            const heroVideo=$('#heroVideo');let heroScrubTarget=heroVideo.duration/2;let heroScrubbing=false;let prevX=null;
+            heroVideo.addEventListener('loadedmetadata',()=>{heroVideo.currentTime=heroVideo.duration/2;heroVideo.pause();heroScrubTarget=heroVideo.duration/2});
+            heroVideo.addEventListener('seeked',()=>{heroScrubbing=false});
+            function heroScrubSeek(){if(!heroVideo||heroScrubbing||!heroVideo.duration)return;const diff=Math.abs(heroScrubTarget-heroVideo.currentTime);if(diff<.04)return;heroScrubbing=true;heroVideo.currentTime=Math.max(0,Math.min(heroVideo.duration,heroScrubTarget))}
+            $('#hero').addEventListener('mousemove',e=>{if(!heroVideo.duration)return;const rect=$('#hero').getBoundingClientRect();const xN=(e.clientX-rect.left)/rect.width;if(prevX===null){prevX=xN;return}const delta=xN-prevX;heroScrubTarget=Math.max(0,Math.min(heroVideo.duration,heroScrubTarget+delta*heroVideo.duration*.7));prevX=xN;heroScrubSeek()});
+            $('#hero').addEventListener('mouseleave',()=>{prevX=null});
+
+            const canvas=$('#heroParticles');if(canvas){const ctx=canvas.getContext('2d');let particles=[];function resize(){canvas.width=canvas.offsetWidth;canvas.height=canvas.offsetHeight}resize();window.addEventListener('resize',resize);for(let i=0;i<25;i++){particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+.5,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3})}
+            function animateParticles(){if(!canvas||!ctx)return;ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=canvas.width;if(p.x>canvas.width)p.x=0;if(p.y<0)p.y=canvas.height;if(p.y>canvas.height)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(0,212,255,.15)';ctx.fill()});requestAnimationFrame(animateParticles)}animateParticles()}
+
+            function animateHeroTitle(){const el=$('#heroTitle');if(!el)return;const text=t('hero_title');const parts=text.split('<span class="gradient">');let html='';let totalChars=0;parts.forEach((part,i)=>{const isGradient=i===1;const subParts=isGradient?part.split('</span>'):[part];subParts.forEach((sp,j)=>{const chars=sp.split('');chars.forEach((ch,ci)=>{const delay=(totalChars+ci)*40;html+=`<span class="char${isGradient&&j===0?' gradient':''}" style="animation-delay:${delay}ms">${ch===' '?'&nbsp;':ch}</span>`});totalChars+=chars.length;if(isGradient&&j===0&&subParts.length>1)totalChars+=1})});el.innerHTML=html}
+            animateHeroTitle();
+
+            window.addEventListener('scroll',()=>{$('#navbarSticky').classList.toggle('scrolled',window.scrollY>80);const pct=Math.min(100,(window.scrollY/Math.max(1,document.documentElement.scrollHeight-window.innerHeight))*100);$('#scrollProgress').style.width=pct+'%';$('#backToTop').classList.toggle('visible',window.scrollY>700)},{passive:true});
+
+            const revealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const el=entry.target;el.classList.add('revealed');if(el.classList.contains('video-card')){const v=$('video',el);if(v&&isTouch)v.play().catch(()=>{})}const section=el.closest('.section-full,.section-container');if(section){const badge=section.querySelector('.section-badge');const title=section.querySelector('.section-title');const subtitle=section.querySelector('.section-subtitle');const benefits=section.querySelectorAll('.benefit-card');const videos=section.querySelectorAll('.video-card');if(badge)badge.classList.add('revealed');if(title)title.classList.add('revealed');if(subtitle)subtitle.classList.add('revealed');benefits.forEach((b,i)=>{setTimeout(()=>b.classList.add('revealed'),400+i*100)});videos.forEach((v,i)=>{setTimeout(()=>v.classList.add('revealed'),600+benefits.length*100+i*80)})}}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+            $$('.section-full,.section-container,.video-card,.benefit-card,.section-badge,.section-title,.section-subtitle').forEach(el=>revealObserver.observe(el));
+
+            function renderBenefits(cId,sector){const c=$(cId);if(!c)return;const titles={branding:'Branding',demo:'Demostración',renders:'Renders'};c.innerHTML=['branding','demo','renders'].map(type=>`<div class="benefit-card"><h4>${titles[type]}</h4>${[1,2,3].map(i=>`<div><h5>${t(sector+'_'+type+'_'+i+'_title')}</h5><p>${t(sector+'_'+type+'_'+i+'_text')}</p></div>`).join('')}</div>`).join('')}
+            function renderAllBenefits(){renderBenefits('#benefitsArquitectura','arch');renderBenefits('#benefitsInmobiliarias','realestate');renderBenefits('#benefitsConstructoras','reformas');renderBenefits('#benefitsPromotoras','developers');renderBenefits('#benefitsDecoradores','designers')}
+
+            function renderVideoGrid(cId,files){const c=$(cId);if(!c)return;c.innerHTML=files.map((f,i)=>`<div class="video-card${i===0?' featured':''}" data-video="${f}" style="transition-delay:${i*60}ms"><video src="${videoURL(f)}" muted loop playsinline preload="metadata"></video><div class="video-overlay"><span class="video-overlay-title">${f.replace(/_/g,' ')}</span><span class="video-overlay-subtitle">IMMERSPHERE PRO</span></div></div>`).join('');setupVideoCards(c)}
+            function setupVideoCards(container){$$('.video-card',container).forEach(card=>{const v=$('video',card);if(!v)return;if(isTouch){const o=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting)v.play().catch(()=>{});else v.pause()})},{threshold:.5});o.observe(card)}else{card.addEventListener('mouseenter',()=>{$$('.video-card',container).forEach(c=>{if(c!==card)c.classList.add('dimmed')});v.play().catch(()=>{})});card.addEventListener('mouseleave',()=>{$$('.video-card',container).forEach(c=>c.classList.remove('dimmed'));v.pause()})}})}
+
+            let lightboxVideos=[];let lightboxIndex=0;const lb=$('#lightbox');const lbVideo=$('#lightboxVideo');const lbCounter=$('#lightboxCounter');
+            function openLightbox(videoName,allVideos){lightboxVideos=allVideos;lightboxIndex=allVideos.indexOf(videoName);updateLightbox();lb.classList.add('open');document.body.style.overflow='hidden'}
+            function updateLightbox(){const name=lightboxVideos[lightboxIndex];lbVideo.querySelector('source')?.remove();const src=document.createElement('source');src.src=videoURL(name);src.type='video/mp4';lbVideo.appendChild(src);lbVideo.load();lbVideo.play().catch(()=>{});lbCounter.textContent=`${lightboxIndex+1} / ${lightboxVideos.length} · ${name.replace(/_/g,' ')}`}
+            $('#lightboxClose').addEventListener('click',()=>{lb.classList.remove('open');lbVideo.pause();document.body.style.overflow=''});
+            lb.addEventListener('click',e=>{if(e.target===lb){lb.classList.remove('open');lbVideo.pause();document.body.style.overflow=''}});
+            $('#lightboxPrev').addEventListener('click',()=>{lightboxIndex=(lightboxIndex-1+lightboxVideos.length)%lightboxVideos.length;updateLightbox()});
+            $('#lightboxNext').addEventListener('click',()=>{lightboxIndex=(lightboxIndex+1)%lightboxVideos.length;updateLightbox()});
+            document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape'){lb.classList.remove('open');lbVideo.pause();document.body.style.overflow=''}if(e.key==='ArrowLeft'){lightboxIndex=(lightboxIndex-1+lightboxVideos.length)%lightboxVideos.length;updateLightbox()}if(e.key==='ArrowRight'){lightboxIndex=(lightboxIndex+1)%lightboxVideos.length;updateLightbox()}});
+            function setupLightboxClicks(){document.addEventListener('click',e=>{const card=e.target.closest('.video-card');if(!card||e.target.closest('.lightbox'))return;const videoName=card.dataset.video;const section=card.closest('[id]');let allVideos=[];if(section){const grid=section.querySelector('.video-grid');if(grid)allVideos=Array.from(grid.querySelectorAll('.video-card')).map(c=>c.dataset.video)}if(allVideos.length===0)allVideos=[videoName];openLightbox(videoName,allVideos)})}
+            setupLightboxClicks();
+
+            function renderShowreel(filter=null){const c=$('#gridShowreel');if(!c)return;let all=[];if(filter){all=videoData[filter]||[]}else{Object.values(videoData).forEach(f=>all=all.concat(f))}c.innerHTML=all.map((f,i)=>`<div class="video-card" data-video="${f}" style="transition-delay:${i*40}ms"><video src="${videoURL(f)}" muted loop playsinline preload="metadata"></video><div class="video-overlay"><span class="video-overlay-title">${f.replace(/_/g,' ')}</span><span class="video-overlay-subtitle">IMMERSPHERE PRO</span></div></div>`).join('');setupVideoCards(c);$$('.video-card',c).forEach(el=>el.classList.add('revealed'))}
+            function renderShowreelTabs(){const tabs=$('#showreelTabs');if(!tabs)return;const keys=['all','arquitectura','inmobiliarias','reformas','promotoras','decoradores','singulares'];tabs.innerHTML=keys.map(k=>`<button class="showreel-tab${k==='all'?' active':''}" data-filter="${k}">${t('tab_'+k)}</button>`).join('');tabs.addEventListener('click',e=>{const btn=e.target.closest('.showreel-tab');if(!btn)return;$$('.showreel-tab',tabs).forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderShowreel(btn.dataset.filter==='all'?null:btn.dataset.filter)})}
+
+            function updateI18n(){document.documentElement.lang=lang;$$('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');const v=t(k);if(k==='hero_title')return;if(typeof v==='string')el.textContent=v});$$('[data-i18n-placeholder]').forEach(el=>{el.placeholder=t(el.getAttribute('data-i18n-placeholder'))});$('#langToggle').textContent=lang==='es'?'🇬🇧 EN':'🇪🇸 ES';renderNav();renderShowreelTabs();renderAllBenefits();animateHeroTitle()}
+            function renderNav(){const keys=[['arquitectura','nav_arquitectura'],['inmobiliarias','nav_inmobiliarias'],['constructoras','nav_reformas'],['promotoras','nav_promotoras'],['decoradores','nav_decoradores'],['showreel','nav_showreel'],['contacto','nav_contacto']];const html=keys.map(([id,key])=>`<button class="nav-link" data-target="${id}">${t(key)}</button>`).join('');$('#navLinksDesktop').innerHTML=html;$('#mobileMenu').innerHTML=html}
+            function scrollTo(id){const el=$('#'+id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});$('#mobileMenu').classList.remove('open')}
+
+            $('#navbarSticky').addEventListener('click',e=>{const l=e.target.closest('.nav-link');if(l)scrollTo(l.dataset.target)});
+            $('#hamburgerBtn').addEventListener('click',()=>$('#mobileMenu').classList.toggle('open'));
+            document.addEventListener('click',e=>{if(!e.target.closest('#navbarSticky'))$('#mobileMenu').classList.remove('open')});
+            $('#langToggle').addEventListener('click',()=>{lang=lang==='es'?'en':'es';storageSet('lang',lang);updateI18n()});
+            function showToast(msg){const toast=$('#toast');toast.textContent=msg;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),3000)}
+            $('#ctaForm').addEventListener('submit',e=>{e.preventDefault();showToast(t('toast_sent'));$('#ctaForm').reset()});
+            $('#backToTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+            const preloader=$('#preloader');const navbar=$('#navbarSticky');
+            setTimeout(()=>{preloader.classList.add('hidden');navbar.classList.add('visible');setTimeout(()=>preloader.style.display='none',600)},2000);
+
+            function init(){renderNav();Object.entries(videoData).forEach(([sector,files])=>{renderVideoGrid('#grid'+sector.charAt(0).toUpperCase()+sector.slice(1),files)});renderShowreel();renderShowreelTabs();renderAllBenefits();updateI18n()}
+            init();
+        })();
+    </script>
+</body>
+</html>
