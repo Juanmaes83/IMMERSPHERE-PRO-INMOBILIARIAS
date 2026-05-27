@@ -66,14 +66,14 @@
         .preloader-text{font-family:var(--font-display);font-size:1.3rem;color:var(--accent);letter-spacing:10px;text-transform:uppercase;animation:preloaderFade 2s ease-in-out infinite}
         @keyframes preloaderFade{0%,100%{opacity:.5}50%{opacity:1}}
 
-        .navbar-sticky{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:14px 28px;background:transparent;backdrop-filter:blur(0px);-webkit-backdrop-filter:blur(0px);border-bottom:1px solid transparent;transform:translateY(0);transition:all var(--transition-macro);gap:12px}
+        .navbar-sticky{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:14px 28px;padding-top:max(14px,env(safe-area-inset-top));background:transparent;backdrop-filter:blur(0px);-webkit-backdrop-filter:blur(0px);border-bottom:1px solid transparent;transform:translateY(0);transition:all var(--transition-macro);gap:12px}
         .navbar-sticky.scrolled{background:var(--glass-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-border)}
         .nav-links-desktop{display:none;gap:20px;flex-wrap:wrap}
-        .nav-link{font-family:var(--font-mono);font-size:.6rem;color:var(--text-secondary);cursor:pointer;transition:all var(--transition-micro);text-transform:uppercase;letter-spacing:1.5px;background:none;border:none;padding:6px 10px;white-space:nowrap;position:relative;border-radius:4px}
+        .nav-link{font-family:var(--font-mono);font-size:.75rem;color:var(--text-secondary);cursor:pointer;transition:all var(--transition-micro);text-transform:uppercase;letter-spacing:1px;background:none;border:none;padding:6px 10px;white-space:nowrap;position:relative;border-radius:4px}
         .nav-link::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%) scaleX(0);width:60%;height:1px;background:var(--accent);transition:transform var(--transition-micro);transform-origin:center}
         .nav-link:hover,.nav-link.active{color:var(--accent)}
         .nav-link:hover::after,.nav-link.active::after{transform:translateX(-50%) scaleX(1)}
-        .lang-toggle{background:var(--bg-secondary);border:1px solid rgba(255,255,255,.15);color:var(--text-primary);padding:7px 16px;border-radius:24px;cursor:pointer;font-family:var(--font-mono);font-size:.6rem;transition:all var(--transition-micro);display:flex;align-items:center;gap:6px;letter-spacing:1px}
+        .lang-toggle{background:var(--bg-secondary);border:1px solid rgba(255,255,255,.15);color:var(--text-primary);padding:7px 16px;border-radius:24px;cursor:pointer;font-family:var(--font-mono);font-size:.75rem;transition:all var(--transition-micro);display:flex;align-items:center;gap:6px;letter-spacing:.5px}
         .lang-toggle:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 0 16px rgba(0,212,255,.15)}
         .hamburger-btn{display:flex;background:none;border:none;color:var(--text-primary);font-size:1.5rem;cursor:pointer;padding:4px 8px;align-items:center;justify-content:center;transition:color var(--transition-micro)}
         .hamburger-btn:hover{color:var(--accent)}
@@ -82,7 +82,7 @@
         .navbar-logo{font-family:var(--font-display);font-size:1.3rem;font-weight:700;letter-spacing:3px;color:var(--text-primary);transition:all var(--transition-macro)}
         .navbar-logo span{color:var(--accent);transition:color var(--transition-micro)}
         @media(min-width:769px){.nav-links-desktop{display:flex}.hamburger-btn{display:none}.mobile-menu{display:none!important}}
-        @media(max-width:768px){.navbar-sticky{padding:12px 18px}.navbar-logo{font-size:1rem!important;letter-spacing:1px!important}}
+        @media(max-width:768px){.navbar-sticky{padding:12px 18px;padding-top:max(12px,env(safe-area-inset-top))}.navbar-logo{font-size:1rem!important;letter-spacing:1px!important}}
 
         .hero-section{position:relative;height:100vh;height:100dvh;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--bg-primary);scroll-snap-align:start}
         .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45;pointer-events:none}
