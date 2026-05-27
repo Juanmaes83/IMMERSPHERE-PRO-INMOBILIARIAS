@@ -213,7 +213,7 @@
         .cta-form button:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,212,255,.3)}
         .cta-form button:hover::before{transform:translateX(100%)}
 
-        .footer-section{background:var(--bg-primary);border-top:1px solid var(--glass-border);padding:5rem 2rem;text-align:center;position:relative}
+        .footer-section{background:var(--bg-primary);border-top:1px solid var(--glass-border);padding:5rem 2rem max(5rem,calc(5rem + env(safe-area-inset-bottom)));text-align:center;position:relative}
         .footer-marquee{overflow:hidden;padding:1.5rem 0;margin-bottom:2rem;border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border)}
         .footer-marquee-inner{display:flex;gap:3rem;animation:marquee 30s linear infinite;white-space:nowrap}
         @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
