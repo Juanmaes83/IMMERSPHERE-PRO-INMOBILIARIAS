@@ -63,6 +63,23 @@
     .svc-feature p{font-family:var(--font-body);font-size:.76rem;color:var(--text-secondary);line-height:1.7;font-weight:300}
 
     /* RUBIK SOTA */
+    /* Inspiración section */
+    .svc-inspo{padding:5rem 2rem;background:var(--bg-primary);border-top:1px solid var(--glass-border)}
+    .svc-inspo-inner{max-width:1100px;margin:0 auto}
+    .svc-inspo-header{text-align:center;margin-bottom:3rem}
+    .svc-inspo-badge{font-family:var(--font-mono);font-size:.5rem;color:var(--accent);letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:1rem}
+    .svc-inspo-title{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.2rem);font-weight:700;color:var(--text-primary);line-height:1.15;margin-bottom:1rem}
+    .svc-inspo-title span{background:linear-gradient(135deg,var(--accent),var(--accent-deep));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .svc-inspo-sub{font-family:var(--font-body);font-size:1rem;color:var(--text-secondary);max-width:600px;margin:0 auto;line-height:1.7}
+    .svc-inspo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    @media(min-width:768px){.svc-inspo-grid{grid-template-columns:repeat(3,1fr)}}
+    .svc-inspo-item{position:relative;border-radius:14px;overflow:hidden;cursor:zoom-in;border:1px solid var(--glass-border);background:var(--bg-secondary)}
+    .svc-inspo-item:first-child{grid-column:span 2}
+    @media(min-width:768px){.svc-inspo-item:first-child{grid-column:span 2;grid-row:span 2}}
+    .svc-inspo-item img{width:100%;height:100%;min-height:220px;object-fit:cover;display:block;transition:transform .7s cubic-bezier(0.22,1,0.36,1)}
+    .svc-inspo-item:hover img{transform:scale(1.05)}
+    .svc-inspo-caption{position:absolute;bottom:0;left:0;right:0;padding:14px 16px;background:linear-gradient(to top,rgba(6,10,16,.95) 0%,transparent 100%);font-family:var(--font-mono);font-size:.46rem;color:var(--accent);letter-spacing:2px;text-transform:uppercase;opacity:0;transition:opacity .4s ease}
+    .svc-inspo-item:hover .svc-inspo-caption{opacity:1}
     .rubik-strip{background:var(--bg-secondary);border-top:1px solid var(--glass-border);padding:2rem;text-align:center}
     .rubik-text{font-family:var(--font-mono);font-size:.55rem;color:var(--text-muted);letter-spacing:3px;text-transform:uppercase}
     .rubik-link{color:var(--text-secondary);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:1px;transition:var(--transition-micro)}
@@ -117,6 +134,7 @@
       <a href="#web3ds" class="svc-anchor-pill">Web 3DS</a>
       <a href="#dossiers" class="svc-anchor-pill">Dossiers</a>
       <a href="#branding" class="svc-anchor-pill">Campañas Branding</a>
+      <a href="#inspiracion" class="svc-anchor-pill">Inspiración</a>
     </div>
   </section>
 
@@ -309,6 +327,39 @@
         <div class="svc-feature reveal"><h4>Posicionamiento estratégico</h4><p>Definición del territorio de marca, propuesta de valor diferencial y mensaje central. La estrategia antes de la creatividad.</p></div>
         <div class="svc-feature reveal"><h4>Campaña de branding 360°</h4><p>Campaña integral que integra vídeo, web, redes sociales, publicidad exterior y PR. Presencia consistente en todos los canales.</p></div>
         <div class="svc-feature reveal"><h4>Brand guidelines</h4><p>Manual de marca completo para que el equipo, agencias y proveedores mantengan la consistencia visual en cualquier formato.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSPIRACIÓN / REFERENCIAS -->
+  <section class="svc-inspo" id="inspiracion">
+    <div class="svc-inspo-inner">
+      <div class="svc-inspo-header reveal">
+        <span class="svc-inspo-badge">INSPIRACIÓN · REFERENCES</span>
+        <h2 class="svc-inspo-title">El nivel al que<br><span>aspiramos</span></h2>
+        <p class="svc-inspo-sub">Arquitectura paramétrica, biomimética y de alta complejidad visual. Los proyectos que nos inspiran para llevar la visualización inmobiliaria al siguiente nivel.</p>
+      </div>
+      <div class="svc-inspo-grid">
+        <div class="svc-inspo-item reveal" style="transition-delay:0ms">
+          <img src="https://raw.githubusercontent.com/Juanmaes83/VIDEOS-PARA-IMMESPHERE-INMO/main/ChatGPT%20Image%2025%20may%202026%2C%2010_29_14.png" alt="Arquitectura biomimética de referencia" loading="lazy">
+          <div class="svc-inspo-caption">Arquitectura Biomimética · Concepto</div>
+        </div>
+        <div class="svc-inspo-item reveal" style="transition-delay:80ms">
+          <img src="https://raw.githubusercontent.com/Juanmaes83/VIDEOS-PARA-IMMESPHERE-INMO/main/HISJwNtWwAAK_5r.jpg" alt="Proyecto arquitectónico singular de referencia" loading="lazy">
+          <div class="svc-inspo-caption">Proyecto Singular · Alta Complejidad</div>
+        </div>
+        <div class="svc-inspo-item reveal" style="transition-delay:160ms">
+          <img src="https://raw.githubusercontent.com/Juanmaes83/VIDEOS-PARA-IMMESPHERE-INMO/main/HISJnt1XAAAQMJY.jpg" alt="Visualización arquitectónica premium" loading="lazy">
+          <div class="svc-inspo-caption">Visualización Premium · Render</div>
+        </div>
+        <div class="svc-inspo-item reveal" style="transition-delay:240ms">
+          <img src="https://raw.githubusercontent.com/Juanmaes83/VIDEOS-PARA-IMMESPHERE-INMO/main/HISJsvbWAAA5eaL.jpg" alt="Arquitectura paramétrica" loading="lazy">
+          <div class="svc-inspo-caption">Arquitectura Paramétrica · Estudio</div>
+        </div>
+        <div class="svc-inspo-item reveal" style="transition-delay:320ms">
+          <img src="https://raw.githubusercontent.com/Juanmaes83/VIDEOS-PARA-IMMESPHERE-INMO/main/HISJwNwWMAA5Y4I.jpg" alt="Concepto arquitectónico de vanguardia" loading="lazy">
+          <div class="svc-inspo-caption">Concepto · Vanguardia</div>
+        </div>
       </div>
     </div>
   </section>
