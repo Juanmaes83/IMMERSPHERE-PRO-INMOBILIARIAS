@@ -76,6 +76,19 @@
     .svc-footer-back{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;font-family:var(--font-mono);font-size:.55rem;color:var(--accent);letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:var(--transition-micro)}
     .svc-footer-back:hover{gap:.8rem}
 
+    /* CINEMATIC IMAGES */
+    .svc-img-hero{width:100%;border-radius:20px;overflow:hidden;margin-bottom:3rem;position:relative;aspect-ratio:16/9;background:var(--bg-tertiary)}
+    .svc-img-hero img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+    .svc-img-hero:hover img{transform:scale(1.02)}
+    .svc-img-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(10,15,26,.7) 100%);pointer-events:none}
+    .svc-img-badge{position:absolute;bottom:1.2rem;left:1.5rem;z-index:2;font-family:var(--font-mono);font-size:.48rem;color:rgba(255,255,255,.7);letter-spacing:3px;text-transform:uppercase;background:rgba(0,0,0,.45);backdrop-filter:blur(8px);padding:6px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.1)}
+    /* WEB PORTFOLIO GALLERY */
+    .web-gallery{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
+    .web-gallery-item{border-radius:12px;overflow:hidden;aspect-ratio:16/10;position:relative;border:1px solid var(--glass-border)}
+    .web-gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+    .web-gallery-item:hover img{transform:scale(1.04)}
+    .web-gallery-label{position:absolute;bottom:.6rem;left:.8rem;font-family:var(--font-mono);font-size:.42rem;color:rgba(255,255,255,.65);letter-spacing:2px;text-transform:uppercase;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);padding:4px 8px;border-radius:8px}
+    @media(max-width:640px){.web-gallery{grid-template-columns:1fr}}
     /* ANIMATIONS */
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s cubic-bezier(0.22,1,0.36,1)}
     .reveal.visible{opacity:1;transform:translateY(0)}
@@ -109,6 +122,12 @@
 
   <!-- 01 VIDEO & RENDERS -->
   <section class="svc-section" id="video">
+    <div style="max-width:1100px;margin:0 auto;padding:0 0 0 0">
+      <div class="svc-img-hero reveal">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120050_53445d87-6e8e-4eb5-915a-b47202cd29ec_min.webp" alt="Render fotorrealista interior de lujo — Immersphere Studio" loading="eager" />
+        <span class="svc-img-badge">Nano Banana 2 · 2K · Cinematic</span>
+      </div>
+    </div>
     <div class="svc-section-inner">
       <div class="svc-section-left reveal">
         <div class="svc-num">01</div>
@@ -128,6 +147,30 @@
 
   <!-- 02 WEB PREMIUM -->
   <section class="svc-section" id="web-premium">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="svc-img-hero reveal">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120054_03b55b88-3134-4e0f-a42e-32d63ba1b1c6_min.webp" alt="Web premium inmobiliaria con vídeo integrado — Immersphere Pro" loading="lazy" />
+        <span class="svc-img-badge">Web Premium · Diseño editorial</span>
+      </div>
+      <div class="web-gallery reveal">
+        <div class="web-gallery-item">
+          <img src="https://raw.githubusercontent.com/Juanmaes83/AURUM_PROPERTIES_BOUTIQUE/main/public/IMAGEN_AURUM_HEROWEB.png" alt="Aurum Properties Boutique — Web Premium" loading="lazy" />
+          <span class="web-gallery-label">Aurum Properties Boutique</span>
+        </div>
+        <div class="web-gallery-item">
+          <img src="https://raw.githubusercontent.com/Juanmaes83/BOUTIQUE_IRIS_ARQUITECTURA/main/public/BOUTIQUE_IRIS_ARQUITECTURA_PROYECTO1.png" alt="Boutique Iris Arquitectura — Web Premium" loading="lazy" />
+          <span class="web-gallery-label">Boutique Iris Arquitectura</span>
+        </div>
+        <div class="web-gallery-item">
+          <img src="https://raw.githubusercontent.com/Juanmaes83/AURUM_PROPERTIES_BOUTIQUE/main/public/IMAGEN_AURUM_INTERIORES.png" alt="Aurum Properties — Interiores" loading="lazy" />
+          <span class="web-gallery-label">Aurum · Interiores</span>
+        </div>
+        <div class="web-gallery-item">
+          <img src="https://raw.githubusercontent.com/Juanmaes83/BOUTIQUE_IRIS_ARQUITECTURA/main/public/BOUTIQUE_IRIS_ARQUITECTURA_PROYECTO2.png" alt="Boutique Iris — Proyecto 2" loading="lazy" />
+          <span class="web-gallery-label">Iris · Proyecto 2</span>
+        </div>
+      </div>
+    </div>
     <div class="svc-section-inner">
       <div class="svc-section-left reveal">
         <div class="svc-num">02</div>
@@ -147,6 +190,12 @@
 
   <!-- 03 MARKETING DIGITAL -->
   <section class="svc-section" id="marketing">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="svc-img-hero reveal">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120055_d2a2cb4b-94a0-4e32-bc82-d011eb78982e_min.webp" alt="Marketing digital inmobiliario — campañas de performance" loading="lazy" />
+        <span class="svc-img-badge">Marketing Digital · CAC · ROAS</span>
+      </div>
+    </div>
     <div class="svc-section-inner">
       <div class="svc-section-left reveal">
         <div class="svc-num">03</div>
@@ -166,6 +215,12 @@
 
   <!-- 04 SEO & GEO -->
   <section class="svc-section" id="seo">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="svc-img-hero reveal">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120056_0764c7c5-e4a6-4177-ae61-92fb2f29db6d_min.webp" alt="SEO y GEO — posicionamiento orgánico e IA generativa" loading="lazy" />
+        <span class="svc-img-badge">SEO · GEO · ChatGPT · Perplexity · Gemini</span>
+      </div>
+    </div>
     <div class="svc-section-inner">
       <div class="svc-section-left reveal">
         <div class="svc-num">04</div>
@@ -185,6 +240,12 @@
 
   <!-- 05 WEB 3DS -->
   <section class="svc-section" id="web3ds">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="svc-img-hero reveal">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120057_5f0a5fe5-2943-4b7d-8d35-19e2fc93b8a5_min.webp" alt="Web 3DS — experiencias web con geometría 3D interactiva" loading="lazy" />
+        <span class="svc-img-badge">Web 3DS · WebGL · Three.js</span>
+      </div>
+    </div>
     <div class="svc-section-inner">
       <div class="svc-section-left reveal">
         <div class="svc-num">05</div>
@@ -204,6 +265,12 @@
 
   <!-- 06 DOSSIERS -->
   <section class="svc-section" id="dossiers">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="svc-img-hero reveal">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120102_fb05b63b-dffd-455b-af27-cf51974355b7_min.webp" alt="Dossiers corporativos premium — materiales de venta inmobiliaria" loading="lazy" />
+        <span class="svc-img-badge">Dossiers · Presentaciones · PDF Premium</span>
+      </div>
+    </div>
     <div class="svc-section-inner">
       <div class="svc-section-left reveal">
         <div class="svc-num">06</div>
@@ -223,6 +290,12 @@
 
   <!-- 07 BRANDING -->
   <section class="svc-section" id="branding">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="svc-img-hero reveal">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120103_b7ea63a7-8007-46d6-bc3c-7dbd0220c288_min.webp" alt="Campañas de branding — estrategia de marca e identidad visual" loading="lazy" />
+        <span class="svc-img-badge">Branding · Identidad Visual · Campaña 360°</span>
+      </div>
+    </div>
     <div class="svc-section-inner">
       <div class="svc-section-left reveal">
         <div class="svc-num">07</div>
