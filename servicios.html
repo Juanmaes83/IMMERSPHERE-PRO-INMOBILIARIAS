@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
+  <meta name="theme-color" content="#0A0F1A" />
+  <meta name="description" content="Servicios completos Immersphere Pro: vídeo, web premium, marketing digital, SEO, GEO, web 3DS, dossiers y branding para el sector inmobiliario." />
+  <title>Servicios · Immersphere Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg-primary:#0A0F1A;--bg-secondary:#0D1320;--bg-tertiary:#111827;
+      --text-primary:#E8EFF8;--text-secondary:#8A9BB5;--text-muted:#5A6B80;
+      --accent:#00D4FF;--accent-warm:#FFB800;--gold:#C9A84C;
+      --glass-border:rgba(255,255,255,0.06);
+      --font-display:'Syne',sans-serif;--font-mono:'Space Mono',monospace;--font-body:'Inter',sans-serif;
+      --transition-micro:all .2s cubic-bezier(0.22,1,0.36,1);
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg-primary);color:var(--text-primary);font-family:var(--font-body);min-height:100vh;overflow-x:hidden}
+
+    /* NAV */
+    .svc-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;padding-top:max(16px,env(safe-area-inset-top));background:rgba(10,15,26,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-border)}
+    @media(max-width:768px){.svc-nav{padding:12px 18px;padding-top:max(12px,env(safe-area-inset-top))}}
+    .svc-nav-logo{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--text-primary);text-decoration:none;letter-spacing:2px}
+    .svc-nav-logo span{color:var(--accent)}
+    .svc-nav-right{display:flex;align-items:center;gap:1rem}
+    .svc-nav-back{font-family:var(--font-mono);font-size:.58rem;color:var(--text-secondary);letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:var(--transition-micro)}
+    .svc-nav-back:hover{color:var(--accent)}
+    .svc-nav-cta{background:var(--accent);color:var(--bg-primary);font-family:var(--font-display);font-size:.75rem;font-weight:700;padding:8px 20px;border-radius:20px;text-decoration:none;letter-spacing:.5px;transition:var(--transition-micro)}
+    .svc-nav-cta:hover{box-shadow:0 0 20px rgba(0,212,255,.35);transform:translateY(-1px)}
+
+    /* HERO */
+    .svc-hero{padding:10rem 2rem 5rem;text-align:center;position:relative;overflow:hidden}
+    .svc-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(0,212,255,.07) 0%,transparent 70%);pointer-events:none}
+    .svc-hero-badge{display:inline-block;font-family:var(--font-mono);font-size:.52rem;color:var(--accent);letter-spacing:4px;text-transform:uppercase;border:1px solid rgba(0,212,255,.25);padding:6px 16px;border-radius:20px;margin-bottom:1.5rem}
+    .svc-hero-title{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;color:var(--text-primary);letter-spacing:-1.5px;line-height:1.1;margin-bottom:1.2rem}
+    .svc-hero-title span{color:var(--accent)}
+    .svc-hero-sub{font-family:var(--font-body);font-size:1rem;color:var(--text-secondary);line-height:1.8;font-weight:300;max-width:560px;margin:0 auto 2.5rem}
+    .svc-hero-links{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap}
+    .svc-anchor-pill{font-family:var(--font-mono);font-size:.52rem;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;padding:7px 14px;border:1px solid var(--glass-border);border-radius:20px;text-decoration:none;transition:var(--transition-micro)}
+    .svc-anchor-pill:hover{color:var(--accent);border-color:rgba(0,212,255,.25)}
+
+    /* SERVICE SECTIONS */
+    .svc-section{padding:5rem 2rem;border-top:1px solid var(--glass-border);position:relative}
+    .svc-section:nth-child(even){background:var(--bg-secondary)}
+    .svc-section:nth-child(odd){background:var(--bg-primary)}
+    .svc-section-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:3rem}
+    @media(min-width:768px){.svc-section-inner{grid-template-columns:1fr 1.4fr;align-items:start}}
+    .svc-section-left{position:sticky;top:7rem}
+    .svc-num{font-family:var(--font-display);font-size:5rem;font-weight:800;color:rgba(0,212,255,.06);line-height:1;letter-spacing:-4px;margin-bottom:.5rem}
+    .svc-code{font-family:var(--font-mono);font-size:.52rem;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:.8rem;display:block}
+    .svc-title{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;color:var(--text-primary);letter-spacing:-1px;line-height:1.15;margin-bottom:1rem}
+    .svc-intro{font-family:var(--font-body);font-size:.9rem;color:var(--text-secondary);line-height:1.85;font-weight:300;margin-bottom:1.5rem}
+    .svc-cta-link{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.55rem;color:var(--accent);letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1px solid rgba(0,212,255,.25);padding:9px 18px;border-radius:20px;transition:var(--transition-micro)}
+    .svc-cta-link:hover{background:rgba(0,212,255,.08);gap:.8rem}
+    .svc-features{display:flex;flex-direction:column;gap:1rem}
+    .svc-feature{background:var(--bg-tertiary);border:1px solid var(--glass-border);border-left:2px solid var(--accent);border-radius:12px;padding:1.2rem 1.4rem}
+    .svc-feature h4{font-family:var(--font-display);font-size:.9rem;font-weight:600;color:var(--text-primary);margin-bottom:.4rem}
+    .svc-feature p{font-family:var(--font-body);font-size:.76rem;color:var(--text-secondary);line-height:1.7;font-weight:300}
+
+    /* RUBIK SOTA */
+    .rubik-strip{background:var(--bg-secondary);border-top:1px solid var(--glass-border);padding:2rem;text-align:center}
+    .rubik-text{font-family:var(--font-mono);font-size:.55rem;color:var(--text-muted);letter-spacing:3px;text-transform:uppercase}
+    .rubik-link{color:var(--text-secondary);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:1px;transition:var(--transition-micro)}
+    .rubik-link:hover{color:var(--accent);border-color:var(--accent)}
+
+    /* FOOTER */
+    .svc-footer{background:var(--bg-primary);border-top:1px solid var(--glass-border);padding:3rem 2rem max(3rem,calc(3rem + env(safe-area-inset-bottom)));text-align:center}
+    .svc-footer-logo{font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--text-primary);margin-bottom:.5rem}
+    .svc-footer-logo span{color:var(--accent)}
+    .svc-footer-copy{font-family:var(--font-mono);font-size:.58rem;color:var(--text-muted);margin-top:.5rem;letter-spacing:1px}
+    .svc-footer-back{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;font-family:var(--font-mono);font-size:.55rem;color:var(--accent);letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:var(--transition-micro)}
+    .svc-footer-back:hover{gap:.8rem}
+
+    /* ANIMATIONS */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s cubic-bezier(0.22,1,0.36,1)}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+  </style>
+</head>
+<body>
+
+  <nav class="svc-nav">
+    <a href="index.html" class="svc-nav-logo">IMMER<span>SPHERE</span> PRO</a>
+    <div class="svc-nav-right">
+      <a href="index.html" class="svc-nav-back">← Volver</a>
+      <a href="index.html#contacto" class="svc-nav-cta">Solicitar demo</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="svc-hero">
+    <div class="svc-hero-badge">SERVICIOS COMPLETOS · FULL SERVICES</div>
+    <h1 class="svc-hero-title">Más allá del<br><span>vídeo</span></h1>
+    <p class="svc-hero-sub">Producción audiovisual y estrategia digital completa para el sector inmobiliario. Todo lo que necesitas bajo una sola estrategia.</p>
+    <div class="svc-hero-links">
+      <a href="#video" class="svc-anchor-pill">Vídeo & Renders</a>
+      <a href="#web-premium" class="svc-anchor-pill">Web Premium</a>
+      <a href="#marketing" class="svc-anchor-pill">Marketing Digital</a>
+      <a href="#seo" class="svc-anchor-pill">SEO & GEO</a>
+      <a href="#web3ds" class="svc-anchor-pill">Web 3DS</a>
+      <a href="#dossiers" class="svc-anchor-pill">Dossiers</a>
+      <a href="#branding" class="svc-anchor-pill">Campañas Branding</a>
+    </div>
+  </section>
+
+  <!-- 01 VIDEO & RENDERS -->
+  <section class="svc-section" id="video">
+    <div class="svc-section-inner">
+      <div class="svc-section-left reveal">
+        <div class="svc-num">01</div>
+        <span class="svc-code">Vídeo & Renders</span>
+        <h2 class="svc-title">Producción audiovisual premium</h2>
+        <p class="svc-intro">El núcleo de Immersphere Pro. Renders fotorrealistas, vídeo corporativo de branding, reels para redes sociales y contenido vertical para cada sector y plataforma.</p>
+        <a href="index.html#sectores" class="svc-cta-link">Ver portfolio →</a>
+      </div>
+      <div class="svc-features">
+        <div class="svc-feature reveal"><h4>Renders fotorrealistas</h4><p>Interiores y exteriores indistinguibles de la fotografía real. Galerías, dossiers y materiales de venta de nivel internacional.</p></div>
+        <div class="svc-feature reveal"><h4>Vídeo branding corporativo</h4><p>Piezas audiovisuales que posicionan la marca del cliente como referente del sector. Guión, producción y postproducción incluidos.</p></div>
+        <div class="svc-feature reveal"><h4>Reels & Social Media</h4><p>Contenido vertical para Instagram Reels, TikTok, YouTube Shorts y WhatsApp Status. Optimizado para captar atención en los primeros 2 segundos.</p></div>
+        <div class="svc-feature reveal"><h4>Tours virtuales 360° y Gaussian Splats</h4><p>Experiencias inmersivas que el comprador visita desde su móvil sin app ni descarga. Disponibles 24/7, cualquier dispositivo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 WEB PREMIUM -->
+  <section class="svc-section" id="web-premium">
+    <div class="svc-section-inner">
+      <div class="svc-section-left reveal">
+        <div class="svc-num">02</div>
+        <span class="svc-code">Web Premium</span>
+        <h2 class="svc-title">Webs inmobiliarias con vídeo integrado</h2>
+        <p class="svc-intro">Sites inmobiliarios de alto impacto con vídeo de fondo, galerías inmersivas y sistema de captación de leads integrado. Diseño editorial premium que convierte visitas en contactos.</p>
+        <a href="index.html#contacto" class="svc-cta-link">Solicitar presupuesto →</a>
+      </div>
+      <div class="svc-features">
+        <div class="svc-feature reveal"><h4>Diseño editorial premium</h4><p>Cada web es única. Diseño a medida alineado con la identidad de marca del cliente, no plantillas genéricas.</p></div>
+        <div class="svc-feature reveal"><h4>Vídeo de fondo y galerías inmersivas</h4><p>El vídeo producido por Immersphere Studio se integra directamente en la web como elemento principal de impacto.</p></div>
+        <div class="svc-feature reveal"><h4>Captación de leads integrada</h4><p>Formularios optimizados para conversión, integración con CRM y notificaciones en tiempo real al equipo comercial.</p></div>
+        <div class="svc-feature reveal"><h4>Rendimiento y velocidad</h4><p>Core Web Vitals optimizados, carga rápida en mobile y desktop, SSL incluido y hosting de alto rendimiento.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 MARKETING DIGITAL -->
+  <section class="svc-section" id="marketing">
+    <div class="svc-section-inner">
+      <div class="svc-section-left reveal">
+        <div class="svc-num">03</div>
+        <span class="svc-code">Marketing Digital</span>
+        <h2 class="svc-title">Campañas de performance para el sector inmobiliario</h2>
+        <p class="svc-intro">Google Ads, Meta Ads e Instagram con el vídeo como activo principal de captación. CAC controlado, ROAS medido y leads cualificados directamente al equipo comercial.</p>
+        <a href="index.html#contacto" class="svc-cta-link">Solicitar auditoría →</a>
+      </div>
+      <div class="svc-features">
+        <div class="svc-feature reveal"><h4>Google Ads & Search</h4><p>Campañas de búsqueda para captar comprador con intención activa. Palabras clave de alto valor en el sector inmobiliario.</p></div>
+        <div class="svc-feature reveal"><h4>Meta Ads con vídeo</h4><p>Campañas en Facebook e Instagram usando los renders y vídeos producidos como creatividades de máximo impacto.</p></div>
+        <div class="svc-feature reveal"><h4>Retargeting y audiencias</h4><p>Impacta de nuevo a quien visitó la web o interactuó con el vídeo. El buyer journey inmobiliario es largo — el retargeting lo acorta.</p></div>
+        <div class="svc-feature reveal"><h4>Reporting y optimización</h4><p>Dashboard de resultados en tiempo real. Optimización semanal de pujas, creatividades y audiencias para mantener el CAC bajo control.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 SEO & GEO -->
+  <section class="svc-section" id="seo">
+    <div class="svc-section-inner">
+      <div class="svc-section-left reveal">
+        <div class="svc-num">04</div>
+        <span class="svc-code">SEO & GEO</span>
+        <h2 class="svc-title">Visibilidad orgánica en Google y en IA generativa</h2>
+        <p class="svc-intro">SEO técnico y de contenido para posicionarte en Google, más GEO — Generative Engine Optimization — para aparecer cuando tu cliente busca con ChatGPT, Perplexity o Gemini.</p>
+        <a href="index.html#contacto" class="svc-cta-link">Solicitar auditoría →</a>
+      </div>
+      <div class="svc-features">
+        <div class="svc-feature reveal"><h4>SEO técnico y on-page</h4><p>Auditoría, arquitectura web, velocidad, Core Web Vitals y optimización de contenido para los términos más valiosos del sector.</p></div>
+        <div class="svc-feature reveal"><h4>SEO local e inmobiliario</h4><p>Posicionamiento en búsquedas geolocalizadas. Google Business Profile optimizado. Fichas de propiedades en los buscadores especializados.</p></div>
+        <div class="svc-feature reveal"><h4>GEO — Generative Engine Optimization</h4><p>Optimización específica para aparecer en las respuestas de ChatGPT, Perplexity, Gemini y Bing AI cuando tu cliente busca proyectos o servicios con IA.</p></div>
+        <div class="svc-feature reveal"><h4>Contenido SEO de largo alcance</h4><p>Artículos, guías y contenido editorial diseñado para posicionar y educar al cliente. El vídeo embebido multiplica el tiempo en página.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 WEB 3DS -->
+  <section class="svc-section" id="web3ds">
+    <div class="svc-section-inner">
+      <div class="svc-section-left reveal">
+        <div class="svc-num">05</div>
+        <span class="svc-code">Web 3DS</span>
+        <h2 class="svc-title">Experiencias web con geometría 3D interactiva</h2>
+        <p class="svc-intro">Webs que van más allá del diseño convencional. Geometría tridimensional, parallax avanzado y storytelling visual que genera impacto desde el primer segundo de scroll.</p>
+        <a href="index.html#contacto" class="svc-cta-link">Ver propuesta →</a>
+      </div>
+      <div class="svc-features">
+        <div class="svc-feature reveal"><h4>Escenas 3D en el navegador</h4><p>Objetos y espacios tridimensionales interactivos directamente en la web, sin plugins ni app. Tecnología WebGL y Three.js.</p></div>
+        <div class="svc-feature reveal"><h4>Parallax y scroll storytelling</h4><p>Animaciones de scroll que narran la historia del proyecto mientras el usuario baja por la página. El contenido cobra vida con el movimiento.</p></div>
+        <div class="svc-feature reveal"><h4>Para proyectos singulares</h4><p>Promociones de lujo, estudios de arquitectura de autor, interiorismo de alto nivel. Cuando la primera impresión es todo.</p></div>
+        <div class="svc-feature reveal"><h4>Integración con vídeo y renders</h4><p>El 3D interactivo se combina con los renders y vídeos de Immersphere Studio para una experiencia completamente cohesionada.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 DOSSIERS -->
+  <section class="svc-section" id="dossiers">
+    <div class="svc-section-inner">
+      <div class="svc-section-left reveal">
+        <div class="svc-num">06</div>
+        <span class="svc-code">Dossiers Corporativos</span>
+        <h2 class="svc-title">Materiales de venta que cierran reuniones</h2>
+        <p class="svc-intro">Presentaciones PDF premium, memorias de proyecto y dossiers de promoción con diseño editorial de nivel internacional. El material que entra en la reunión y no sale.</p>
+        <a href="index.html#contacto" class="svc-cta-link">Ver ejemplos →</a>
+      </div>
+      <div class="svc-features">
+        <div class="svc-feature reveal"><h4>Dossier de promoción inmobiliaria</h4><p>Presentación completa de la promoción: renders, planos, memorias de calidades, ubicación y argumentario de venta. Listo para imprimir y para enviar digital.</p></div>
+        <div class="svc-feature reveal"><h4>Memoria corporativa de empresa</h4><p>El documento que presenta tu empresa, tu equipo, tu trayectoria y tus capacidades. Diseño de nivel internacional para licitaciones y presentaciones B2B.</p></div>
+        <div class="svc-feature reveal"><h4>Catálogo de propiedades</h4><p>Portfolio visual de activos inmobiliarios con fotografía, renders, datos técnicos y precio. Actualizable y entregable en PDF y digital.</p></div>
+        <div class="svc-feature reveal"><h4>QR y materiales offline</h4><p>Integración de QR que enlaza con el tour virtual o el vídeo de la propiedad. El dossier en papel abre la experiencia inmersiva.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 BRANDING -->
+  <section class="svc-section" id="branding">
+    <div class="svc-section-inner">
+      <div class="svc-section-left reveal">
+        <div class="svc-num">07</div>
+        <span class="svc-code">Campañas de Branding</span>
+        <h2 class="svc-title">Estrategia de marca y campañas 360°</h2>
+        <p class="svc-intro">Identidad visual, posicionamiento estratégico y campaña de branding completa para convertirte en el referente de tu sector. Desde el naming hasta la campaña en medios.</p>
+        <a href="index.html#contacto" class="svc-cta-link">Solicitar consultoría →</a>
+      </div>
+      <div class="svc-features">
+        <div class="svc-feature reveal"><h4>Identidad visual y naming</h4><p>Logotipo, paleta cromática, tipografía y sistema de marca coherente en todos los puntos de contacto: digital, impreso y vídeo.</p></div>
+        <div class="svc-feature reveal"><h4>Posicionamiento estratégico</h4><p>Definición del territorio de marca, propuesta de valor diferencial y mensaje central. La estrategia antes de la creatividad.</p></div>
+        <div class="svc-feature reveal"><h4>Campaña de branding 360°</h4><p>Campaña integral que integra vídeo, web, redes sociales, publicidad exterior y PR. Presencia consistente en todos los canales.</p></div>
+        <div class="svc-feature reveal"><h4>Brand guidelines</h4><p>Manual de marca completo para que el equipo, agencias y proveedores mantengan la consistencia visual en cualquier formato.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RUBIK SOTA -->
+  <div class="rubik-strip">
+    <p class="rubik-text">Estrategia digital y producción audiovisual · <a href="https://rubiksota.com" target="_blank" rel="noopener" class="rubik-link">Rubik Sota</a> · 629 554 870</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="svc-footer">
+    <div class="svc-footer-logo">IMMER<span>SPHERE</span> PRO</div>
+    <p class="svc-footer-copy">© 2025 Immersphere Pro · Todos los derechos reservados · Alicante, España</p>
+    <a href="index.html" class="svc-footer-back">← Volver al portfolio</a>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver(e => {
+      e.forEach(en => { if (en.isIntersecting) { en.target.classList.add('visible'); obs.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = `${(i % 4) * 70}ms`;
+      obs.observe(el);
+    });
+  </script>
+</body>
+</html>
