@@ -106,6 +106,31 @@
     .web-gallery-item:hover img{transform:scale(1.04)}
     .web-gallery-label{position:absolute;bottom:.6rem;left:.8rem;font-family:var(--font-mono);font-size:.42rem;color:rgba(255,255,255,.65);letter-spacing:2px;text-transform:uppercase;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);padding:4px 8px;border-radius:8px}
     @media(max-width:640px){.web-gallery{grid-template-columns:1fr}}
+    /* BRANDING PREMIUM */
+    .bprem{padding:5rem 2rem;background:var(--bg-secondary);border-top:1px solid var(--glass-border)}
+    .bprem-inner{max-width:1100px;margin:0 auto}
+    .bprem-header{text-align:center;margin-bottom:3rem}
+    .bprem-badge{font-family:var(--font-mono);font-size:.5rem;color:var(--gold);letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:1rem}
+    .bprem-title{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.2rem);font-weight:800;color:var(--text-primary);line-height:1.1;margin-bottom:1rem}
+    .bprem-title span{color:var(--gold)}
+    .bprem-sub{font-family:var(--font-body);font-size:1rem;color:var(--text-secondary);max-width:620px;margin:0 auto;line-height:1.7}
+    .bprem-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2.5rem}
+    @media(min-width:768px){.bprem-grid{grid-template-columns:repeat(3,1fr)}}
+    .bprem-item{position:relative;border-radius:14px;overflow:hidden;cursor:zoom-in;border:1px solid var(--glass-border);background:var(--bg-tertiary)}
+    .bprem-item:first-child{grid-column:span 2}
+    @media(min-width:768px){.bprem-item:first-child{grid-column:span 2}}
+    .bprem-item img{width:100%;height:100%;min-height:220px;object-fit:cover;display:block;transition:transform .7s cubic-bezier(0.22,1,0.36,1)}
+    .bprem-item:hover img{transform:scale(1.04)}
+    .bprem-caption{position:absolute;bottom:0;left:0;right:0;padding:14px 16px;background:linear-gradient(to top,rgba(6,10,16,.95) 0%,transparent 100%);font-family:var(--font-mono);font-size:.46rem;color:var(--gold);letter-spacing:2px;text-transform:uppercase;opacity:0;transition:opacity .4s ease}
+    .bprem-item:hover .bprem-caption{opacity:1}
+    .bprem-demos{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-top:1rem}
+    .bprem-demo-btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--font-display);font-size:.8rem;font-weight:700;padding:14px 28px;border-radius:30px;text-decoration:none;letter-spacing:.5px;transition:var(--transition-micro)}
+    .bprem-demo-btn.gold{background:var(--gold);color:#0A0F1A}
+    .bprem-demo-btn.gold:hover{box-shadow:0 0 24px rgba(201,168,76,.4);transform:translateY(-2px)}
+    .bprem-demo-btn.outline{background:transparent;color:var(--gold);border:1.5px solid var(--gold)}
+    .bprem-demo-btn.outline:hover{background:rgba(201,168,76,.08);transform:translateY(-2px)}
+    .bprem-demo-label{font-family:var(--font-mono);font-size:.52rem;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;text-align:center;margin-bottom:1.2rem}
+
     /* ANIMATIONS */
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s cubic-bezier(0.22,1,0.36,1)}
     .reveal.visible{opacity:1;transform:translateY(0)}
@@ -134,6 +159,7 @@
       <a href="#web3ds" class="svc-anchor-pill">Web 3DS</a>
       <a href="#dossiers" class="svc-anchor-pill">Dossiers</a>
       <a href="#branding" class="svc-anchor-pill">Campañas Branding</a>
+      <a href="#branding-premium" class="svc-anchor-pill">Branding Premium</a>
       <a href="#inspiracion" class="svc-anchor-pill">Inspiración</a>
     </div>
   </section>
@@ -327,6 +353,48 @@
         <div class="svc-feature reveal"><h4>Posicionamiento estratégico</h4><p>Definición del territorio de marca, propuesta de valor diferencial y mensaje central. La estrategia antes de la creatividad.</p></div>
         <div class="svc-feature reveal"><h4>Campaña de branding 360°</h4><p>Campaña integral que integra vídeo, web, redes sociales, publicidad exterior y PR. Presencia consistente en todos los canales.</p></div>
         <div class="svc-feature reveal"><h4>Brand guidelines</h4><p>Manual de marca completo para que el equipo, agencias y proveedores mantengan la consistencia visual en cualquier formato.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRANDING PREMIUM PARA TU EMPRESA -->
+  <section class="bprem" id="branding-premium">
+    <div class="bprem-inner">
+      <div class="bprem-header reveal">
+        <span class="bprem-badge">BRANDING PREMIUM · IDENTIDAD VISUAL · INTERIORISMO</span>
+        <h2 class="bprem-title">Branding Premium<br><span>para tu Empresa</span></h2>
+        <p class="bprem-sub">Propuestas de identidad visual y concepto de espacio al nivel de las mejores firmas internacionales. Cada detalle comunica quién eres antes de que abras la boca.</p>
+      </div>
+      <div class="bprem-grid">
+        <div class="bprem-item reveal" style="transition-delay:0ms">
+          <img src="https://raw.githubusercontent.com/Juanmaes83/IMMERSPHERE-PRO-INMOBILIARIAS/main/ChatGPT%20Image%2029%20may%202026%2C%2010_56_38.png" alt="Propuesta de Sala de Estar de Lujo Suave Milanesa" loading="lazy">
+          <div class="bprem-caption">Mood Board · Sala Lujo Milano</div>
+        </div>
+        <div class="bprem-item reveal" style="transition-delay:80ms">
+          <img src="https://raw.githubusercontent.com/Juanmaes83/IMMERSPHERE-PRO-INMOBILIARIAS/main/hf_20260529_065602_a08a0397-a848-43e2-9787-0f7b2e36a067.png" alt="Tablero de Materiales, Colores y Detalles" loading="lazy">
+          <div class="bprem-caption">Tablero de Materiales · Paleta Cromática</div>
+        </div>
+        <div class="bprem-item reveal" style="transition-delay:160ms">
+          <img src="https://raw.githubusercontent.com/Juanmaes83/IMMERSPHERE-PRO-INMOBILIARIAS/main/hf_20260529_065751_660f4e2e-c7b3-4692-8a66-311fd6051b33.png" alt="Diagrama de Análisis de Muebles Estilo Milano" loading="lazy">
+          <div class="bprem-caption">Análisis de Mobiliario · Estilo Milano</div>
+        </div>
+        <div class="bprem-item reveal" style="transition-delay:240ms">
+          <img src="https://raw.githubusercontent.com/Juanmaes83/IMMERSPHERE-PRO-INMOBILIARIAS/main/hf_20260529_065851_973509d6-e085-4112-9f09-ce2aa1224231.png" alt="Lista de Decoración Textil para Sala de Estar" loading="lazy">
+          <div class="bprem-caption">Lista de Decoración Textil · Selección Premium</div>
+        </div>
+        <div class="bprem-item reveal" style="transition-delay:320ms">
+          <img src="https://raw.githubusercontent.com/Juanmaes83/IMMERSPHERE-PRO-INMOBILIARIAS/main/hf_20260529_070042_f5992643-c23b-4e79-81d9-2b8718d9d3ba.png" alt="Lista de Elementos con Numeración Completa" loading="lazy">
+          <div class="bprem-caption">Plano de Elementos · Detalle Total</div>
+        </div>
+      </div>
+      <p class="bprem-demo-label">Accede a nuestros proyectos web de referencia</p>
+      <div class="bprem-demos">
+        <a href="https://juanmaes83.github.io/AURUM_PROPERTIES_BOUTIQUE/" target="_blank" rel="noopener" class="bprem-demo-btn gold">
+          ✦ Aurum Properties Boutique →
+        </a>
+        <a href="https://juanmaes83.github.io/BOUTIQUE_IRIS_ARQUITECTURA/" target="_blank" rel="noopener" class="bprem-demo-btn outline">
+          ✦ Boutique Iris Arquitectura →
+        </a>
       </div>
     </div>
   </section>
