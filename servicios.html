@@ -131,10 +131,47 @@
     .bprem-demo-btn.outline:hover{background:rgba(201,168,76,.08);transform:translateY(-2px)}
     .bprem-demo-label{font-family:var(--font-mono);font-size:.52rem;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;text-align:center;margin-bottom:1.2rem}
 
+    /* PROJECT CARDS */
+    .proj-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3rem}
+    @media(max-width:640px){.proj-cards{grid-template-columns:1fr}}
+    .proj-card{background:var(--bg-primary);border:1px solid var(--glass-border);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:var(--transition-micro)}
+    .proj-card:hover{border-color:rgba(201,168,76,.35);box-shadow:0 8px 40px rgba(201,168,76,.08)}
+    .proj-card-img{position:relative;aspect-ratio:16/10;overflow:hidden;cursor:zoom-in}
+    .proj-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(0.22,1,0.36,1)}
+    .proj-card:hover .proj-card-img img{transform:scale(1.04)}
+    .proj-card-badge{position:absolute;top:.8rem;left:.8rem;font-family:var(--font-mono);font-size:.42rem;color:var(--gold);letter-spacing:2px;text-transform:uppercase;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);padding:4px 10px;border-radius:8px;border:1px solid rgba(201,168,76,.3)}
+    .proj-card-body{padding:1.4rem;display:flex;flex-direction:column;gap:.8rem;flex:1}
+    .proj-card-title{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--text-primary)}
+    .proj-card-desc{font-family:var(--font-body);font-size:.78rem;color:var(--text-secondary);line-height:1.7;font-weight:300;flex:1}
+    .proj-card-cta{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:var(--font-display);font-size:.78rem;font-weight:700;padding:12px 20px;border-radius:24px;text-decoration:none;letter-spacing:.4px;transition:var(--transition-micro);margin-top:auto}
+    .proj-card-cta.gold{background:var(--gold);color:#0A0F1A}
+    .proj-card-cta.gold:hover{box-shadow:0 0 20px rgba(201,168,76,.4);transform:translateY(-2px)}
+    .proj-card-cta.outline{border:1.5px solid var(--gold);color:var(--gold);background:transparent}
+    .proj-card-cta.outline:hover{background:rgba(201,168,76,.1);transform:translateY(-2px)}
+
+    /* LIGHTBOX */
+    .lb-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.94);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease;padding:1rem}
+    .lb-overlay.active{opacity:1;pointer-events:all}
+    .lb-img-wrap{position:relative;max-width:min(96vw,1400px);max-height:92vh;display:flex;align-items:center;justify-content:center}
+    .lb-img-wrap img{max-width:100%;max-height:88vh;border-radius:10px;object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,.8);display:block}
+    .lb-close{position:fixed;top:1.2rem;right:1.4rem;width:44px;height:44px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:50%;color:#fff;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--transition-micro);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+    .lb-close:hover{background:rgba(255,255,255,.2)}
+    .lb-hint{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:.48rem;color:rgba(255,255,255,.35);letter-spacing:2px;text-transform:uppercase}
+
+    /* zoom cursor para todas las imágenes zoomables */
+    [data-zoom]{cursor:zoom-in}
+
     /* ANIMATIONS */
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s cubic-bezier(0.22,1,0.36,1)}
     .reveal.visible{opacity:1;transform:translateY(0)}
   </style>
+
+  <!-- LIGHTBOX -->
+  <div class="lb-overlay" id="lb-overlay" role="dialog" aria-modal="true" aria-label="Visor de imagen">
+    <div class="lb-img-wrap"><img id="lb-img" src="" alt="" /></div>
+    <button class="lb-close" id="lb-close" aria-label="Cerrar">✕</button>
+    <p class="lb-hint">Toca o pulsa ESC para cerrar</p>
+  </div>
 </head>
 <body>
 
@@ -168,7 +205,7 @@
   <section class="svc-section" id="video">
     <div style="max-width:1100px;margin:0 auto;padding:0 0 0 0">
       <div class="svc-img-hero reveal">
-        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120050_53445d87-6e8e-4eb5-915a-b47202cd29ec_min.webp" alt="Render fotorrealista interior de lujo — Immersphere Studio" loading="eager" />
+        <img data-zoom src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120050_53445d87-6e8e-4eb5-915a-b47202cd29ec_min.webp" alt="Render fotorrealista interior de lujo — Immersphere Studio" loading="eager" />
         <span class="svc-img-badge">Nano Banana 2 · 2K · Cinematic</span>
       </div>
     </div>
@@ -193,24 +230,24 @@
   <section class="svc-section" id="web-premium">
     <div style="max-width:1100px;margin:0 auto">
       <div class="svc-img-hero reveal">
-        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120054_03b55b88-3134-4e0f-a42e-32d63ba1b1c6_min.webp" alt="Web premium inmobiliaria con vídeo integrado — Immersphere Pro" loading="lazy" />
+        <img data-zoom src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120054_03b55b88-3134-4e0f-a42e-32d63ba1b1c6_min.webp" alt="Web premium inmobiliaria con vídeo integrado — Immersphere Pro" loading="lazy" />
         <span class="svc-img-badge">Web Premium · Diseño editorial</span>
       </div>
       <div class="web-gallery reveal">
         <div class="web-gallery-item">
-          <img src="https://raw.githubusercontent.com/Juanmaes83/AURUM_PROPERTIES_BOUTIQUE/main/public/IMAGEN_AURUM_HEROWEB.png" alt="Aurum Properties Boutique — Web Premium" loading="lazy" />
+          <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/AURUM_PROPERTIES_BOUTIQUE/main/public/IMAGEN_AURUM_HEROWEB.png" alt="Aurum Properties Boutique — Web Premium" loading="lazy" />
           <span class="web-gallery-label">Aurum Properties Boutique</span>
         </div>
         <div class="web-gallery-item">
-          <img src="https://raw.githubusercontent.com/Juanmaes83/BOUTIQUE_IRIS_ARQUITECTURA/main/public/BOUTIQUE_IRIS_ARQUITECTURA_PROYECTO1.png" alt="Boutique Iris Arquitectura — Web Premium" loading="lazy" />
+          <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/BOUTIQUE_IRIS_ARQUITECTURA/main/public/BOUTIQUE_IRIS_ARQUITECTURA_PROYECTO1.png" alt="Boutique Iris Arquitectura — Web Premium" loading="lazy" />
           <span class="web-gallery-label">Boutique Iris Arquitectura</span>
         </div>
         <div class="web-gallery-item">
-          <img src="https://raw.githubusercontent.com/Juanmaes83/AURUM_PROPERTIES_BOUTIQUE/main/public/IMAGEN_AURUM_INTERIORES.png" alt="Aurum Properties — Interiores" loading="lazy" />
+          <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/AURUM_PROPERTIES_BOUTIQUE/main/public/IMAGEN_AURUM_INTERIORES.png" alt="Aurum Properties — Interiores" loading="lazy" />
           <span class="web-gallery-label">Aurum · Interiores</span>
         </div>
         <div class="web-gallery-item">
-          <img src="https://raw.githubusercontent.com/Juanmaes83/BOUTIQUE_IRIS_ARQUITECTURA/main/public/BOUTIQUE_IRIS_ARQUITECTURA_PROYECTO2.png" alt="Boutique Iris — Proyecto 2" loading="lazy" />
+          <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/BOUTIQUE_IRIS_ARQUITECTURA/main/public/BOUTIQUE_IRIS_ARQUITECTURA_PROYECTO2.png" alt="Boutique Iris — Proyecto 2" loading="lazy" />
           <span class="web-gallery-label">Iris · Proyecto 2</span>
         </div>
       </div>
@@ -236,7 +273,7 @@
   <section class="svc-section" id="marketing">
     <div style="max-width:1100px;margin:0 auto">
       <div class="svc-img-hero reveal">
-        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120055_d2a2cb4b-94a0-4e32-bc82-d011eb78982e_min.webp" alt="Marketing digital inmobiliario — campañas de performance" loading="lazy" />
+        <img data-zoom src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120055_d2a2cb4b-94a0-4e32-bc82-d011eb78982e_min.webp" alt="Marketing digital inmobiliario — campañas de performance" loading="lazy" />
         <span class="svc-img-badge">Marketing Digital · CAC · ROAS</span>
       </div>
     </div>
@@ -261,7 +298,7 @@
   <section class="svc-section" id="seo">
     <div style="max-width:1100px;margin:0 auto">
       <div class="svc-img-hero reveal">
-        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120056_0764c7c5-e4a6-4177-ae61-92fb2f29db6d_min.webp" alt="SEO y GEO — posicionamiento orgánico e IA generativa" loading="lazy" />
+        <img data-zoom src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120056_0764c7c5-e4a6-4177-ae61-92fb2f29db6d_min.webp" alt="SEO y GEO — posicionamiento orgánico e IA generativa" loading="lazy" />
         <span class="svc-img-badge">SEO · GEO · ChatGPT · Perplexity · Gemini</span>
       </div>
     </div>
@@ -286,7 +323,7 @@
   <section class="svc-section" id="web3ds">
     <div style="max-width:1100px;margin:0 auto">
       <div class="svc-img-hero reveal">
-        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120057_5f0a5fe5-2943-4b7d-8d35-19e2fc93b8a5_min.webp" alt="Web 3DS — experiencias web con geometría 3D interactiva" loading="lazy" />
+        <img data-zoom src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120057_5f0a5fe5-2943-4b7d-8d35-19e2fc93b8a5_min.webp" alt="Web 3DS — experiencias web con geometría 3D interactiva" loading="lazy" />
         <span class="svc-img-badge">Web 3DS · WebGL · Three.js</span>
       </div>
     </div>
@@ -311,7 +348,7 @@
   <section class="svc-section" id="dossiers">
     <div style="max-width:1100px;margin:0 auto">
       <div class="svc-img-hero reveal">
-        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120102_fb05b63b-dffd-455b-af27-cf51974355b7_min.webp" alt="Dossiers corporativos premium — materiales de venta inmobiliaria" loading="lazy" />
+        <img data-zoom src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120102_fb05b63b-dffd-455b-af27-cf51974355b7_min.webp" alt="Dossiers corporativos premium — materiales de venta inmobiliaria" loading="lazy" />
         <span class="svc-img-badge">Dossiers · Presentaciones · PDF Premium</span>
       </div>
     </div>
@@ -336,7 +373,7 @@
   <section class="svc-section" id="branding">
     <div style="max-width:1100px;margin:0 auto">
       <div class="svc-img-hero reveal">
-        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120103_b7ea63a7-8007-46d6-bc3c-7dbd0220c288_min.webp" alt="Campañas de branding — estrategia de marca e identidad visual" loading="lazy" />
+        <img data-zoom src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120103_b7ea63a7-8007-46d6-bc3c-7dbd0220c288_min.webp" alt="Campañas de branding — estrategia de marca e identidad visual" loading="lazy" />
         <span class="svc-img-badge">Branding · Identidad Visual · Campaña 360°</span>
       </div>
     </div>
@@ -367,34 +404,52 @@
       </div>
       <div class="bprem-grid">
         <div class="bprem-item reveal" style="transition-delay:0ms">
-          <img src="https://raw.githubusercontent.com/Juanmaes83/IMMERSPHERE-PRO-INMOBILIARIAS/main/ChatGPT%20Image%2029%20may%202026%2C%2010_56_38.png" alt="Propuesta de Sala de Estar de Lujo Suave Milanesa" loading="lazy">
+          <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/IMMERSPHERE-PRO-INMOBILIARIAS/main/ChatGPT%20Image%2029%20may%202026%2C%2010_56_38.png" alt="Propuesta de Sala de Estar de Lujo Suave Milanesa" loading="lazy">
           <div class="bprem-caption">Mood Board · Sala Lujo Milano</div>
         </div>
         <div class="bprem-item reveal" style="transition-delay:80ms">
-          <img src="https://raw.githubusercontent.com/Juanmaes83/IMMERSPHERE-PRO-INMOBILIARIAS/main/hf_20260529_065602_a08a0397-a848-43e2-9787-0f7b2e36a067.png" alt="Tablero de Materiales, Colores y Detalles" loading="lazy">
+          <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/IMMERSPHERE-PRO-INMOBILIARIAS/main/hf_20260529_065602_a08a0397-a848-43e2-9787-0f7b2e36a067.png" alt="Tablero de Materiales, Colores y Detalles" loading="lazy">
           <div class="bprem-caption">Tablero de Materiales · Paleta Cromática</div>
         </div>
         <div class="bprem-item reveal" style="transition-delay:160ms">
-          <img src="https://raw.githubusercontent.com/Juanmaes83/IMMERSPHERE-PRO-INMOBILIARIAS/main/hf_20260529_065751_660f4e2e-c7b3-4692-8a66-311fd6051b33.png" alt="Diagrama de Análisis de Muebles Estilo Milano" loading="lazy">
+          <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/IMMERSPHERE-PRO-INMOBILIARIAS/main/hf_20260529_065751_660f4e2e-c7b3-4692-8a66-311fd6051b33.png" alt="Diagrama de Análisis de Muebles Estilo Milano" loading="lazy">
           <div class="bprem-caption">Análisis de Mobiliario · Estilo Milano</div>
         </div>
         <div class="bprem-item reveal" style="transition-delay:240ms">
-          <img src="https://raw.githubusercontent.com/Juanmaes83/IMMERSPHERE-PRO-INMOBILIARIAS/main/hf_20260529_065851_973509d6-e085-4112-9f09-ce2aa1224231.png" alt="Lista de Decoración Textil para Sala de Estar" loading="lazy">
+          <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/IMMERSPHERE-PRO-INMOBILIARIAS/main/hf_20260529_065851_973509d6-e085-4112-9f09-ce2aa1224231.png" alt="Lista de Decoración Textil para Sala de Estar" loading="lazy">
           <div class="bprem-caption">Lista de Decoración Textil · Selección Premium</div>
         </div>
         <div class="bprem-item reveal" style="transition-delay:320ms">
-          <img src="https://raw.githubusercontent.com/Juanmaes83/IMMERSPHERE-PRO-INMOBILIARIAS/main/hf_20260529_070042_f5992643-c23b-4e79-81d9-2b8718d9d3ba.png" alt="Lista de Elementos con Numeración Completa" loading="lazy">
+          <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/IMMERSPHERE-PRO-INMOBILIARIAS/main/hf_20260529_070042_f5992643-c23b-4e79-81d9-2b8718d9d3ba.png" alt="Lista de Elementos con Numeración Completa" loading="lazy">
           <div class="bprem-caption">Plano de Elementos · Detalle Total</div>
         </div>
       </div>
-      <p class="bprem-demo-label">Accede a nuestros proyectos web de referencia</p>
-      <div class="bprem-demos">
-        <a href="https://juanmaes83.github.io/AURUM_PROPERTIES_BOUTIQUE/" target="_blank" rel="noopener" class="bprem-demo-btn gold">
-          ✦ Aurum Properties Boutique →
-        </a>
-        <a href="https://juanmaes83.github.io/BOUTIQUE_IRIS_ARQUITECTURA/" target="_blank" rel="noopener" class="bprem-demo-btn outline">
-          ✦ Boutique Iris Arquitectura →
-        </a>
+      <!-- PROYECTO CARDS -->
+      <div class="proj-cards">
+        <!-- Aurum Properties Boutique -->
+        <div class="proj-card">
+          <div class="proj-card-img">
+            <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/AURUM_PROPERTIES_BOUTIQUE/main/public/IMAGEN_AURUM_HEROWEB.png" alt="Aurum Properties Boutique — Web Premium" loading="lazy" />
+            <span class="proj-card-badge">Proyecto 01 · Web Premium</span>
+          </div>
+          <div class="proj-card-body">
+            <h3 class="proj-card-title">Aurum Properties Boutique</h3>
+            <p class="proj-card-desc">Web inmobiliaria de lujo con identidad visual dorada, galerías inmersivas de propiedades exclusivas y sistema de captación de clientes de alto poder adquisitivo.</p>
+            <a href="https://juanmaes83.github.io/AURUM_PROPERTIES_BOUTIQUE/" target="_blank" rel="noopener" class="proj-card-cta gold">Ver web en vivo →</a>
+          </div>
+        </div>
+        <!-- Boutique Iris Arquitectura -->
+        <div class="proj-card">
+          <div class="proj-card-img">
+            <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/BOUTIQUE_IRIS_ARQUITECTURA/main/public/BOUTIQUE_IRIS_ARQUITECTURA_PROYECTO1.png" alt="Boutique Iris Arquitectura — Web Premium" loading="lazy" />
+            <span class="proj-card-badge">Proyecto 02 · Arquitectura</span>
+          </div>
+          <div class="proj-card-body">
+            <h3 class="proj-card-title">Boutique Iris Arquitectura</h3>
+            <p class="proj-card-desc">Estudio de arquitectura boutique con portafolio visual de alto impacto, diseño editorial de vanguardia y narrativa de marca que posiciona al estudio como referente de autor.</p>
+            <a href="https://juanmaes83.github.io/BOUTIQUE_IRIS_ARQUITECTURA/" target="_blank" rel="noopener" class="proj-card-cta outline">Ver web en vivo →</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -409,23 +464,23 @@
       </div>
       <div class="svc-inspo-grid">
         <div class="svc-inspo-item reveal" style="transition-delay:0ms">
-          <img src="https://raw.githubusercontent.com/Juanmaes83/VIDEOS-PARA-IMMESPHERE-INMO/main/ChatGPT%20Image%2025%20may%202026%2C%2010_29_14.png" alt="Arquitectura biomimética de referencia" loading="lazy">
+          <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/VIDEOS-PARA-IMMESPHERE-INMO/main/ChatGPT%20Image%2025%20may%202026%2C%2010_29_14.png" alt="Arquitectura biomimética de referencia" loading="lazy">
           <div class="svc-inspo-caption">Arquitectura Biomimética · Concepto</div>
         </div>
         <div class="svc-inspo-item reveal" style="transition-delay:80ms">
-          <img src="https://raw.githubusercontent.com/Juanmaes83/VIDEOS-PARA-IMMESPHERE-INMO/main/HISJwNtWwAAK_5r.jpg" alt="Proyecto arquitectónico singular de referencia" loading="lazy">
+          <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/VIDEOS-PARA-IMMESPHERE-INMO/main/HISJwNtWwAAK_5r.jpg" alt="Proyecto arquitectónico singular de referencia" loading="lazy">
           <div class="svc-inspo-caption">Proyecto Singular · Alta Complejidad</div>
         </div>
         <div class="svc-inspo-item reveal" style="transition-delay:160ms">
-          <img src="https://raw.githubusercontent.com/Juanmaes83/VIDEOS-PARA-IMMESPHERE-INMO/main/HISJnt1XAAAQMJY.jpg" alt="Visualización arquitectónica premium" loading="lazy">
+          <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/VIDEOS-PARA-IMMESPHERE-INMO/main/HISJnt1XAAAQMJY.jpg" alt="Visualización arquitectónica premium" loading="lazy">
           <div class="svc-inspo-caption">Visualización Premium · Render</div>
         </div>
         <div class="svc-inspo-item reveal" style="transition-delay:240ms">
-          <img src="https://raw.githubusercontent.com/Juanmaes83/VIDEOS-PARA-IMMESPHERE-INMO/main/HISJsvbWAAA5eaL.jpg" alt="Arquitectura paramétrica" loading="lazy">
+          <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/VIDEOS-PARA-IMMESPHERE-INMO/main/HISJsvbWAAA5eaL.jpg" alt="Arquitectura paramétrica" loading="lazy">
           <div class="svc-inspo-caption">Arquitectura Paramétrica · Estudio</div>
         </div>
         <div class="svc-inspo-item reveal" style="transition-delay:320ms">
-          <img src="https://raw.githubusercontent.com/Juanmaes83/VIDEOS-PARA-IMMESPHERE-INMO/main/HISJwNwWMAA5Y4I.jpg" alt="Concepto arquitectónico de vanguardia" loading="lazy">
+          <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/VIDEOS-PARA-IMMESPHERE-INMO/main/HISJwNwWMAA5Y4I.jpg" alt="Concepto arquitectónico de vanguardia" loading="lazy">
           <div class="svc-inspo-caption">Concepto · Vanguardia</div>
         </div>
       </div>
@@ -445,6 +500,7 @@
   </footer>
 
   <script>
+    /* Reveal on scroll */
     const obs = new IntersectionObserver(e => {
       e.forEach(en => { if (en.isIntersecting) { en.target.classList.add('visible'); obs.unobserve(en.target); } });
     }, { threshold: 0.12 });
@@ -452,6 +508,38 @@
       el.style.transitionDelay = `${(i % 4) * 70}ms`;
       obs.observe(el);
     });
+
+    /* Lightbox */
+    const overlay = document.getElementById('lb-overlay');
+    const lbImg   = document.getElementById('lb-img');
+    const lbClose = document.getElementById('lb-close');
+
+    function openLb(src, alt) {
+      lbImg.src = src;
+      lbImg.alt = alt || '';
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLb() {
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => { lbImg.src = ''; }, 300);
+    }
+
+    document.querySelectorAll('[data-zoom]').forEach(img => {
+      img.addEventListener('click', () => openLb(img.src, img.alt));
+    });
+
+    lbClose.addEventListener('click', closeLb);
+    overlay.addEventListener('click', e => { if (e.target === overlay || e.target === lbImg) closeLb(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+
+    /* Touch swipe to close on mobile */
+    let touchStartY = 0;
+    overlay.addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; }, { passive: true });
+    overlay.addEventListener('touchend', e => {
+      if (Math.abs(e.changedTouches[0].clientY - touchStartY) > 80) closeLb();
+    }, { passive: true });
   </script>
 </body>
 </html>
