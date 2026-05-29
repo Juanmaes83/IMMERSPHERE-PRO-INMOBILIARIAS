@@ -132,8 +132,11 @@
     .bprem-demo-label{font-family:var(--font-mono);font-size:.52rem;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;text-align:center;margin-bottom:1.2rem}
 
     /* PROJECT CARDS */
-    .proj-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3rem}
-    @media(max-width:640px){.proj-cards{grid-template-columns:1fr}}
+    .proj-section-label{font-family:var(--font-mono);font-size:.52rem;color:var(--accent);letter-spacing:4px;text-transform:uppercase;display:block;margin-bottom:.6rem;margin-top:3rem}
+    .proj-section-title{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:var(--text-primary);letter-spacing:-1px;margin-bottom:1.8rem}
+    .proj-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    @media(max-width:900px){.proj-cards{grid-template-columns:1fr 1fr}}
+    @media(max-width:560px){.proj-cards{grid-template-columns:1fr}}
     .proj-card{background:var(--bg-primary);border:1px solid var(--glass-border);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:var(--transition-micro)}
     .proj-card:hover{border-color:rgba(201,168,76,.35);box-shadow:0 8px 40px rgba(201,168,76,.08)}
     .proj-card-img{position:relative;aspect-ratio:16/10;overflow:hidden;cursor:zoom-in}
@@ -249,6 +252,44 @@
         <div class="web-gallery-item">
           <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/BOUTIQUE_IRIS_ARQUITECTURA/main/public/BOUTIQUE_IRIS_ARQUITECTURA_PROYECTO2.png" alt="Boutique Iris — Proyecto 2" loading="lazy" />
           <span class="web-gallery-label">Iris · Proyecto 2</span>
+        </div>
+      </div>
+      <!-- NUESTROS PROYECTOS -->
+      <span class="proj-section-label">NUESTROS PROYECTOS</span>
+      <h3 class="proj-section-title">Webs que ya están en vivo</h3>
+      <div class="proj-cards">
+        <div class="proj-card">
+          <div class="proj-card-img">
+            <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/AURUM_PROPERTIES_BOUTIQUE/main/public/IMAGEN_AURUM_HEROWEB.png" alt="Aurum Properties Boutique" loading="lazy" />
+            <span class="proj-card-badge">Web Premium · Inmobiliaria</span>
+          </div>
+          <div class="proj-card-body">
+            <h3 class="proj-card-title">Aurum Properties Boutique</h3>
+            <p class="proj-card-desc">Web inmobiliaria de lujo con identidad visual dorada, galerías inmersivas y captación de clientes de alto poder adquisitivo.</p>
+            <a href="https://aurum-properties-boutique.vercel.app/" target="_blank" rel="noopener" class="proj-card-cta gold">Ver web en vivo →</a>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-card-img">
+            <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/BOUTIQUE_IRIS_ARQUITECTURA/main/public/BOUTIQUE_IRIS_ARQUITECTURA_PROYECTO1.png" alt="Boutique Iris Arquitectura" loading="lazy" />
+            <span class="proj-card-badge">Web Premium · Arquitectura</span>
+          </div>
+          <div class="proj-card-body">
+            <h3 class="proj-card-title">Boutique Iris Arquitectura</h3>
+            <p class="proj-card-desc">Estudio de arquitectura boutique con portfolio visual de alto impacto y narrativa de marca que posiciona al estudio como referente de autor.</p>
+            <a href="https://boutique-iris-arquitectura.vercel.app/" target="_blank" rel="noopener" class="proj-card-cta outline">Ver web en vivo →</a>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-card-img">
+            <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/the-and-hotel-alicante/main/assets/images/gallery-frame-01.png" alt="The And Hotel Alicante" loading="lazy" />
+            <span class="proj-card-badge">Web Premium · Hospitality</span>
+          </div>
+          <div class="proj-card-body">
+            <h3 class="proj-card-title">The And Hotel Alicante</h3>
+            <p class="proj-card-desc">Hotel boutique en Alicante con diseño editorial de lujo, experiencias curadas y una identidad visual que evoca el Mediterráneo en su máxima expresión.</p>
+            <a href="https://juanmaes83.github.io/the-and-hotel-alicante/" target="_blank" rel="noopener" class="proj-card-cta outline">Ver web en vivo →</a>
+          </div>
         </div>
       </div>
     </div>
@@ -422,33 +463,6 @@
         <div class="bprem-item reveal" style="transition-delay:320ms">
           <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/IMMERSPHERE-PRO-INMOBILIARIAS/main/hf_20260529_070042_f5992643-c23b-4e79-81d9-2b8718d9d3ba.png" alt="Lista de Elementos con Numeración Completa" loading="lazy">
           <div class="bprem-caption">Plano de Elementos · Detalle Total</div>
-        </div>
-      </div>
-      <!-- PROYECTO CARDS -->
-      <div class="proj-cards">
-        <!-- Aurum Properties Boutique -->
-        <div class="proj-card">
-          <div class="proj-card-img">
-            <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/AURUM_PROPERTIES_BOUTIQUE/main/public/IMAGEN_AURUM_HEROWEB.png" alt="Aurum Properties Boutique — Web Premium" loading="lazy" />
-            <span class="proj-card-badge">Proyecto 01 · Web Premium</span>
-          </div>
-          <div class="proj-card-body">
-            <h3 class="proj-card-title">Aurum Properties Boutique</h3>
-            <p class="proj-card-desc">Web inmobiliaria de lujo con identidad visual dorada, galerías inmersivas de propiedades exclusivas y sistema de captación de clientes de alto poder adquisitivo.</p>
-            <a href="https://juanmaes83.github.io/AURUM_PROPERTIES_BOUTIQUE/" target="_blank" rel="noopener" class="proj-card-cta gold">Ver web en vivo →</a>
-          </div>
-        </div>
-        <!-- Boutique Iris Arquitectura -->
-        <div class="proj-card">
-          <div class="proj-card-img">
-            <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/BOUTIQUE_IRIS_ARQUITECTURA/main/public/BOUTIQUE_IRIS_ARQUITECTURA_PROYECTO1.png" alt="Boutique Iris Arquitectura — Web Premium" loading="lazy" />
-            <span class="proj-card-badge">Proyecto 02 · Arquitectura</span>
-          </div>
-          <div class="proj-card-body">
-            <h3 class="proj-card-title">Boutique Iris Arquitectura</h3>
-            <p class="proj-card-desc">Estudio de arquitectura boutique con portafolio visual de alto impacto, diseño editorial de vanguardia y narrativa de marca que posiciona al estudio como referente de autor.</p>
-            <a href="https://juanmaes83.github.io/BOUTIQUE_IRIS_ARQUITECTURA/" target="_blank" rel="noopener" class="proj-card-cta outline">Ver web en vivo →</a>
-          </div>
         </div>
       </div>
     </div>
