@@ -135,7 +135,34 @@
     .chatbot-section{padding:8rem 2rem 7rem;background:var(--bg-primary);border-top:4px solid transparent;border-image:linear-gradient(90deg,transparent,rgba(0,212,255,.15) 20%,rgba(0,212,255,.15) 80%,transparent) 1;position:relative;overflow:hidden}
     .chatbot-section::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(ellipse,rgba(0,212,255,.05) 0%,transparent 70%);pointer-events:none}
     .chatbot-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:3rem}
-    @media(min-width:768px){.chatbot-inner{grid-template-columns:1fr 1.2fr;align-items:start}}
+    @media(min-width:900px){.chatbot-inner{grid-template-columns:320px 1fr 1.1fr;align-items:start;gap:2.5rem}}
+    @media(min-width:768px) and (max-width:899px){.chatbot-inner{grid-template-columns:1fr 1.2fr;align-items:start}}
+
+    /* ANA — AGENT 3D CARD */
+    .ana-wrap{display:flex;flex-direction:column;align-items:center;gap:1rem;position:sticky;top:8rem}
+    @media(max-width:899px){.ana-wrap{display:none}}
+    .ana-scene{width:260px;height:360px;perspective:900px;cursor:grab}
+    .ana-scene:active{cursor:grabbing}
+    .ana-card{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .08s linear;border-radius:22px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(0,212,255,.12)}
+    .ana-card img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;border-radius:22px}
+    .ana-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,15,26,.85) 0%,rgba(10,15,26,.1) 50%,transparent 100%);border-radius:22px;pointer-events:none}
+    .ana-shine{position:absolute;inset:0;border-radius:22px;background:radial-gradient(ellipse at 30% 30%,rgba(255,255,255,.12) 0%,transparent 60%);opacity:0;transition:opacity .3s ease;pointer-events:none}
+    .ana-scene:hover .ana-shine{opacity:1}
+    .ana-info{position:absolute;bottom:1.2rem;left:1.2rem;right:1.2rem;z-index:2}
+    .ana-name{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.2rem}
+    .ana-role{font-family:var(--font-mono);font-size:.46rem;color:rgba(255,255,255,.6);letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem}
+    .ana-status{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--font-mono);font-size:.44rem;color:var(--accent);letter-spacing:1.5px;text-transform:uppercase}
+    .ana-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:ana-pulse 2s ease-in-out infinite}
+    @keyframes ana-pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,212,255,.6)}50%{box-shadow:0 0 0 5px rgba(0,212,255,0)}}
+    .ana-badge{background:var(--bg-tertiary);border:1px solid var(--glass-border);border-radius:14px;padding:.8rem 1rem;text-align:center;width:260px}
+    .ana-badge-text{font-family:var(--font-mono);font-size:.44rem;color:var(--text-muted);letter-spacing:1.5px;text-transform:uppercase;line-height:1.6}
+    .ana-badge-text strong{color:var(--text-secondary);display:block;margin-bottom:.2rem}
+
+    /* Ana wave animation on scroll reveal */
+    @keyframes ana-wave{0%,100%{transform:rotate(0deg)}20%{transform:rotate(-14deg)}40%{transform:rotate(12deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(6deg)}}
+    .ana-wave-hand{display:inline-block;transform-origin:70% 80%}
+    .ana-greeting{font-family:var(--font-body);font-size:.82rem;color:var(--text-secondary);text-align:center;line-height:1.6;width:260px;font-style:italic}
+    .ana-greeting.visible .ana-wave-hand{animation:ana-wave 1.2s ease .3s 1}
     .chatbot-left{}
     .chatbot-num{font-family:var(--font-display);font-size:5rem;font-weight:800;color:rgba(0,212,255,.05);line-height:1;letter-spacing:-4px;margin-bottom:.5rem}
     .chatbot-badge{font-family:var(--font-mono);font-size:.52rem;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:.8rem;display:block}
@@ -495,6 +522,26 @@
   <!-- CHATBOT INMOBILIARIO -->
   <section class="chatbot-section" id="chatbot">
     <div class="chatbot-inner">
+
+      <!-- ANA — AGENTE 3D -->
+      <div class="ana-wrap">
+        <div class="ana-scene" id="anaScene">
+          <div class="ana-card" id="anaCard">
+            <img src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260529_113940_fc699ec3-fcfd-40c3-86df-9b70765b8964_min.webp" alt="Ana — Agente Inmobiliaria Immersphere Pro" loading="lazy" />
+            <div class="ana-shine"></div>
+            <div class="ana-info">
+              <div class="ana-name">Ana</div>
+              <div class="ana-role">Agente Inmobiliaria · Torrevieja</div>
+              <div class="ana-status"><span class="ana-dot"></span>Disponible ahora</div>
+            </div>
+          </div>
+        </div>
+        <p class="ana-greeting" id="anaGreeting"><span class="ana-wave-hand">👋</span> Hola, soy Ana. Cuéntame qué necesitas y te ayudo a encontrar la solución perfecta.</p>
+        <div class="ana-badge">
+          <div class="ana-badge-text"><strong>Immersphere Pro</strong>Agente IA · 24/7 · +40 idiomas</div>
+        </div>
+      </div>
+
       <div class="chatbot-left reveal">
         <div class="chatbot-num">08</div>
         <span class="chatbot-pill">En vivo 24/7</span>
@@ -582,6 +629,75 @@
       el.style.transitionDelay = `${(i % 4) * 70}ms`;
       obs.observe(el);
     });
+
+    /* Ana 3D tilt effect */
+    (function() {
+      const scene = document.getElementById('anaScene');
+      const card  = document.getElementById('anaCard');
+      const greeting = document.getElementById('anaGreeting');
+      if (!scene || !card) return;
+
+      const MAX_ROT = 18;
+      let raf = null;
+      let targetX = 0, targetY = 0, currentX = 0, currentY = 0;
+
+      function lerp(a, b, t) { return a + (b - a) * t; }
+
+      function animate() {
+        currentX = lerp(currentX, targetX, 0.1);
+        currentY = lerp(currentY, targetY, 0.1);
+        card.style.transform = `rotateY(${currentX}deg) rotateX(${currentY}deg) scale3d(1.02,1.02,1.02)`;
+        raf = requestAnimationFrame(animate);
+      }
+
+      scene.addEventListener('mouseenter', () => {
+        raf = requestAnimationFrame(animate);
+      });
+
+      scene.addEventListener('mousemove', (e) => {
+        const rect = scene.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width  - 0.5;
+        const y = (e.clientY - rect.top)  / rect.height - 0.5;
+        targetX =  x * MAX_ROT * 2;
+        targetY = -y * MAX_ROT;
+      });
+
+      scene.addEventListener('mouseleave', () => {
+        cancelAnimationFrame(raf);
+        targetX = 0; targetY = 0;
+        card.style.transition = 'transform .6s cubic-bezier(0.22,1,0.36,1)';
+        card.style.transform = 'rotateY(0deg) rotateX(0deg) scale3d(1,1,1)';
+        setTimeout(() => { card.style.transition = 'transform .08s linear'; }, 650);
+      });
+
+      /* Touch support */
+      scene.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        const rect = scene.getBoundingClientRect();
+        const t = e.touches[0];
+        const x = (t.clientX - rect.left) / rect.width  - 0.5;
+        const y = (t.clientY - rect.top)  / rect.height - 0.5;
+        targetX =  x * MAX_ROT;
+        targetY = -y * MAX_ROT * 0.6;
+        if (!raf) raf = requestAnimationFrame(animate);
+      }, { passive: false });
+
+      scene.addEventListener('touchend', () => {
+        cancelAnimationFrame(raf); raf = null;
+        targetX = 0; targetY = 0;
+        card.style.transition = 'transform .6s cubic-bezier(0.22,1,0.36,1)';
+        card.style.transform = 'rotateY(0deg) rotateX(0deg) scale3d(1,1,1)';
+        setTimeout(() => { card.style.transition = 'transform .08s linear'; }, 650);
+      });
+
+      /* Wave greeting on scroll into view */
+      const greetObs = new IntersectionObserver((entries) => {
+        entries.forEach(en => {
+          if (en.isIntersecting) { greeting.classList.add('visible'); greetObs.unobserve(greeting); }
+        });
+      }, { threshold: 0.5 });
+      if (greeting) greetObs.observe(greeting);
+    })();
 
     /* Lightbox */
     const overlay = document.getElementById('lb-overlay');
