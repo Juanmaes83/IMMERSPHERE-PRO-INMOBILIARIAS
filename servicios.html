@@ -45,7 +45,7 @@
     .svc-anchor-pill:hover{color:var(--accent);border-color:rgba(0,212,255,.25)}
 
     /* SERVICE SECTIONS */
-    .svc-section{padding:5rem 2rem;border-top:1px solid var(--glass-border);position:relative}
+    .svc-section{padding:8rem 2rem 7rem;border-top:4px solid transparent;border-image:linear-gradient(90deg,transparent,var(--glass-border) 20%,var(--glass-border) 80%,transparent) 1;position:relative}
     .svc-section:nth-child(even){background:var(--bg-secondary)}
     .svc-section:nth-child(odd){background:var(--bg-primary)}
     .svc-section-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:3rem}
@@ -64,7 +64,7 @@
 
     /* RUBIK SOTA */
     /* Inspiración section */
-    .svc-inspo{padding:5rem 2rem;background:var(--bg-primary);border-top:1px solid var(--glass-border)}
+    .svc-inspo{padding:8rem 2rem 7rem;background:var(--bg-primary);border-top:4px solid transparent;border-image:linear-gradient(90deg,transparent,var(--glass-border) 20%,var(--glass-border) 80%,transparent) 1}
     .svc-inspo-inner{max-width:1100px;margin:0 auto}
     .svc-inspo-header{text-align:center;margin-bottom:3rem}
     .svc-inspo-badge{font-family:var(--font-mono);font-size:.5rem;color:var(--accent);letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:1rem}
@@ -107,7 +107,7 @@
     .web-gallery-label{position:absolute;bottom:.6rem;left:.8rem;font-family:var(--font-mono);font-size:.42rem;color:rgba(255,255,255,.65);letter-spacing:2px;text-transform:uppercase;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);padding:4px 8px;border-radius:8px}
     @media(max-width:640px){.web-gallery{grid-template-columns:1fr}}
     /* BRANDING PREMIUM */
-    .bprem{padding:5rem 2rem;background:var(--bg-secondary);border-top:1px solid var(--glass-border)}
+    .bprem{padding:8rem 2rem 7rem;background:var(--bg-secondary);border-top:4px solid transparent;border-image:linear-gradient(90deg,transparent,var(--glass-border) 20%,var(--glass-border) 80%,transparent) 1}
     .bprem-inner{max-width:1100px;margin:0 auto}
     .bprem-header{text-align:center;margin-bottom:3rem}
     .bprem-badge{font-family:var(--font-mono);font-size:.5rem;color:var(--gold);letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:1rem}
@@ -130,6 +130,29 @@
     .bprem-demo-btn.outline{background:transparent;color:var(--gold);border:1.5px solid var(--gold)}
     .bprem-demo-btn.outline:hover{background:rgba(201,168,76,.08);transform:translateY(-2px)}
     .bprem-demo-label{font-family:var(--font-mono);font-size:.52rem;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;text-align:center;margin-bottom:1.2rem}
+
+    /* CHATBOT SECTION */
+    .chatbot-section{padding:8rem 2rem 7rem;background:var(--bg-primary);border-top:4px solid transparent;border-image:linear-gradient(90deg,transparent,rgba(0,212,255,.15) 20%,rgba(0,212,255,.15) 80%,transparent) 1;position:relative;overflow:hidden}
+    .chatbot-section::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(ellipse,rgba(0,212,255,.05) 0%,transparent 70%);pointer-events:none}
+    .chatbot-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:3rem}
+    @media(min-width:768px){.chatbot-inner{grid-template-columns:1fr 1.2fr;align-items:start}}
+    .chatbot-left{}
+    .chatbot-num{font-family:var(--font-display);font-size:5rem;font-weight:800;color:rgba(0,212,255,.05);line-height:1;letter-spacing:-4px;margin-bottom:.5rem}
+    .chatbot-badge{font-family:var(--font-mono);font-size:.52rem;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:.8rem;display:block}
+    .chatbot-title{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;color:var(--text-primary);letter-spacing:-1px;line-height:1.1;margin-bottom:1.2rem}
+    .chatbot-title span{color:var(--accent)}
+    .chatbot-body{font-family:var(--font-body);font-size:.95rem;color:var(--text-secondary);line-height:1.9;font-weight:300;margin-bottom:1.8rem}
+    .chatbot-cta{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.55rem;color:var(--accent);letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1px solid rgba(0,212,255,.25);padding:10px 20px;border-radius:20px;transition:var(--transition-micro)}
+    .chatbot-cta:hover{background:rgba(0,212,255,.08);gap:.8rem}
+    .chatbot-features{display:flex;flex-direction:column;gap:1rem}
+    .chatbot-feature{background:var(--bg-tertiary);border:1px solid var(--glass-border);border-left:2px solid var(--accent);border-radius:12px;padding:1.4rem 1.6rem;transition:var(--transition-micro)}
+    .chatbot-feature:hover{border-left-color:var(--accent);background:rgba(0,212,255,.03)}
+    .chatbot-feature-icon{font-size:1.2rem;margin-bottom:.5rem;display:block}
+    .chatbot-feature h4{font-family:var(--font-display);font-size:.95rem;font-weight:700;color:var(--text-primary);margin-bottom:.4rem}
+    .chatbot-feature p{font-family:var(--font-body);font-size:.76rem;color:var(--text-secondary);line-height:1.7;font-weight:300}
+    .chatbot-pill{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font-mono);font-size:.46rem;color:var(--accent);letter-spacing:2px;text-transform:uppercase;background:rgba(0,212,255,.07);border:1px solid rgba(0,212,255,.2);padding:5px 12px;border-radius:20px;margin-bottom:1.2rem}
+    .chatbot-pill::before{content:'●';font-size:.4rem;animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 
     /* PROJECT CARDS */
     .proj-section-label{font-family:var(--font-mono);font-size:.52rem;color:var(--accent);letter-spacing:4px;text-transform:uppercase;display:block;margin-bottom:.6rem;margin-top:3rem}
@@ -200,6 +223,7 @@
       <a href="#dossiers" class="svc-anchor-pill">Dossiers</a>
       <a href="#branding" class="svc-anchor-pill">Campañas Branding</a>
       <a href="#branding-premium" class="svc-anchor-pill">Branding Premium</a>
+      <a href="#chatbot" class="svc-anchor-pill">Chatbot IA</a>
       <a href="#inspiracion" class="svc-anchor-pill">Inspiración</a>
     </div>
   </section>
@@ -314,7 +338,7 @@
   <section class="svc-section" id="marketing">
     <div style="max-width:1100px;margin:0 auto">
       <div class="svc-img-hero reveal">
-        <img data-zoom src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120055_d2a2cb4b-94a0-4e32-bc82-d011eb78982e_min.webp" alt="Marketing digital inmobiliario — campañas de performance" loading="lazy" />
+        <img data-zoom src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260529_105631_7e7b3df3-5306-4970-9b19-257d7f9b2eef_min.webp" alt="Profesional inmobiliaria con tablet mostrando resultados de campaña digital en vivienda de lujo" loading="lazy" />
         <span class="svc-img-badge">Marketing Digital · CAC · ROAS</span>
       </div>
     </div>
@@ -339,7 +363,7 @@
   <section class="svc-section" id="seo">
     <div style="max-width:1100px;margin:0 auto">
       <div class="svc-img-hero reveal">
-        <img data-zoom src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120056_0764c7c5-e4a6-4177-ae61-92fb2f29db6d_min.webp" alt="SEO y GEO — posicionamiento orgánico e IA generativa" loading="lazy" />
+        <img data-zoom src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260529_105633_55150a29-d2ee-411a-b5be-484d101b6326_min.webp" alt="Consultor inmobiliario con laptop en oficina de lujo con vistas a la ciudad" loading="lazy" />
         <span class="svc-img-badge">SEO · GEO · ChatGPT · Perplexity · Gemini</span>
       </div>
     </div>
@@ -364,7 +388,7 @@
   <section class="svc-section" id="web3ds">
     <div style="max-width:1100px;margin:0 auto">
       <div class="svc-img-hero reveal">
-        <img data-zoom src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260528_120057_5f0a5fe5-2943-4b7d-8d35-19e2fc93b8a5_min.webp" alt="Web 3DS — experiencias web con geometría 3D interactiva" loading="lazy" />
+        <img data-zoom src="https://d8j0ntlcm91z4.cloudfront.net/user_32tIBn1VWPFRvRlTsdl6JD8uoae/hf_20260529_105634_6edd6a77-6d48-4b81-8a68-f036b4f3d1d0_min.webp" alt="Arquitecta señalando planos 3D interactivos en pantalla táctil de showroom de lujo" loading="lazy" />
         <span class="svc-img-badge">Web 3DS · WebGL · Three.js</span>
       </div>
     </div>
@@ -463,6 +487,42 @@
         <div class="bprem-item reveal" style="transition-delay:320ms">
           <img data-zoom src="https://raw.githubusercontent.com/Juanmaes83/IMMERSPHERE-PRO-INMOBILIARIAS/main/hf_20260529_070042_f5992643-c23b-4e79-81d9-2b8718d9d3ba.png" alt="Lista de Elementos con Numeración Completa" loading="lazy">
           <div class="bprem-caption">Plano de Elementos · Detalle Total</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHATBOT INMOBILIARIO -->
+  <section class="chatbot-section" id="chatbot">
+    <div class="chatbot-inner">
+      <div class="chatbot-left reveal">
+        <div class="chatbot-num">08</div>
+        <span class="chatbot-pill">En vivo 24/7</span>
+        <span class="chatbot-badge">Chatbot Inmobiliario · IA Personalizada</span>
+        <h2 class="chatbot-title">Tu agente inmobiliario<br><span>siempre disponible</span></h2>
+        <p class="chatbot-body">Despliega un agente digital inteligente entrenado exclusivamente con tu catálogo de propiedades, tu marca y tus estrategias comerciales. Responde en tiempo real a cualquier cliente, en cualquier idioma, con el conocimiento exacto de cada vivienda: metros, acabados, precio, zona, disponibilidad y argumentario de venta. Sin horarios. Sin pérdida de leads.</p>
+        <a href="index.html#contacto" class="chatbot-cta">Solicitar demo del chatbot →</a>
+      </div>
+      <div class="chatbot-features">
+        <div class="chatbot-feature reveal">
+          <span class="chatbot-feature-icon">🏠</span>
+          <h4>Catálogo completo integrado</h4>
+          <p>El chatbot conoce cada propiedad al detalle — tipología, superficie, planta, orientación, acabados, precio y estado de disponibilidad. Actualizable en tiempo real sin intervención técnica.</p>
+        </div>
+        <div class="chatbot-feature reveal">
+          <span class="chatbot-feature-icon">📈</span>
+          <h4>Estrategia comercial inmobiliaria</h4>
+          <p>Entrenado con técnicas de venta y argumentarios propios del sector: gestión de objeciones, comparativas de valor, financiación y cierre de visitas. Convierte conversaciones en leads cualificados.</p>
+        </div>
+        <div class="chatbot-feature reveal">
+          <span class="chatbot-feature-icon">🌐</span>
+          <h4>Multiidioma nativo</h4>
+          <p>Responde con fluidez en español, inglés, francés, alemán, ruso, árabe y más de 40 idiomas. Ideal para promociones de lujo con comprador internacional como target principal.</p>
+        </div>
+        <div class="chatbot-feature reveal">
+          <span class="chatbot-feature-icon">⚡</span>
+          <h4>Integración y personalización total</h4>
+          <p>Se integra en tu web, WhatsApp Business y app. Personalizado con la voz, el tono y la identidad visual de tu marca. Métricas de conversación y seguimiento de leads incluidos.</p>
         </div>
       </div>
     </div>
