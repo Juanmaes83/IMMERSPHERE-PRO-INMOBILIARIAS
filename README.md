@@ -67,9 +67,59 @@ Cierre piloto · Cierre por propiedad concreta · Cierre por urgencia · Cierre 
 
 ---
 
+### ✅ Fase 4 — CRM v1.4 · Calculadora Visual de Presupuestos (100%)
+
+**Catálogo de servicios (~35 servicios):**
+- Immersphere Pro SaaS: Starter, Professional, Enterprise, Setup, White label
+- Inmobiliarias: Tour 360, Landing, QR, Ficha premium, Pack mensual, Reactivación
+- Vídeo: Vertical RRSS, Horizontal, Reel, Tour, Pack mensual
+- Web / landing: Landing corporativa, Web básica, Web premium, Mantenimiento
+- Marketing digital: Copy, Google Business, Reporte, SEO, Contenidos
+- Campañas: Setup Meta, Gestión Meta, Creatividades, Campaña propiedad
+- Branding: Naming, Kit visual, Presentación, Mensaje comercial
+- Personalizado: Consultoría, Producción a medida, Pack custom
+
+**Packs comerciales (7):**
+Pack Demo Inmobiliaria · Pack Propiedad Premium 360 · Pack Inmobiliaria Mensual · Pack SaaS · Pack Video+Landing+Tour · Pack Reactivación · Pack Proyecto Personalizado
+
+**Quote Builder por lead:**
+- Acceso desde botón "Crear presupuesto visual" en la ficha del lead
+- Selector de línea de negocio (9 líneas)
+- Selector de pack → carga servicios automáticamente
+- Añadir servicios individualmente del catálogo
+- Editar cantidad, precio unitario y coste interno por línea
+- Marcar líneas como bonus o como opcional
+- Cálculo en tiempo real: subtotal, descuento (% o €), base imponible, IVA, total
+
+**Cálculos implementados:**
+- Subtotal → Descuento → Base imponible → IVA → Total
+- Coste interno total → Margen bruto → Margen %
+- Probabilidad de cierre → Pipeline ponderado
+- Alertas: margen bajo, descuento alto, sin caducidad, presupuesto vacío
+- Sin NaN: divisiones por cero controladas
+
+**Estados de presupuesto:** Borrador · Enviado · Visto · En seguimiento · Aceptado · Rechazado
+
+**Acciones:** Guardar · Editar · Duplicar · Eliminar · Cambiar estado · Generar WA/email · Guardar en historial
+
+**Mensajes generados:** WhatsApp comercial · Email con asunto y cuerpo · Guion llamada 30s · Respuesta a objeción — todos personalizados con empresa, responsable, pack, precio, caducidad y forma de pago. Sin placeholders vacíos.
+
+**Dashboard:** 6 nuevos KPIs de presupuestos (total, enviados, aceptados, valor, pipeline ponderado, vencidos)
+
+**Document Hub:** Lista de presupuestos guardados por lead con edición, duplicado, cambio de estado, WA directo y email directo
+
+**Export/Import:** JSON v1.4 incluye presupuestos · CSV incluye 4 columnas nuevas de último presupuesto
+
+---
+
 ## Pendiente
 
-### 🔜 Fase 4 — Dashboard de ventas (50% completada · NO implementar hasta OK de Juanma)
+### 🔜 v1.5 — Propuestas comerciales imprimibles/descargables (PDF desde navegador)
+### 🔜 v1.6 — Document Hub administrativo (contratos simples, facturas, carpetas cliente)
+### 🔜 v1.7 — Integraciones externas (Holded, Stripe, Drive, firma digital)
+### 🔜 v2.0 — SaaS real con backend, auth y base de datos
+
+### (Roadmap previo) Dashboard de ventas — ampliaciones pendientes
 - Tasa de avance por fase
 - Tasa de respuesta y conversión
 - Forecast mensual/trimestral
