@@ -327,6 +327,33 @@ GitHub Pages sigue sirviendo `index.html` y `crm.html` exactamente igual. Las Ve
 
 ---
 
+### ✅ v1.8 — Biblioteca Comercial Pro (100%)
+
+**Total: 112 piezas comerciales en 7 categorías**
+
+| Categoría | Cantidad | Situaciones cubiertas |
+|---|---|---|
+| 💬 WhatsApp | 24 | Frío, templado, caliente, seguimiento, urgencia, cierre, reactivación, upsell, postventa, referido |
+| 📧 Email | 18 | Frío, diagnóstico, ROI, post-llamada, cierre, reactivación, upsell, referido |
+| ⚠ Objeciones | 24 | Matterport, portales, precio, herramienta, tecnología, descuento, privacidad, tiempo, equipo... |
+| ✓ Cierres | 16 | Piloto, dos opciones, socio, urgencia, consultivo, empezamos pequeño, post demo... |
+| 🔍 Diagnóstico | 12 | Propiedad parada, conversión, compradores remotos, diferenciación, filtro de visitas... |
+| 🔄 Reactivación | 10 | 2 semanas, 1 mes, presupuesto frío, propuesta rechazada, temporada, competidor... |
+| ⭐ Postventa | 8 | Entrega, feedback, testimonio, mensual, referido estructurado, portfolio... |
+
+**Filtros y búsqueda:**
+- Filtro por temperatura: Todas · 🧊 Frío · 🌡 Templado · 🔥 Caliente · ✓ Cierre · 🔄 Reactivación · ⭐ Fidelización
+- Buscador en tiempo real (busca en título, texto, situación y dolor)
+- Contador de plantillas filtradas
+- CTA recomendado y dolor activado visibles en cada plantilla
+
+**Cobertura de situaciones comerciales:**
+Propiedad parada · Compradores de fuera · Venta sobre plano · Inmueble premium · Dependencia de portales · Muchas visitas sin conversión · Competencia con Matterport · Cliente sin tiempo · Cliente con socio · Cliente que pide descuento · Reactivación post-rechazo · Upsell tras piloto · Referidos estructurados
+
+**Tono:** Español natural, consultivo, sin presión artificial, activando dolor real
+
+---
+
 ### 🔜 v1.8B — Email real con Resend (requiere RESEND_API_KEY + repo privado)
 ### 🔜 v1.6 — Document Hub administrativo (contratos simples, facturas, carpetas cliente)
 ### 🔜 v1.7 — Integraciones externas (Holded, Stripe, Drive, firma digital)
