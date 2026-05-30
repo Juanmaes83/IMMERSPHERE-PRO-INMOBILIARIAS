@@ -490,6 +490,33 @@ nav{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 20px;d
 .card-dup-btn{background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.25);color:var(--blue);padding:3px 8px;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;transition:all .2s;margin-left:8px;line-height:1;min-height:unset;height:22px}
 .card-dup-btn:hover{background:rgba(59,130,246,.3)}
 
+/* ── INTEGRATIONS v1.7 ──────────────────────────────────────────────── */
+.integ-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px}
+.integ-card-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
+.integ-card-title{font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px}
+.integ-card-icon{font-size:17px;flex-shrink:0}
+.ist{padding:3px 9px;border-radius:6px;font-size:10px;font-weight:700}
+.ist-ok{background:rgba(16,185,129,.15);color:var(--green);border:1px solid rgba(16,185,129,.3)}
+.ist-manual{background:rgba(59,130,246,.15);color:var(--blue);border:1px solid rgba(59,130,246,.3)}
+.ist-backend{background:rgba(124,58,237,.15);color:var(--accent2);border:1px solid rgba(124,58,237,.3)}
+.ist-none{background:rgba(100,116,139,.15);color:var(--text3);border:1px solid rgba(100,116,139,.3)}
+.integ-backend-warn{background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.2);border-radius:8px;padding:9px 12px;font-size:11px;color:var(--red);line-height:1.5;margin-bottom:10px}
+.integ-info-note{background:rgba(59,130,246,.07);border:1px solid rgba(59,130,246,.2);border-radius:8px;padding:9px 12px;font-size:11px;color:var(--blue);line-height:1.5;margin-bottom:10px}
+.integ-payload{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:9px 12px;font-size:11px;color:var(--text3);font-family:monospace;line-height:1.5;max-height:120px;overflow-y:auto;margin-bottom:8px;word-break:break-all}
+.integ-check-list{list-style:none;margin:7px 0;padding:0}
+.integ-check-list li{font-size:12px;color:var(--text2);padding:3px 0;display:flex;gap:7px;align-items:flex-start}
+.integ-check-list li .ick{flex-shrink:0;color:var(--text3)}
+.integ-check-list li.ck-done .ick{color:var(--green)}
+.integ-section-divider{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin:12px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--border)}
+.firma-state-badge{padding:2px 8px;border-radius:5px;font-size:10px;font-weight:700}
+.fst-noiniciado{background:rgba(100,116,139,.15);color:var(--text3);border:1px solid rgba(100,116,139,.3)}
+.fst-preparado{background:rgba(168,85,247,.15);color:var(--accent2);border:1px solid rgba(168,85,247,.3)}
+.fst-enviado{background:rgba(59,130,246,.15);color:var(--blue);border:1px solid rgba(59,130,246,.3)}
+.fst-visto{background:rgba(245,158,11,.15);color:var(--gold);border:1px solid rgba(245,158,11,.3)}
+.fst-firmado{background:rgba(16,185,129,.15);color:var(--green);border:1px solid rgba(16,185,129,.3)}
+.fst-rechazado{background:rgba(239,68,68,.15);color:var(--red);border:1px solid rgba(239,68,68,.3)}
+.fst-caducado{background:rgba(100,116,139,.1);color:var(--text3);border:1px solid rgba(100,116,139,.2)}
+
 /* ── ADMIN HUB v1.6 ─────────────────────────────────────────────────── */
 .admin-block{background:var(--bg3);border:1px solid var(--border);border-radius:10px;margin-bottom:9px;overflow:hidden}
 .admin-block-head{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;cursor:pointer;gap:8px;user-select:none}
@@ -696,6 +723,7 @@ nav{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 20px;d
     <button class="nav-tab" data-view="pipeline">🔄 Pipeline</button>
     <button class="nav-tab" data-view="templates">📋 Plantillas</button>
     <button class="nav-tab" data-view="catalogo">💼 Catálogo</button>
+    <button class="nav-tab" data-view="integraciones">🔗 Integraciones</button>
   </div>
   <div class="nav-right">
     <button class="nav-action-btn" onclick="exportarJSON()">⬇ JSON</button>
@@ -762,6 +790,14 @@ nav{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 20px;d
     <div class="kpi green"><div class="kpi-label">🧾 Facturas cobradas</div><div class="kpi-value" id="kpi-a-cobradas">—</div><div class="kpi-sub">Importe cobrado este año</div></div>
     <div class="kpi gold"><div class="kpi-label">👔 Pendientes asesoría</div><div class="kpi-value" id="kpi-a-asesoria">—</div><div class="kpi-sub">Sin enviar al asesor</div></div>
     <div class="kpi lime"><div class="kpi-label">⭐ En fidelización</div><div class="kpi-value" id="kpi-a-fideli">—</div><div class="kpi-sub">Satisfecho / upsell / renovación</div></div>
+  </div>
+
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text3);margin-bottom:8px">Integraciones externas</div>
+  <div class="kpi-grid" style="margin-bottom:20px">
+    <div class="kpi teal"><div class="kpi-label">✍ Firmados</div><div class="kpi-value" id="kpi-i-firmados">—</div><div class="kpi-sub">Contratos con firma</div></div>
+    <div class="kpi blue"><div class="kpi-label">☁ Con carpeta nube</div><div class="kpi-value" id="kpi-i-nube">—</div><div class="kpi-sub">URL nube configurada</div></div>
+    <div class="kpi green"><div class="kpi-label">🧾 Facturas externas</div><div class="kpi-value" id="kpi-i-facturas">—</div><div class="kpi-sub">Con enlace registrado</div></div>
+    <div class="kpi gold"><div class="kpi-label">⏳ Firma pendiente</div><div class="kpi-value" id="kpi-i-firma-pend">—</div><div class="kpi-sub">Enviadas sin confirmar</div></div>
   </div>
 
   <div id="dash-alertas" style="margin-bottom:20px"></div>
@@ -898,6 +934,18 @@ nav{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 20px;d
   </div>
   <div id="cat-linea-filter" style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px"></div>
   <div id="cat-content"></div>
+</div>
+
+<!-- INTEGRACIONES v1.7 -->
+<div class="view" id="view-integraciones">
+  <div class="section-header">
+    <h2>Integraciones externas</h2>
+    <span style="font-size:12px;color:var(--text3)">Integration Readiness — v1.7</span>
+  </div>
+  <div style="background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.2);border-radius:10px;padding:14px 16px;margin-bottom:20px;font-size:12px;color:var(--red);line-height:1.7">
+    <strong>⚠ Aviso de seguridad:</strong> Las integraciones reales con APIs, OAuth, firma digital, facturación legal y envío de email requieren backend/serverless seguro y variables de entorno. <strong>No se deben guardar API keys ni secretos en este panel, en el código ni en localStorage.</strong> Las conexiones actuales son preparatorias (enlaces manuales + payloads copiables). La integración API real requiere v1.8/v2.0 con backend.
+  </div>
+  <div id="integ-content"></div>
 </div>
 
 <!-- MODAL -->
@@ -1260,6 +1308,36 @@ nav{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 20px;d
 
 <script>
 
+// ── Integrations config v1.7 ─────────────────────────────────────────────────
+const INTEGRATIONS_KEY='immersphere_integrations_v1';
+let integConfig={
+  emailAsesor:'',nombreAsesor:'',
+  herramientaFacturacion:'',herramientaFirma:'',herramientaNube:'',
+  urlBaseNube:'',urlBaseFacturacion:'',urlBaseFirma:'',
+  notasAsesor:''
+};
+function loadIntegrations(){
+  try{const s=localStorage.getItem(INTEGRATIONS_KEY);if(s)Object.assign(integConfig,JSON.parse(s));}catch(e){}
+}
+function saveIntegrations(){
+  localStorage.setItem(INTEGRATIONS_KEY,JSON.stringify(integConfig));
+}
+function saveIntegConfig(){
+  const gic=id=>{const e=document.getElementById(id);return e?e.value||'':''};
+  integConfig.emailAsesor=gic('ic-email-asesor');
+  integConfig.nombreAsesor=gic('ic-nombre-asesor');
+  integConfig.herramientaFacturacion=gic('ic-herr-fact');
+  integConfig.herramientaFirma=gic('ic-herr-firma');
+  integConfig.herramientaNube=gic('ic-herr-nube');
+  integConfig.urlBaseNube=gic('ic-url-nube');
+  integConfig.urlBaseFacturacion=gic('ic-url-fact');
+  integConfig.urlBaseFirma=gic('ic-url-firma');
+  integConfig.notasAsesor=gic('ic-notas-asesor');
+  saveIntegrations();
+  _showToast('✓ Configuración de integraciones guardada.','var(--green)');
+  renderIntegraciones();
+}
+
 // ── Admin Hub v1.6 ───────────────────────────────────────────────────────────
 function _emptyAdmin(){
   return{
@@ -1294,7 +1372,12 @@ function _emptyAdmin(){
     seguimiento:{
       estado:'pendiente-entrega',fechaEntrega:'',satisfaccion:'',
       proximaRevision:'',upsell:'',servicioSiguiente:'',recordatorio:'',notas:''
-    }
+    },
+    firma:{
+      herramienta:'',estado:'no-iniciado',
+      enlaceExterno:'',fechaEnvio:'',fechaFirma:'',responsable:'',notas:''
+    },
+    logIntegraciones:[]
   };
 }
 
@@ -1813,6 +1896,7 @@ function resetDemo(){
   if(!confirm('Segunda confirmación: ¿Seguro? Esta acción es irreversible.')) return;
   localStorage.removeItem(STORAGE_KEY);
   localStorage.removeItem(CUSTOM_KEY);
+  localStorage.removeItem(INTEGRATIONS_KEY);
   location.reload();
 }
 
@@ -2004,6 +2088,14 @@ function renderDashboard(){
   setKA('kpi-a-cobradas',aCobradas||'—');
   setKA('kpi-a-asesoria',aAsesoria||'—');
   setKA('kpi-a-fideli',aFideli||'—');
+  // Integrations KPIs v1.7
+  const iFirmados=leadsConAdmin.filter(l=>l._admin.firma&&l._admin.firma.estado==='firmado').length;
+  const iNube=leadsConAdmin.filter(l=>l._admin.carpeta&&l._admin.carpeta.secciones&&(Object.values(l._admin.carpeta.secciones).some(s=>s.enlace&&s.enlace.startsWith('http')))).length;
+  const iFacturas=leadsConAdmin.filter(l=>l._admin.factura&&l._admin.factura.enlaceExterno&&l._admin.factura.enlaceExterno.startsWith('http')).length;
+  const iFirmaPend=leadsConAdmin.filter(l=>l._admin.firma&&['enviado','visto'].includes(l._admin.firma.estado)).length;
+  const setKI=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
+  setKI('kpi-i-firmados',iFirmados||'—');setKI('kpi-i-nube',iNube||'—');
+  setKI('kpi-i-facturas',iFacturas||'—');setKI('kpi-i-firma-pend',iFirmaPend||'—');
 
   // Top 5
   const top5=[...leads].sort((a,b)=>b.score-a.score).slice(0,5);
@@ -2238,7 +2330,7 @@ function exportarJSON(){
     };
   });
   const customs=leads.filter(l=>l.id<0);
-  const payload=JSON.stringify({version:'1.4',fecha:new Date().toISOString().slice(0,10),datos:st,customs},null,2);
+  const payload=JSON.stringify({version:'1.7',fecha:new Date().toISOString().slice(0,10),datos:st,customs,integraciones:integConfig},null,2);
   const a=document.createElement('a');
   a.href='data:application/json;charset=utf-8,'+encodeURIComponent(payload);
   a.download='immersphere-crm-backup-'+new Date().toISOString().slice(0,10)+'.json';
@@ -2276,7 +2368,8 @@ function importarJSON(){
             l._ultimoContacto=r.comercial.ultimoContacto||'';
           }
         });
-        saveState();
+        if(data.integraciones&&typeof data.integraciones==='object') Object.assign(integConfig,data.integraciones);
+        saveState();saveIntegrations();
         renderAll();
         alert('Backup restaurado: '+count+' leads cargados.');
       }catch(err){alert('Error al leer el archivo: '+err.message);}
@@ -3451,6 +3544,48 @@ function renderAdminHub(l){
     </div>
   </div>`;
 
+  // Firma digital
+  const fm=a.firma||{herramienta:'',estado:'no-iniciado',enlaceExterno:'',fechaEnvio:'',fechaFirma:'',responsable:'',notas:''};
+  const fmColorMap={'no-iniciado':'neutral','preparado':'warn','enviado':'info','visto':'warn','firmado':'ok','rechazado':'danger','caducado':'neutral'};
+  const firmaBlock=`<div class="admin-block">
+    <div class="admin-block-head" onclick="toggleAdminBlock(event,'adb-fm-${l.id}')">
+      <div class="admin-block-title"><span class="admin-block-icon">✍</span>Firma digital</div>
+      <div style="display:flex;gap:6px;align-items:center">${_astBadge(fm.estado,fmColorMap)}<button class="admin-toggle">▾</button></div>
+    </div>
+    <div class="admin-block-body" id="adb-fm-${l.id}">
+      <div class="admin-info-box">ℹ La firma legal se realizará desde herramienta externa (DocuSign, Signaturit, Yousign…). No hay firma digital propia en esta versión.</div>
+      <div class="admin-2col">
+        <div class="admin-field"><label class="admin-label">Herramienta</label>
+          <select class="admin-select" id="admin-fm-herr-${l.id}">
+            ${['','DocuSign','Signaturit','Yousign','Otro'].map(s=>`<option value="${s}"${fm.herramienta===s?' selected':''}>${s||'— Seleccionar —'}</option>`).join('')}
+          </select></div>
+        <div class="admin-field"><label class="admin-label">Estado</label>
+          <select class="admin-select" id="admin-fm-estado-${l.id}">
+            ${['no-iniciado','preparado','enviado','visto','firmado','rechazado','caducado'].map(s=>`<option value="${s}"${fm.estado===s?' selected':''}>${s}</option>`).join('')}
+          </select></div>
+      </div>
+      <div class="admin-field"><label class="admin-label">Enlace externo al documento de firma</label>
+        <div style="display:grid;grid-template-columns:1fr auto;gap:6px">
+          <input class="admin-input" id="admin-fm-enlace-${l.id}" type="url" value="${safeHtml(fm.enlaceExterno)}" placeholder="https://app.signaturit.com/...">
+          <button class="admin-btn ablue" onclick="abrirEnlaceExterno(_gav('fm-enlace',${l.id}))">🔗</button>
+        </div></div>
+      <div class="admin-2col">
+        <div class="admin-field"><label class="admin-label">Fecha de envío a firma</label>
+          <input class="admin-input" id="admin-fm-fenvio-${l.id}" type="date" value="${fm.fechaEnvio}"></div>
+        <div class="admin-field"><label class="admin-label">Fecha de firma</label>
+          <input class="admin-input" id="admin-fm-ffirma-${l.id}" type="date" value="${fm.fechaFirma}"></div>
+      </div>
+      <div class="admin-field"><label class="admin-label">Responsable de firma</label>
+        <input class="admin-input" id="admin-fm-resp-${l.id}" value="${safeHtml(fm.responsable||l.responsable||'')}" placeholder="Nombre del firmante"></div>
+      <div class="admin-field"><label class="admin-label">Notas</label>
+        <textarea class="admin-textarea" id="admin-fm-notas-${l.id}" rows="1">${safeHtml(fm.notas)}</textarea></div>
+      <div class="admin-action-row">
+        <button class="admin-save-btn" onclick="saveFirmaAdmin(${l.id})">💾 Guardar</button>
+        <button class="admin-btn" onclick="copiarResumenFirma(${l.id})">📋 Copiar resumen</button>
+      </div>
+    </div>
+  </div>`;
+
   // Factura
   const fc=a.factura;
   const fcColorMap={'no-aplica':'neutral','pendiente-emitir':'warn','proforma':'warn','emitida':'info','enviada':'info','cobrada':'ok','vencida':'danger','cancelada':'neutral'};
@@ -3590,7 +3725,7 @@ function renderAdminHub(l){
     </div>
   </div>`;
 
-  return journey+carpeta+contrato+factura+asesoria+seguimiento+
+  return journey+carpeta+contrato+firmaBlock+factura+asesoria+seguimiento+
     `<div style="font-size:10px;color:var(--text3);text-align:center;padding:8px 0;border-top:1px solid var(--border);margin-top:6px">v1.7: Google Drive · OneDrive · Holded · Quipu · Stripe · DocuSign · Email automático</div>`;
 }
 
@@ -3822,6 +3957,214 @@ function exportMensual(){
   a2.href='data:text/csv;charset=utf-8,'+encodeURIComponent('﻿'+csv);
   a2.download='export-mensual-'+año+'-'+String(mes+1).padStart(2,'0')+'.csv';
   a2.click();
+}
+
+// ── Firma functions v1.7 ──────────────────────────────────────────────────────
+function saveFirmaAdmin(lid){
+  const l=leads.find(x=>x.id===lid);if(!l) return;
+  if(!l._admin) l._admin=_emptyAdmin();
+  if(!l._admin.firma) l._admin.firma={herramienta:'',estado:'no-iniciado',enlaceExterno:'',fechaEnvio:'',fechaFirma:'',responsable:'',notas:''};
+  const fm=l._admin.firma;
+  const enlace=_gav('fm-enlace',lid);
+  if(enlace&&!enlace.startsWith('http')){_showToast('⚠ La URL debe empezar por https://','var(--gold)');return;}
+  const prev=fm.estado;
+  fm.herramienta=_gav('fm-herr',lid);fm.estado=_gav('fm-estado',lid);
+  fm.enlaceExterno=enlace;fm.fechaEnvio=_gav('fm-fenvio',lid);
+  fm.fechaFirma=_gav('fm-ffirma',lid);fm.responsable=_gav('fm-resp',lid);fm.notas=_gav('fm-notas',lid);
+  const fa=new Date().toLocaleDateString('es-ES')+' '+new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+  if(!l._actividad) l._actividad=[];
+  if(prev!==fm.estado) l._actividad.push({tipo:'sistema',texto:'Firma: estado → '+fm.estado+' ('+fm.herramienta+')',fecha:fa});
+  if(!l._admin.logIntegraciones) l._admin.logIntegraciones=[];
+  l._admin.logIntegraciones.push({tipo:'firma',fecha:fa,herramienta:fm.herramienta,estado:fm.estado,notas:fm.notas||''});
+  saveState();_showToast('✓ Firma guardada.','var(--green)');renderAll();setTimeout(()=>openModal(lid),100);
+}
+
+function copiarResumenFirma(lid){
+  const l=leads.find(x=>x.id===lid);if(!l) return;
+  if(!l._admin) l._admin=_emptyAdmin();
+  const fm=l._admin.firma||{};
+  const ct=l._admin.contrato||{};
+  const txt='RESUMEN DE FIRMA DIGITAL\nEmpresa: '+l.empresa+'\nResponsable: '+(fm.responsable||l.responsable||'—')+'\nDocumento: Contrato — '+(ct.servicio||'—')+'\nHerramienta: '+(fm.herramienta||'—')+'\nEstado: '+(fm.estado||'—')+'\nEnlace: '+(fm.enlaceExterno||'—')+'\nFecha envío: '+(fm.fechaEnvio||'—')+'\nFecha firma: '+(fm.fechaFirma||'—')+'\nNotas: '+(fm.notas||'—');
+  navigator.clipboard.writeText(txt).catch(()=>{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);});
+  _showToast('✓ Resumen de firma copiado.','var(--blue)');
+}
+
+// ── Integrations panel v1.7 ───────────────────────────────────────────────────
+function renderIntegraciones(){
+  const el=document.getElementById('integ-content');if(!el) return;
+  const ic=integConfig;
+
+  // Status helpers
+  const ist=(label,cls)=>`<span class="ist ${cls}">${label}</span>`;
+  const emailOk=ic.emailAsesor&&ic.emailAsesor.includes('@');
+  const nubeOk=ic.urlBaseNube&&ic.urlBaseNube.startsWith('http');
+  const factOk=ic.herramientaFacturacion&&ic.urlBaseFacturacion.startsWith('http');
+  const firmaOk=ic.herramientaFirma&&ic.urlBaseFirma.startsWith('http');
+
+  el.innerHTML=`
+  <!-- CONFIGURACIÓN GLOBAL -->
+  <div class="integ-card">
+    <div class="integ-card-head">
+      <div class="integ-card-title"><span class="integ-card-icon">⚙</span>Configuración global</div>
+      ${ist('Configuración local','ist-manual')}
+    </div>
+    <div class="integ-info-note">ℹ Esta configuración se guarda en tu navegador (localStorage). No contiene secretos ni API keys. Es solo preferencias y URLs de trabajo.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div class="admin-field"><label class="admin-label">Email del asesor</label>
+        <input class="admin-input" id="ic-email-asesor" type="email" value="${safeHtml(ic.emailAsesor)}" placeholder="asesor@ejemplo.com"></div>
+      <div class="admin-field"><label class="admin-label">Nombre del asesor</label>
+        <input class="admin-input" id="ic-nombre-asesor" value="${safeHtml(ic.nombreAsesor)}" placeholder="Nombre y apellidos"></div>
+      <div class="admin-field"><label class="admin-label">Herramienta de facturación</label>
+        <select class="admin-select" id="ic-herr-fact">
+          ${['','Holded','Quipu','Stripe','Otro'].map(s=>`<option value="${s}"${ic.herramientaFacturacion===s?' selected':''}>${s||'— Seleccionar —'}</option>`).join('')}
+        </select></div>
+      <div class="admin-field"><label class="admin-label">URL de tu panel de facturación</label>
+        <input class="admin-input" id="ic-url-fact" type="url" value="${safeHtml(ic.urlBaseFacturacion)}" placeholder="https://app.holded.com/..."></div>
+      <div class="admin-field"><label class="admin-label">Herramienta de firma</label>
+        <select class="admin-select" id="ic-herr-firma">
+          ${['','DocuSign','Signaturit','Yousign','Otro'].map(s=>`<option value="${s}"${ic.herramientaFirma===s?' selected':''}>${s||'— Seleccionar —'}</option>`).join('')}
+        </select></div>
+      <div class="admin-field"><label class="admin-label">URL de tu panel de firma</label>
+        <input class="admin-input" id="ic-url-firma" type="url" value="${safeHtml(ic.urlBaseFirma)}" placeholder="https://app.signaturit.com/..."></div>
+      <div class="admin-field"><label class="admin-label">Herramienta de nube</label>
+        <select class="admin-select" id="ic-herr-nube">
+          ${['','Google Drive','OneDrive','Dropbox','Otro'].map(s=>`<option value="${s}"${ic.herramientaNube===s?' selected':''}>${s||'— Seleccionar —'}</option>`).join('')}
+        </select></div>
+      <div class="admin-field"><label class="admin-label">URL carpeta raíz en nube</label>
+        <input class="admin-input" id="ic-url-nube" type="url" value="${safeHtml(ic.urlBaseNube)}" placeholder="https://drive.google.com/drive/folders/..."></div>
+      <div class="admin-field" style="grid-column:1/-1"><label class="admin-label">Notas para el asesor (predeterminadas)</label>
+        <textarea class="admin-textarea" id="ic-notas-asesor" rows="2">${safeHtml(ic.notasAsesor)}</textarea></div>
+    </div>
+    <div style="margin-top:10px">
+      <button class="admin-save-btn" onclick="saveIntegConfig()">💾 Guardar configuración</button>
+    </div>
+  </div>
+
+  <!-- EMAIL -->
+  <div class="integ-card">
+    <div class="integ-card-head">
+      <div class="integ-card-title"><span class="integ-card-icon">📧</span>Email</div>
+      ${emailOk?ist('mailto configurado','ist-manual'):ist('Sin configurar','ist-none')}
+    </div>
+    <div class="integ-backend-warn">🔒 El envío real de emails requiere backend/serverless con API key de Resend, SendGrid o Gmail API. Nunca pongas la API key en este código.</div>
+    <div class="integ-section-divider">Lo que funciona ahora (v1.7)</div>
+    <ul class="integ-check-list">
+      <li class="ck-done"><span class="ick">✓</span>Email al asesor vía mailto: configurado (se abre tu cliente de correo)</li>
+      <li class="ck-done"><span class="ick">✓</span>Mensajes de propuesta vía mailto: con cuerpo pre-rellenado</li>
+      <li class="ck-done"><span class="ick">✓</span>Email de asesor guardado en configuración global</li>
+    </ul>
+    <div class="integ-section-divider">Requiere backend (v1.8)</div>
+    <ul class="integ-check-list">
+      <li><span class="ick">○</span>Envío real automático sin abrir cliente de correo</li>
+      <li><span class="ick">○</span>Adjuntos (propuestas PDF, contratos)</li>
+      <li><span class="ick">○</span>Historial de envíos en base de datos</li>
+      <li><span class="ick">○</span>Confirmación de entrega</li>
+    </ul>
+    <div class="integ-section-divider">Endpoint futuro previsto</div>
+    <div class="integ-payload">POST /api/send-email\n{\n  "leadId": "...",\n  "to": "${safeHtml(ic.emailAsesor||'asesor@ejemplo.com')}",\n  "subject": "...",\n  "body": "...",\n  "type": "asesoria|propuesta|contrato"\n}</div>
+    <button class="admin-btn" onclick="copiarPayloadEmail()">📋 Copiar payload de referencia</button>
+  </div>
+
+  <!-- NUBE -->
+  <div class="integ-card">
+    <div class="integ-card-head">
+      <div class="integ-card-title"><span class="integ-card-icon">☁</span>${ic.herramientaNube||'Nube'} (${ic.herramientaNube||'Google Drive / OneDrive'})</div>
+      ${nubeOk?ist('Enlace manual configurado','ist-manual'):ist('Sin configurar','ist-none')}
+    </div>
+    <div class="integ-backend-warn">🔒 Crear carpetas reales en Google Drive/OneDrive requiere OAuth con backend seguro. El client_secret nunca puede estar en el frontend.</div>
+    <div class="integ-section-divider">Lo que funciona ahora (v1.7)</div>
+    <ul class="integ-check-list">
+      <li class="ck-done"><span class="ick">✓</span>Guardar URL manual de carpeta por lead</li>
+      <li class="ck-done"><span class="ick">✓</span>Generar nombre de carpeta recomendado</li>
+      <li class="ck-done"><span class="ick">✓</span>Copiar estructura de 8 subcarpetas</li>
+      <li class="ck-done"><span class="ick">✓</span>Abrir carpeta en nube si URL configurada</li>
+      ${nubeOk?`<li class="ck-done"><span class="ick">✓</span>URL base: <a href="${safeHtml(ic.urlBaseNube)}" target="_blank" style="color:var(--blue)">${safeHtml(ic.urlBaseNube.slice(0,40))}…</a></li>`:''}
+    </ul>
+    <div class="integ-section-divider">Requiere backend OAuth (v1.8)</div>
+    <ul class="integ-check-list">
+      <li><span class="ick">○</span>Crear carpeta automáticamente vía API</li>
+      <li><span class="ick">○</span>Subir documentos directamente</li>
+      <li><span class="ick">○</span>Sincronizar estado de documentos</li>
+    </ul>
+    ${nubeOk?`<button class="admin-btn ablue" style="margin-top:8px" onclick="abrirEnlaceExterno('${safeHtml(ic.urlBaseNube)}')">☁ Abrir ${safeHtml(ic.herramientaNube||'nube')}</button>`:''}
+  </div>
+
+  <!-- FACTURACIÓN -->
+  <div class="integ-card">
+    <div class="integ-card-head">
+      <div class="integ-card-title"><span class="integ-card-icon">🧾</span>Facturación (${ic.herramientaFacturacion||'Holded / Quipu / Stripe'})</div>
+      ${factOk?ist('Enlace manual configurado','ist-manual'):ist('Sin configurar','ist-none')}
+    </div>
+    <div class="integ-backend-warn">🔒 Las APIs de Holded, Quipu y Stripe requieren API keys que nunca deben estar en el frontend. Las facturas legales se emiten desde la herramienta externa.</div>
+    <div class="integ-section-divider">Lo que funciona ahora (v1.7)</div>
+    <ul class="integ-check-list">
+      <li class="ck-done"><span class="ick">✓</span>Registrar estado de factura por lead</li>
+      <li class="ck-done"><span class="ick">✓</span>Guardar enlace externo a la factura</li>
+      <li class="ck-done"><span class="ick">✓</span>Copiar datos de facturación al portapapeles</li>
+      <li class="ck-done"><span class="ick">✓</span>Abrir herramienta de facturación externa</li>
+    </ul>
+    <div class="integ-section-divider">Requiere backend (v1.8)</div>
+    <ul class="integ-check-list">
+      <li><span class="ick">○</span>Crear factura automáticamente vía API</li>
+      <li><span class="ick">○</span>Sincronizar estado de pago</li>
+      <li><span class="ick">○</span>Webhook de confirmación de cobro</li>
+    </ul>
+    ${factOk?`<button class="admin-btn ablue" style="margin-top:8px" onclick="abrirEnlaceExterno('${safeHtml(ic.urlBaseFacturacion)}')">🧾 Abrir ${safeHtml(ic.herramientaFacturacion)}</button>`:''}
+  </div>
+
+  <!-- FIRMA -->
+  <div class="integ-card">
+    <div class="integ-card-head">
+      <div class="integ-card-title"><span class="integ-card-icon">✍</span>Firma digital (${ic.herramientaFirma||'DocuSign / Signaturit / Yousign'})</div>
+      ${firmaOk?ist('Enlace manual configurado','ist-manual'):ist('Sin configurar','ist-none')}
+    </div>
+    <div class="integ-backend-warn">🔒 DocuSign, Signaturit y Yousign requieren OAuth con client_secret en backend seguro. La firma digital legal no puede implementarse directamente en frontend.</div>
+    <div class="integ-section-divider">Lo que funciona ahora (v1.7)</div>
+    <ul class="integ-check-list">
+      <li class="ck-done"><span class="ick">✓</span>Registrar estado de firma por lead</li>
+      <li class="ck-done"><span class="ick">✓</span>Guardar enlace externo al documento de firma</li>
+      <li class="ck-done"><span class="ick">✓</span>Copiar resumen de firma</li>
+      <li class="ck-done"><span class="ick">✓</span>Abrir herramienta de firma externa</li>
+      <li class="ck-done"><span class="ick">✓</span>Registrar fechas de envío y firma</li>
+    </ul>
+    <div class="integ-section-divider">Requiere backend OAuth (v1.8)</div>
+    <ul class="integ-check-list">
+      <li><span class="ick">○</span>Enviar documento a firmar automáticamente</li>
+      <li><span class="ick">○</span>Webhook de confirmación de firma</li>
+      <li><span class="ick">○</span>Descargar documento firmado</li>
+    </ul>
+    ${firmaOk?`<button class="admin-btn ablue" style="margin-top:8px" onclick="abrirEnlaceExterno('${safeHtml(ic.urlBaseFirma)}')">✍ Abrir ${safeHtml(ic.herramientaFirma)}</button>`:''}
+  </div>
+
+  <!-- ARQUITECTURA FUTURA -->
+  <div class="integ-card" style="border-color:rgba(124,58,237,.25)">
+    <div class="integ-card-head">
+      <div class="integ-card-title"><span class="integ-card-icon">🏗</span>Arquitectura v1.8 / v2.0 recomendada</div>
+      ${ist('Requiere backend','ist-backend')}
+    </div>
+    <div style="font-size:12px;color:var(--text2);line-height:1.7">
+      <strong style="color:var(--accent2)">Opción recomendada: Vercel Functions</strong><br>
+      Añade serverless functions en <code style="background:var(--bg3);padding:1px 5px;border-radius:4px">/api/</code> al repositorio sin cambiar el stack actual.<br><br>
+      <div class="integ-payload">Endpoints previstos:\nPOST /api/send-email     → Resend API\nPOST /api/create-folder  → Google Drive OAuth\nPOST /api/create-invoice → Holded/Quipu API\nPOST /api/send-to-sign   → Signaturit OAuth\nPOST /api/export-advisor → Email asesor automático</div>
+      <strong style="color:var(--accent2)">Variables de entorno requeridas (NUNCA en código):</strong><br>
+      <code style="font-size:11px;color:var(--red)">RESEND_API_KEY · GOOGLE_CLIENT_SECRET · HOLDED_API_KEY · SIGNATURIT_API_KEY</code><br><br>
+      <strong style="color:var(--gold)">⚠ Hacer el repositorio privado en GitHub antes de añadir cualquier secreto o configuración sensible.</strong>
+    </div>
+    <button class="admin-btn" style="margin-top:10px" onclick="copiarArquitecturaFutura()">📋 Copiar especificación técnica</button>
+  </div>`;
+}
+
+function copiarPayloadEmail(){
+  const ic=integConfig;
+  const txt='POST /api/send-email\n{\n  "leadId": "id-del-lead",\n  "to": "'+ic.emailAsesor+'",\n  "subject": "Datos facturación — EMPRESA",\n  "body": "Texto del email...",\n  "type": "asesoria",\n  "attachments": []\n}';
+  navigator.clipboard.writeText(txt).catch(()=>{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);});
+  _showToast('✓ Payload de referencia copiado.','var(--blue)');
+}
+
+function copiarArquitecturaFutura(){
+  const txt='ARQUITECTURA v1.8/v2.0 — Immersphere Pro CRM\n\nFrontend: crm.html (GitHub Pages o Vercel static)\nBackend: Vercel Functions (/api/)\n\nEndpoints:\n  POST /api/send-email     → Resend API (RESEND_API_KEY)\n  POST /api/create-folder  → Google Drive API (GOOGLE_CLIENT_SECRET)\n  POST /api/create-invoice → Holded API (HOLDED_API_KEY)\n  POST /api/send-to-sign   → Signaturit OAuth (SIGNATURIT_API_KEY)\n\nVariables de entorno (NUNCA en código frontend):\n  RESEND_API_KEY\n  GOOGLE_CLIENT_ID + GOOGLE_CLIENT_SECRET\n  HOLDED_API_KEY\n  SIGNATURIT_API_KEY\n\nBase de datos: Supabase (PostgreSQL + Auth)\nStorage: Supabase Storage o Google Drive\n\n⚠ Hacer repositorio privado antes de añadir backend.';
+  navigator.clipboard.writeText(txt).catch(()=>{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);});
+  _showToast('✓ Especificación técnica copiada.','var(--blue)');
 }
 
 // ── Proposals ─────────────────────────────────────────────────────────────────
@@ -4194,7 +4537,7 @@ function _propBadge(estado){
   return`<span class="pst ${m[estado]||'pst-borrador'}">${estado||'borrador'}</span>`;
 }
 
-function renderAll(){renderDashboard();renderLeads();renderTop10();renderPipeline();renderJourney();renderCatalogo();}
+function renderAll(){renderDashboard();renderLeads();renderTop10();renderPipeline();renderJourney();renderCatalogo();renderIntegraciones();}
 
 // ── Events ────────────────────────────────────────────────────────────────────
 document.querySelectorAll('.nav-tab').forEach(tab=>{
@@ -4206,6 +4549,7 @@ document.querySelectorAll('.nav-tab').forEach(tab=>{
     if(tab.dataset.view==='journey') renderJourney();
     if(tab.dataset.view==='templates') renderTemplates();
     if(tab.dataset.view==='catalogo') renderCatalogo();
+    if(tab.dataset.view==='integraciones') renderIntegraciones();
   });
 });
 document.querySelectorAll('[data-filter]').forEach(btn=>{
@@ -4250,6 +4594,7 @@ if(promoChips) promoChips.innerHTML=PROMOS.map(p=>'<button class="promo-chip" da
 
 // ── Init ──────────────────────────────────────────────────────────────────────
 loadState();
+loadIntegrations();
 renderAll();
 
 </script>

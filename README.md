@@ -209,7 +209,49 @@ Barra visual de 8 pasos: Lead → Presupuesto → Propuesta → Contrato → Fac
 
 ---
 
-### 🔜 v1.7 — Integraciones externas reales (NO implementar hasta OK)
+### ✅ v1.7 — Integraciones Externas / Integration Readiness (100%)
+
+> ⚠ **Aviso de seguridad:** Las integraciones reales con APIs, OAuth, firma digital, facturación legal y envío de email requieren backend/serverless seguro y variables de entorno. **No se deben guardar API keys ni secretos en este panel, en el código ni en localStorage.** Las conexiones actuales son preparatorias (enlaces manuales + payloads copiables). La integración API real requiere v1.8/v2.0 con backend.
+
+**Panel de Integraciones (nueva pestaña 🔗 en nav):**
+- Configuración global no sensible: email/nombre asesor, herramienta preferida por tipo (facturación, firma, nube), URLs base de cada herramienta
+- Estado por integración: Sin configurar · Enlace manual configurado · Requiere backend
+- Checklist de qué funciona ahora y qué requiere backend para cada herramienta
+- Payload JSON de referencia para futuros endpoints de backend
+- Especificación técnica de arquitectura v1.8 copiable
+
+**Firma digital (nuevo bloque en Document Hub):**
+- Herramienta: DocuSign · Signaturit · Yousign · Otro
+- Estado: no iniciado · preparado · enviado · visto · firmado · rechazado · caducado
+- Enlace externo al documento de firma con validación de URL
+- Fechas de envío y firma
+- Copiar resumen de firma
+- Registro en historial del lead y log de integraciones
+
+**Drive / OneDrive:** enlace manual por lead + generador de nombre + estructura de carpetas copiable
+
+**Facturación externa (Holded/Quipu/Stripe):** enlace manual + payload de facturación copiable + estado de sincronización
+
+**Email al asesor mejorado:** mailto con datos completos + payload de referencia para futuro endpoint `POST /api/send-email`
+
+**Dashboard:** 4 KPIs de integraciones (firmados, con carpeta nube, facturas externas, firmas pendientes)
+
+**Export JSON v1.7:** incluye `integraciones` (config no sensible) · Import restaura integrations · Reset limpia INTEGRATIONS_KEY
+
+**Arquitectura recomendada para v1.8:**
+```
+Serverless: Vercel Functions (/api/)
+  POST /api/send-email     → Resend API (RESEND_API_KEY)
+  POST /api/create-folder  → Google Drive OAuth (GOOGLE_CLIENT_SECRET)
+  POST /api/create-invoice → Holded/Quipu API (HOLDED_API_KEY)
+  POST /api/send-to-sign   → Signaturit OAuth (SIGNATURIT_API_KEY)
+Database: Supabase (PostgreSQL + Auth)
+⚠ Hacer repositorio privado antes de añadir cualquier secreto
+```
+
+---
+
+### 🔜 v1.8 / v2.0 — Backend + Integraciones API reales (NO implementar hasta OK)
 ### 🔜 v1.6 — Document Hub administrativo (contratos simples, facturas, carpetas cliente)
 ### 🔜 v1.7 — Integraciones externas (Holded, Stripe, Drive, firma digital)
 ### 🔜 v2.0 — SaaS real con backend, auth y base de datos
