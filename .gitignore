@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Vercel
+.vercel/
+
+# Environment variables — NEVER commit
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Large binary assets (local only, not part of the CRM repo)
+*.mp4
+*.png
+*.jpg
+*.jpeg
+
+# Temp / dev files (local only)
+_temp_*.js
+audit_*.js
+check_syntax*.js
+generate_crm.js
+leads_*.json
+leads_*.js
+objections_raw.json
+top10_raw.json
+hf_*.png
+ChatGPT*.png

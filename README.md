@@ -251,7 +251,83 @@ Database: Supabase (PostgreSQL + Auth)
 
 ---
 
-### 🔜 v1.8 / v2.0 — Backend + Integraciones API reales (NO implementar hasta OK)
+### ✅ v1.8A — Backend Serverless Base / Vercel Functions (100%)
+
+**Qué es v1.8A:**
+Capa de readiness técnica para futuras integraciones reales. No conecta ninguna API externa todavía. Todo en modo dry-run. Permite validar que la arquitectura serverless funciona antes de añadir secretos reales.
+
+**Archivos creados:**
+
+| Archivo | Propósito |
+|---|---|
+| `api/health.js` | `GET /api/health` — health check del backend |
+| `api/send-email.js` | `POST /api/send-email` — dry-run, valida payload, no envía email |
+| `api/integrations/status.js` | `GET /api/integrations/status` — indica qué env vars están configuradas, SIN revelar valores |
+| `package.json` | Node.js 18.x, sin dependencias (se añadirá `resend` en v1.8B) |
+| `vercel.json` | Configuración mínima de Vercel |
+| `.gitignore` | Excluye `node_modules/`, `.env`, binarios, archivos temporales |
+
+**Cómo desplegar en Vercel:**
+
+```bash
+# 1. Instalar Vercel CLI (solo una vez)
+npm i -g vercel
+
+# 2. Login
+vercel login
+
+# 3. Desplegar desde el repo
+vercel
+
+# 4. Para desarrollo local
+vercel dev
+```
+
+Vercel detecta automáticamente `/api/*.js` como Serverless Functions y sirve el resto como estático.
+
+**Variables de entorno — añadir en Vercel Dashboard, NUNCA en código:**
+
+| Variable | Fase | Uso |
+|---|---|---|
+| `RESEND_API_KEY` | v1.8B | Email real con Resend |
+| `GOOGLE_CLIENT_ID` | v1.8C | Google Drive OAuth (ID público) |
+| `GOOGLE_CLIENT_SECRET` | v1.8C | Google Drive OAuth (secreto — nunca en frontend) |
+| `HOLDED_API_KEY` | v1.8D | Holded facturación API |
+| `SIGNATURIT_API_KEY` | v1.8E | Signaturit firma digital |
+| `SUPABASE_URL` | v2.0 | Supabase database |
+| `SUPABASE_ANON_KEY` | v2.0 | Supabase clave pública |
+
+**Endpoints disponibles (v1.8A):**
+
+```
+GET  /api/health
+  → { status: 'ok', version: '1.8A', mode: 'dry-run', ... }
+
+POST /api/send-email
+  Body: { to, subject, message, leadId?, source? }
+  → { success: true, dryRun: true, summary: { to: masked, ... } }
+  → Valida payload. No envía email real todavía.
+
+GET  /api/integrations/status
+  → { integrations: { RESEND_API_KEY: 'not_configured', ... } }
+  → Nunca devuelve valores, solo presencia.
+```
+
+**Compatibilidad GitHub Pages:**
+GitHub Pages sigue sirviendo `index.html` y `crm.html` exactamente igual. Las Vercel Functions solo existen en el despliegue de Vercel. `crm.html` no fue modificado en v1.8A.
+
+**Seguridad:**
+- Sin API keys en código
+- Sin `.env` en git (excluido en `.gitignore`)
+- Masking de emails en respuestas
+- `/api/integrations/status` solo indica presencia, nunca valores
+- `package.json` sin dependencias = sin superficie de ataque adicional
+
+> ⚠ **Antes de v1.8B: hacer el repositorio privado en GitHub** antes de añadir cualquier API key real en Vercel (aunque las claves no van en el código, el repo privado es buena práctica).
+
+---
+
+### 🔜 v1.8B — Email real con Resend (requiere RESEND_API_KEY + repo privado)
 ### 🔜 v1.6 — Document Hub administrativo (contratos simples, facturas, carpetas cliente)
 ### 🔜 v1.7 — Integraciones externas (Holded, Stripe, Drive, firma digital)
 ### 🔜 v2.0 — SaaS real con backend, auth y base de datos

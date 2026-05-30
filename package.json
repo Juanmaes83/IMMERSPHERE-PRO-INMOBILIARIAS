@@ -1,0 +1,12 @@
+{
+  "name": "immersphere-crm",
+  "version": "1.8.0",
+  "private": true,
+  "description": "Immersphere Pro CRM — Backend Serverless (Vercel Functions). v1.8A dry-run.",
+  "engines": {
+    "node": "18.x"
+  },
+  "scripts": {
+    "dev": "vercel dev"
+  }
+}
