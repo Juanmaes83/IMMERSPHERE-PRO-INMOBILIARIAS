@@ -153,7 +153,63 @@ Propuesta Inmobiliaria Demo · Propuesta Propiedad Premium 360 · Propuesta Inmo
 
 ---
 
-### 🔜 v1.6 — Propuestas comerciales avanzadas / PDF externo
+### ✅ v1.6 — Document Hub Administrativo (100%)
+
+**Document Hub por lead — 5 bloques administrativos:**
+
+**📁 Carpeta cliente simulada:**
+- Nombre de carpeta generado automáticamente: `CLIENTE_EMPRESA_AÑO_SERVICIO`
+- 8 secciones: Briefing · Presupuestos · Propuestas · Contratos · Facturas · Entregables · Asesoría · Seguimiento
+- Estado por sección (pendiente / completo / N/A)
+- Copiar estructura de carpeta (texto para crear manualmente)
+- Copiar checklist de documentos pendientes
+
+**📝 Contrato simple:**
+- Aviso visible: "Documento interno/preparatorio. Revisar legalmente antes de usar como contrato definitivo."
+- Campos: empresa, servicio, importe, forma de pago, alcance, entregables, condiciones, fechas, responsable
+- Estados: no iniciado · pendiente · preparado · enviado · firmado · rechazado · revisión
+- Copiar texto del contrato · Imprimir/guardar PDF (window.print + @media print)
+- Flujo: Contrato firmado → botón "→ Factura" pre-rellena la factura
+
+**🧾 Factura / cobro:**
+- Aviso: "La factura legal se emitirá desde herramienta externa"
+- Herramienta: Holded · Quipu · Stripe · Otro
+- Enlace externo manual con validación básica de URL (debe empezar por https://)
+- Estados: no aplica · pendiente de emitir · proforma · emitida · enviada · cobrada · vencida · cancelada
+- Campos: importe, IVA, total, nº externo, fechas, notas
+- Flujo: Factura cobrada → botón "→ Asesoría" pre-rellena el pack asesoría
+
+**👔 Pack asesoría:**
+- Prepara datos para enviar al asesor fiscal/contable
+- Campos: empresa, CIF/NIF, email de facturación, servicio, importes, notas
+- Copiar resumen para asesor (texto formateado)
+- Abrir email al asesor (mailto con encodeURIComponent, sin API)
+- Marcar como enviado (registra en historial)
+
+**⭐ Seguimiento / fidelización:**
+- Estados: pendiente entrega · entregado · revisión pendiente · satisfecho · upsell · renovación · dormido
+- Campos: fecha entrega, satisfacción, próxima revisión, oportunidad de upsell, notas
+- Copiar mensaje post-entrega personalizado
+- Copiar mensaje de upsell personalizado
+
+**🗺 Journey documental visual:**
+Barra visual de 8 pasos: Lead → Presupuesto → Propuesta → Contrato → Factura → Asesoría → Entregado → Fidelización. Muestra alertas críticas (ej: propuesta aceptada sin contrato).
+
+**Alertas automáticas (calcAlertas):**
+- Propuesta aceptada sin contrato iniciado
+- Contrato firmado sin factura registrada
+- Factura emitida sin enviar al asesor
+- Cliente satisfecho con oportunidad de upsell activa
+
+**Dashboard:** 4 nuevos KPIs administrativos (contratos activos, facturas cobradas, pendientes asesoría, en fidelización)
+
+**Export mensual:** Botón "📅 Mes" en nav → copia resumen del mes al portapapeles + descarga CSV mensual con actividad administrativa
+
+**Export/Import:** JSON v1.6 incluye `admin` completo · CSV añade 7 columnas admin · import con backwards compatibility
+
+---
+
+### 🔜 v1.7 — Integraciones externas reales (NO implementar hasta OK)
 ### 🔜 v1.6 — Document Hub administrativo (contratos simples, facturas, carpetas cliente)
 ### 🔜 v1.7 — Integraciones externas (Holded, Stripe, Drive, firma digital)
 ### 🔜 v2.0 — SaaS real con backend, auth y base de datos

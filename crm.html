@@ -490,6 +490,54 @@ nav{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 20px;d
 .card-dup-btn{background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.25);color:var(--blue);padding:3px 8px;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;transition:all .2s;margin-left:8px;line-height:1;min-height:unset;height:22px}
 .card-dup-btn:hover{background:rgba(59,130,246,.3)}
 
+/* ── ADMIN HUB v1.6 ─────────────────────────────────────────────────── */
+.admin-block{background:var(--bg3);border:1px solid var(--border);border-radius:10px;margin-bottom:9px;overflow:hidden}
+.admin-block-head{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;cursor:pointer;gap:8px;user-select:none}
+.admin-block-head:hover{background:rgba(255,255,255,.025)}
+.admin-block-title{font-size:12px;font-weight:700;display:flex;align-items:center;gap:7px;color:var(--text)}
+.admin-block-icon{font-size:14px;flex-shrink:0}
+.admin-block-body{padding:0 14px 14px;display:none}
+.admin-block-body.open{display:block}
+.admin-toggle{background:none;border:none;color:var(--text3);font-size:13px;cursor:pointer;padding:0;min-height:unset;flex-shrink:0}
+.ast{padding:2px 8px;border-radius:5px;font-size:10px;font-weight:700}
+.ast-ok{background:rgba(16,185,129,.15);color:var(--green);border:1px solid rgba(16,185,129,.3)}
+.ast-warn{background:rgba(245,158,11,.15);color:var(--gold);border:1px solid rgba(245,158,11,.3)}
+.ast-danger{background:rgba(239,68,68,.15);color:var(--red);border:1px solid rgba(239,68,68,.3)}
+.ast-info{background:rgba(59,130,246,.15);color:var(--blue);border:1px solid rgba(59,130,246,.3)}
+.ast-neutral{background:rgba(100,116,139,.15);color:var(--text3);border:1px solid rgba(100,116,139,.3)}
+.journey-doc{display:flex;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.journey-doc::-webkit-scrollbar{display:none}
+.journey-step{display:flex;flex-direction:column;align-items:center;min-width:72px;position:relative;flex-shrink:0}
+.journey-step:not(:last-child)::after{content:'';position:absolute;top:13px;left:calc(50% + 13px);width:calc(100% - 26px);height:2px;background:var(--border)}
+.journey-dot{width:26px;height:26px;border-radius:50%;border:2px solid var(--border);background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:11px;z-index:1;position:relative;flex-shrink:0}
+.journey-dot.jdone{border-color:var(--green);background:rgba(16,185,129,.15);color:var(--green)}
+.journey-dot.jactive{border-color:var(--accent2);background:rgba(124,58,237,.2);color:var(--accent2)}
+.journey-label{font-size:8px;color:var(--text3);margin-top:4px;text-align:center;font-weight:600;text-transform:uppercase;letter-spacing:.02em;line-height:1.3;max-width:68px}
+.journey-label.jdone{color:var(--green)}
+.journey-label.jactive{color:var(--accent2)}
+.admin-field{margin-bottom:8px}
+.admin-label{font-size:10px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px;display:block}
+.admin-input,.admin-select{background:var(--bg);border:1px solid var(--border);color:var(--text);border-radius:7px;padding:6px 9px;font-size:12px;outline:none;font-family:inherit;width:100%}
+.admin-input:focus,.admin-select:focus{border-color:var(--accent)}
+.admin-textarea{background:var(--bg);border:1px solid var(--border);color:var(--text);border-radius:7px;padding:6px 9px;font-size:12px;outline:none;font-family:inherit;width:100%;resize:vertical;line-height:1.5;min-height:48px}
+.admin-textarea:focus{border-color:var(--accent)}
+.admin-2col{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.admin-save-btn{background:rgba(124,58,237,.2);border:1px solid rgba(124,58,237,.3);color:var(--accent2);padding:6px 13px;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer;transition:all .2s}
+.admin-save-btn:hover{background:rgba(124,58,237,.35)}
+.admin-action-row{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px;align-items:center}
+.admin-btn{background:var(--bg2);border:1px solid var(--border);color:var(--text2);padding:5px 10px;border-radius:7px;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;min-height:unset;text-decoration:none;display:inline-flex;align-items:center;gap:3px}
+.admin-btn:hover{border-color:var(--accent);color:var(--accent2)}
+.admin-btn.agreen{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.3);color:var(--green)}
+.admin-btn.ablue{background:rgba(59,130,246,.15);border-color:rgba(59,130,246,.3);color:var(--blue)}
+.admin-btn.awa{background:rgba(22,163,74,.15);border-color:rgba(22,163,74,.3);color:#4ade80}
+.admin-warning-box{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:8px;padding:8px 11px;font-size:11px;color:var(--gold);margin-bottom:9px;line-height:1.4}
+.admin-info-box{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:8px;padding:8px 11px;font-size:11px;color:var(--blue);margin-bottom:9px;line-height:1.4}
+.admin-critical-box{background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.2);border-radius:8px;padding:8px 11px;font-size:11px;color:var(--red);line-height:1.5}
+.carpeta-row{display:flex;justify-content:space-between;align-items:center;padding:6px 9px;background:var(--bg);border:1px solid var(--border);border-radius:7px;margin-bottom:5px;gap:7px}
+.carpeta-key{font-size:10px;font-weight:700;color:var(--text3);flex-shrink:0}
+.carpeta-val{font-size:12px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(max-width:768px){.admin-2col{grid-template-columns:1fr}.journey-step{min-width:56px}}
+
 /* ── QUOTE BUILDER ──────────────────────────────────────────────────── */
 .quote-overlay{position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:1400;display:none;align-items:flex-start;justify-content:center;padding:10px;overflow-y:auto}
 .quote-overlay.open{display:flex}
@@ -653,6 +701,7 @@ nav{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 20px;d
     <button class="nav-action-btn" onclick="exportarJSON()">⬇ JSON</button>
     <button class="nav-action-btn" onclick="importarJSON()">⬆ JSON</button>
     <button class="nav-action-btn" onclick="exportarCSV()">⬇ CSV</button>
+    <button class="nav-action-btn" onclick="exportMensual()" title="Export mensual administrativo">📅 Mes</button>
     <button class="reset-btn" onclick="resetDemo()" title="Borrar todos los datos guardados">↺ Reset</button>
     <span class="badge-pill">50 leads</span>
   </div>
@@ -705,6 +754,14 @@ nav{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 20px;d
     <div class="kpi gold"><div class="kpi-label">📤 Enviadas</div><div class="kpi-value" id="kpi-p-enviadas">—</div><div class="kpi-sub">En seguimiento</div></div>
     <div class="kpi green"><div class="kpi-label">✓ Aceptadas</div><div class="kpi-value" id="kpi-p-aceptadas">—</div><div class="kpi-sub">Cerradas</div></div>
     <div class="kpi red"><div class="kpi-label">⏰ Caducadas</div><div class="kpi-value" id="kpi-p-caducadas">—</div><div class="kpi-sub">Requieren atención</div></div>
+  </div>
+
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text3);margin-bottom:8px">Administrativo</div>
+  <div class="kpi-grid" style="margin-bottom:20px">
+    <div class="kpi blue"><div class="kpi-label">📝 Contratos activos</div><div class="kpi-value" id="kpi-a-contratos">—</div><div class="kpi-sub">Preparados/enviados/firmados</div></div>
+    <div class="kpi green"><div class="kpi-label">🧾 Facturas cobradas</div><div class="kpi-value" id="kpi-a-cobradas">—</div><div class="kpi-sub">Importe cobrado este año</div></div>
+    <div class="kpi gold"><div class="kpi-label">👔 Pendientes asesoría</div><div class="kpi-value" id="kpi-a-asesoria">—</div><div class="kpi-sub">Sin enviar al asesor</div></div>
+    <div class="kpi lime"><div class="kpi-label">⭐ En fidelización</div><div class="kpi-value" id="kpi-a-fideli">—</div><div class="kpi-sub">Satisfecho / upsell / renovación</div></div>
   </div>
 
   <div id="dash-alertas" style="margin-bottom:20px"></div>
@@ -1203,6 +1260,84 @@ nav{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 20px;d
 
 <script>
 
+// ── Admin Hub v1.6 ───────────────────────────────────────────────────────────
+function _emptyAdmin(){
+  return{
+    carpeta:{
+      nombre:'',
+      secciones:{
+        '01_Briefing'    :{estado:'pendiente',nota:'',enlace:''},
+        '02_Presupuestos':{estado:'pendiente',nota:'',enlace:''},
+        '03_Propuestas'  :{estado:'pendiente',nota:'',enlace:''},
+        '04_Contratos'   :{estado:'pendiente',nota:'',enlace:''},
+        '05_Facturas'    :{estado:'pendiente',nota:'',enlace:''},
+        '06_Entregables' :{estado:'pendiente',nota:'',enlace:''},
+        '07_Asesoria'    :{estado:'pendiente',nota:'',enlace:''},
+        '08_Seguimiento' :{estado:'pendiente',nota:'',enlace:''}
+      }
+    },
+    contrato:{
+      estado:'no-iniciado',cliente:'',empresa:'',servicio:'',importe:0,formaPago:'100% al aceptar',
+      alcance:'',entregables:'',plazos:'',condiciones:'',
+      fechaInicio:'',fechaEntrega:'',responsable:'Juanma — Rubik SOTA',texto:'',notas:'',
+      fechaCreacion:'',fechaActualizacion:''
+    },
+    factura:{
+      estado:'no-aplica',importe:0,iva:0,total:0,
+      numeroExterno:'',herramienta:'',enlaceExterno:'',
+      fechaEmision:'',fechaVencimiento:'',fechaCobro:'',notas:'',responsable:''
+    },
+    asesoria:{
+      emailAsesor:'',estado:'pendiente',empresa:'',contacto:'',cifNif:'',
+      emailFacturacion:'',servicio:'',importe:0,iva:0,total:0,fecha:'',notas:'',fechaEnvio:''
+    },
+    seguimiento:{
+      estado:'pendiente-entrega',fechaEntrega:'',satisfaccion:'',
+      proximaRevision:'',upsell:'',servicioSiguiente:'',recordatorio:'',notas:''
+    }
+  };
+}
+
+function _astBadge(estado,colorMap){
+  const cls=colorMap[estado]||'neutral';
+  const m={ok:'ast-ok',warn:'ast-warn',danger:'ast-danger',info:'ast-info',neutral:'ast-neutral'};
+  return`<span class="ast ${m[cls]||'ast-neutral'}">${safeHtml(estado||'—')}</span>`;
+}
+
+function _adminJourneySteps(l){
+  const a=l._admin||_emptyAdmin();
+  const qs=l._presupuestos||[];
+  const ps=l._propuestas||[];
+  return[
+    {label:'Lead',       done:true},
+    {label:'Presupto.',  done:qs.length>0},
+    {label:'Propuesta',  done:ps.some(p=>p.estado==='aceptada')},
+    {label:'Contrato',   done:a.contrato.estado==='firmado'},
+    {label:'Factura',    done:a.factura.estado==='cobrada'},
+    {label:'Asesoría',   done:a.asesoria.estado==='enviado'},
+    {label:'Entregado',  done:['entregado','satisfecho','upsell','renovacion'].includes(a.seguimiento.estado)},
+    {label:'Fideliz.',   done:['satisfecho','upsell','renovacion'].includes(a.seguimiento.estado)}
+  ];
+}
+
+function _adminCriticals(l,a){
+  const ps=l._propuestas||[];
+  const msgs=[];
+  if(ps.some(p=>p.estado==='aceptada')&&a.contrato.estado==='no-iniciado') msgs.push('⚠ Propuesta aceptada sin contrato iniciado.');
+  if(a.contrato.estado==='firmado'&&a.factura.estado==='no-aplica') msgs.push('📋 Contrato firmado: registra el estado de factura.');
+  if(['emitida','enviada'].includes(a.factura.estado)&&a.asesoria.estado==='pendiente') msgs.push('👔 Factura emitida: envía datos al asesor.');
+  return msgs;
+}
+
+function toggleAdminBlock(ev,blockId){
+  if(ev) ev.stopPropagation();
+  const body=document.getElementById(blockId);if(!body) return;
+  body.classList.toggle('open');
+}
+
+function _gav(field,lid){const e=document.getElementById('admin-'+field+'-'+lid);return e?(e.value||''):'';}
+function _gavn(field,lid){return parseFloat(_gav(field,lid))||0;}
+
 // ── Proposal Templates ───────────────────────────────────────────────────────
 const PROPOSAL_TEMPLATES = [
   {id:'inmo-demo',nombre:'Propuesta Inmobiliaria Demo',lineaNegocio:'Immersphere Pro Inmobiliarias',
@@ -1336,6 +1471,7 @@ function loadState(){
         if(r.cierreAsignado!==undefined) l._cierreAsignado=r.cierreAsignado;
         if(r.presupuestos!==undefined) l._presupuestos=r.presupuestos;
         if(r.propuestas!==undefined) l._propuestas=r.propuestas;
+        if(r.admin!==undefined) l._admin=r.admin;
         if(r.edits) { Object.assign(l, r.edits); l._edits=r.edits; }
         if(r.comercial){
           l._valorPotencial=r.comercial.valorPotencial||0;
@@ -1359,7 +1495,7 @@ function saveState(){
     st[l.id]={
       estado:l.estado,notas:l._notas||'',proxAccion:l._proxAccion||'',proxFecha:l._proxFecha||'',
       temp:l._temp||'',actividad:l._actividad||[],edits:l._edits||{},
-      fechaEstado:l._fechaEstado||'',objecionAsignada:l._objecionAsignada||'',cierreAsignado:l._cierreAsignado||'',presupuestos:l._presupuestos||[],propuestas:l._propuestas||[],
+      fechaEstado:l._fechaEstado||'',objecionAsignada:l._objecionAsignada||'',cierreAsignado:l._cierreAsignado||'',presupuestos:l._presupuestos||[],propuestas:l._propuestas||[],admin:l._admin||_emptyAdmin(),
       comercial:{valorPotencial:l._valorPotencial||0,probabilidad:l._probabilidad||10,presupuesto:l._presupuesto||'',packRec:l._packRec||'',ultimoContacto:l._ultimoContacto||''}
     };
   });
@@ -1857,6 +1993,17 @@ function renderDashboard(){
   setKP('kpi-p-enviadas',pEnviadas||'—');
   setKP('kpi-p-aceptadas',pAceptadas||'—');
   setKP('kpi-p-caducadas',pCaducadas||'—');
+  // Admin KPIs v1.6
+  const leadsConAdmin=leads.filter(l=>l._admin);
+  const aContratos=leadsConAdmin.filter(l=>['preparado','enviado','firmado'].includes(l._admin.contrato.estado)).length;
+  const aCobradas=leadsConAdmin.filter(l=>l._admin.factura.estado==='cobrada').length;
+  const aAsesoria=leadsConAdmin.filter(l=>['emitida','enviada'].includes(l._admin.factura.estado)&&l._admin.asesoria.estado==='pendiente').length;
+  const aFideli=leadsConAdmin.filter(l=>['satisfecho','upsell','renovacion'].includes(l._admin.seguimiento.estado)).length;
+  const setKA=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
+  setKA('kpi-a-contratos',aContratos||'—');
+  setKA('kpi-a-cobradas',aCobradas||'—');
+  setKA('kpi-a-asesoria',aAsesoria||'—');
+  setKA('kpi-a-fideli',aFideli||'—');
 
   // Top 5
   const top5=[...leads].sort((a,b)=>b.score-a.score).slice(0,5);
@@ -2086,7 +2233,7 @@ function exportarJSON(){
       estado:l.estado,notas:l._notas||'',proxAccion:l._proxAccion||'',proxFecha:l._proxFecha||'',
       temp:l._temp||'',actividad:l._actividad||[],edits:l._edits||{},
       fechaEstado:l._fechaEstado||'',objecionAsignada:l._objecionAsignada||'',cierreAsignado:l._cierreAsignado||'',
-      presupuestos:l._presupuestos||[],propuestas:l._propuestas||[],
+      presupuestos:l._presupuestos||[],propuestas:l._propuestas||[],admin:l._admin||_emptyAdmin(),
       comercial:{valorPotencial:l._valorPotencial||0,probabilidad:l._probabilidad||10,presupuesto:l._presupuesto||'',packRec:l._packRec||'',ultimoContacto:l._ultimoContacto||''}
     };
   });
@@ -2121,6 +2268,7 @@ function importarJSON(){
           if(r.cierreAsignado!==undefined) l._cierreAsignado=r.cierreAsignado;
           if(r.presupuestos!==undefined) l._presupuestos=r.presupuestos;
           if(r.propuestas!==undefined) l._propuestas=r.propuestas;
+          if(r.admin!==undefined) l._admin=r.admin;
           if(r.comercial){
             l._valorPotencial=r.comercial.valorPotencial||0;
             l._probabilidad=r.comercial.probabilidad||10;
@@ -2138,14 +2286,15 @@ function importarJSON(){
   input.click();
 }
 function exportarCSV(){
-  const rows=[['ID','Empresa','Sector','Zona','Prioridad','Score','Temperatura','Estado','Valor potencial (€)','Probabilidad (%)','Pipeline ponderado (€)','Pack rec.','Precio orientativo','Próxima acción','Fecha próxima acción','Último contacto','Objeción asignada','Cierre asignado','Último presupuesto estado','Último presupuesto total (€)','Último presupuesto fecha','Último presupuesto caducidad','Última propuesta estado','Última propuesta título','Última propuesta total (€)','Última propuesta fecha','Última propuesta caducidad','Notas']];
+  const rows=[['ID','Empresa','Sector','Zona','Prioridad','Score','Temperatura','Estado','Valor potencial (€)','Probabilidad (%)','Pipeline ponderado (€)','Pack rec.','Precio orientativo','Próxima acción','Fecha próxima acción','Último contacto','Objeción asignada','Cierre asignado','Último presupuesto estado','Último presupuesto total (€)','Último presupuesto fecha','Último presupuesto caducidad','Última propuesta estado','Última propuesta título','Última propuesta total (€)','Última propuesta fecha','Última propuesta caducidad','Contrato estado','Factura estado','Factura total (€)','Factura fecha cobro','Enviado asesor','Seguimiento estado','Carpeta cliente','Notas']];
   leads.forEach(l=>{
     const pp=Math.round((l._valorPotencial||0)*(l._probabilidad||10)/100);
     const pqs=l._presupuestos||[];
     const lastQ=pqs.length?pqs[pqs.length-1]:null;
     const pps=l._propuestas||[];
     const lastP=pps.length?pps[pps.length-1]:null;
-    rows.push([l.id,l.empresa,l.sector,l.zona,l.prioridad,l.score,getTempCfg(calcTemp(l)).label,l.estado||'Sin contactar',l._valorPotencial||0,l._probabilidad||10,pp,l._packRec||l.pack||'',l.precio,l._proxAccion||'',l._proxFecha||'',l._ultimoContacto||'',l._objecionAsignada||'',l._cierreAsignado||'',lastQ?lastQ.estado:'',lastQ?lastQ.total:'',lastQ?lastQ.fechaActualizacion:'',lastQ?lastQ.caducidad:'',lastP?lastP.estado:'',lastP?lastP.titulo:'',lastP?lastP.total:'',lastP?lastP.fechaActualizacion:'',lastP?lastP.caducidad:'',l._notas||'']);
+    const ad=l._admin||_emptyAdmin();
+    rows.push([l.id,l.empresa,l.sector,l.zona,l.prioridad,l.score,getTempCfg(calcTemp(l)).label,l.estado||'Sin contactar',l._valorPotencial||0,l._probabilidad||10,pp,l._packRec||l.pack||'',l.precio,l._proxAccion||'',l._proxFecha||'',l._ultimoContacto||'',l._objecionAsignada||'',l._cierreAsignado||'',lastQ?lastQ.estado:'',lastQ?lastQ.total:'',lastQ?lastQ.fechaActualizacion:'',lastQ?lastQ.caducidad:'',lastP?lastP.estado:'',lastP?lastP.titulo:'',lastP?lastP.total:'',lastP?lastP.fechaActualizacion:'',lastP?lastP.caducidad:'',ad.contrato.estado,ad.factura.estado,ad.factura.total||0,ad.factura.fechaCobro||'',ad.asesoria.estado,ad.seguimiento.estado,ad.carpeta.nombre||'',l._notas||'']);
   });
   const csv=rows.map(r=>r.map(v=>'"'+(String(v||'').replace(/"/g,'""'))+'"').join(',')).join('\n');
   const a=document.createElement('a');
@@ -2459,18 +2608,9 @@ function openModal(id){
             ${q.mensajesGenerados&&q.mensajesGenerados.wa?`<div style="margin-top:6px"><button class="quote-hub-btn wa" style="background:rgba(22,163,74,.15);border-color:rgba(22,163,74,.3);color:#4ade80" onclick="copyQuoteWA('${l.id}','${q.id}')">💬 Copiar WA</button><a class="quote-hub-btn" href="${l.whatsapp?'https://wa.me/'+l.whatsapp.replace(/\\D/g,'')+'?text='+encodeURIComponent(q.mensajesGenerados.wa):'#'}" target="_blank" style="${l.whatsapp?'':'display:none'}">💬 Abrir WA</a><a class="quote-hub-btn mail" style="background:rgba(59,130,246,.15);border-color:rgba(59,130,246,.3);color:var(--blue)" href="${l.email?'mailto:'+encodeURIComponent(l.email)+'?subject='+encodeURIComponent(q.mensajesGenerados.emailAs||'Presupuesto')+'&body='+encodeURIComponent(q.mensajesGenerados.email||''):'#'}" ${!l.email?'style="display:none"':''}>📧 Email</a></div>`:''}
           </div>`).join('')):'<div style="font-size:12px;color:var(--text3);text-align:center;padding:12px;background:var(--bg3);border:1px dashed var(--border);border-radius:8px">Sin presupuestos todavía. Usa "Crear presupuesto visual" para montar uno en 2 minutos.</div>'}
       </div>
-      <!-- FUTURE PHASES -->
-      <div class="doc-hub-ph">
-        <div class="doc-hub-badges">
-          <span class="doc-badge">📄 Propuestas PDF</span>
-          <span class="doc-badge">📝 Contratos</span>
-          <span class="doc-badge">🧾 Facturas</span>
-          <span class="doc-badge">📋 Briefings</span>
-          <span class="doc-badge">📦 Entregables</span>
-          <span class="doc-badge">🔗 Drive / Holded</span>
-        </div>
-        <div class="doc-hub-msg">Fase futura: convertir presupuesto en propuesta PDF, contrato, factura externa y carpeta cliente.</div>
-      </div>
+      <!-- ADMIN HUB v1.6 -->
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent2);margin-bottom:10px;padding-top:4px">🗂 Gestión administrativa</div>
+      ${renderAdminHub(l)}
     </div>
   `;
 
@@ -2603,6 +2743,19 @@ function calcAlertas(){
     (l._propuestas||[]).filter(p=>p.estado==='enviada'&&p.caducidad&&p.caducidad<hoy).forEach(()=>{
       alertas.push({lead:l,tipo:'propuesta-caducada',icon:'⏰',msg:'Propuesta enviada caducada sin respuesta.',accion:'Recontactar con nueva oferta'});
     });
+    // Admin alerts v1.6
+    const adm=l._admin;
+    if(adm){
+      const ps=l._propuestas||[];
+      if(ps.some(p=>p.estado==='aceptada')&&adm.contrato.estado==='no-iniciado')
+        alertas.push({lead:l,tipo:'contrato-pendiente',icon:'📝',msg:'Propuesta aceptada sin contrato iniciado.',accion:'Preparar contrato simple'});
+      if(adm.contrato.estado==='firmado'&&adm.factura.estado==='no-aplica')
+        alertas.push({lead:l,tipo:'factura-pendiente',icon:'🧾',msg:'Contrato firmado sin factura registrada.',accion:'Registrar estado de factura'});
+      if(['emitida','enviada'].includes(adm.factura.estado)&&adm.asesoria.estado==='pendiente')
+        alertas.push({lead:l,tipo:'asesoria-pendiente',icon:'👔',msg:'Factura emitida sin enviar al asesor.',accion:'Preparar pack asesoría'});
+      if(['upsell','satisfecho'].includes(adm.seguimiento.estado)&&!l._proxAccion)
+        alertas.push({lead:l,tipo:'upsell-oportunidad',icon:'⭐',msg:'Cliente satisfecho con oportunidad de upsell.',accion:'Proponer siguiente servicio'});
+    }
   });
   const seen=new Set();
   return alertas.filter(a=>{
@@ -3185,6 +3338,491 @@ function restaurarCatalogo(){
 }
 
 function cerrarSvcEdit(){document.getElementById('svc-edit-overlay').classList.remove('open');}
+
+// ── Admin Hub render ──────────────────────────────────────────────────────────
+function renderAdminHub(l){
+  if(!l._admin) l._admin=_emptyAdmin();
+  const a=l._admin;
+  const steps=_adminJourneySteps(l);
+  const criticals=_adminCriticals(l,a);
+
+  // Journey bar
+  const journey=`<div style="margin-bottom:14px">
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent2);margin-bottom:8px">🗺 Journey documental</div>
+    <div class="journey-doc">${steps.map((s,i)=>{
+      const isDone=s.done;
+      const isActive=!isDone&&(i===0||steps[i-1].done);
+      const cls=isDone?'jdone':isActive?'jactive':'';
+      return`<div class="journey-step">
+        <div class="journey-dot ${cls}">${isDone?'✓':i+1}</div>
+        <div class="journey-label ${cls}">${s.label}</div>
+      </div>`;
+    }).join('')}</div>
+    ${criticals.length?'<div class="admin-critical-box" style="margin-top:8px">'+criticals.map(c=>safeHtml(c)).join('<br>')+'</div>':''}
+  </div>`;
+
+  // Carpeta cliente
+  const cp=a.carpeta;
+  const carpeta=`<div class="admin-block">
+    <div class="admin-block-head" onclick="toggleAdminBlock(event,'adb-cp-${l.id}')">
+      <div class="admin-block-title"><span class="admin-block-icon">📁</span>Carpeta cliente</div>
+      <div style="display:flex;gap:6px;align-items:center">
+        ${cp.nombre?`<span style="font-size:10px;color:var(--text3);max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${safeHtml(cp.nombre)}</span>`:_astBadge('sin nombre',{neutral:'neutral'})}
+        <button class="admin-toggle">▾</button>
+      </div>
+    </div>
+    <div class="admin-block-body" id="adb-cp-${l.id}">
+      <div class="admin-field">
+        <label class="admin-label">Nombre de carpeta</label>
+        <div style="display:grid;grid-template-columns:1fr auto;gap:6px">
+          <input class="admin-input" id="admin-cp-nombre-${l.id}" value="${safeHtml(cp.nombre)}" placeholder="CLIENTE_EMPRESA_2026_SERVICIO">
+          <button class="admin-btn ablue" onclick="autoNombreCarpeta(${l.id})">⚡ Auto</button>
+        </div>
+      </div>
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text3);margin:9px 0 6px">Secciones</div>
+      ${Object.entries(cp.secciones).map(([k,v])=>`
+        <div class="carpeta-row">
+          <div class="carpeta-key">${k}</div>
+          <div class="carpeta-val">${safeHtml(v.nota||k.replace(/^\d+_/,''))}</div>
+          <select class="admin-select" style="width:auto;padding:2px 6px;font-size:10px;flex-shrink:0" onchange="toggleSeccionCarpeta(${l.id},'${k}',this.value)">
+            <option value="pendiente" ${v.estado==='pendiente'?'selected':''}>Pendiente</option>
+            <option value="completo" ${v.estado==='completo'?'selected':''}>✓ Completo</option>
+            <option value="no-aplica" ${v.estado==='no-aplica'?'selected':''}>N/A</option>
+          </select>
+        </div>`).join('')}
+      <div class="admin-action-row">
+        <button class="admin-save-btn" onclick="saveCarpetaAdmin(${l.id})">💾 Guardar</button>
+        <button class="admin-btn" onclick="copiarEstructuraCarpeta(${l.id})">📋 Estructura</button>
+        <button class="admin-btn" onclick="copiarChecklistCarpeta(${l.id})">✓ Checklist</button>
+      </div>
+    </div>
+  </div>`;
+
+  // Contrato
+  const ct=a.contrato;
+  const ctColorMap={'no-iniciado':'neutral','pendiente':'warn','preparado':'info','enviado':'info','firmado':'ok','rechazado':'danger','revision':'warn'};
+  const contrato=`<div class="admin-block">
+    <div class="admin-block-head" onclick="toggleAdminBlock(event,'adb-ct-${l.id}')">
+      <div class="admin-block-title"><span class="admin-block-icon">📝</span>Contrato simple</div>
+      <div style="display:flex;gap:6px;align-items:center">${_astBadge(ct.estado,ctColorMap)}<button class="admin-toggle">▾</button></div>
+    </div>
+    <div class="admin-block-body" id="adb-ct-${l.id}">
+      <div class="admin-warning-box">⚠ Documento interno/preparatorio. Revisar legalmente antes de usar como contrato definitivo.</div>
+      <div class="admin-2col">
+        <div class="admin-field"><label class="admin-label">Estado</label>
+          <select class="admin-select" id="admin-ct-estado-${l.id}">
+            ${['no-iniciado','pendiente','preparado','enviado','firmado','rechazado','revision'].map(s=>`<option value="${s}"${ct.estado===s?' selected':''}>${s}</option>`).join('')}
+          </select></div>
+        <div class="admin-field"><label class="admin-label">Responsable</label>
+          <input class="admin-input" id="admin-ct-resp-${l.id}" value="${safeHtml(ct.responsable)}" placeholder="Juanma — Rubik SOTA"></div>
+      </div>
+      <div class="admin-field"><label class="admin-label">Empresa cliente</label>
+        <input class="admin-input" id="admin-ct-empresa-${l.id}" value="${safeHtml(ct.empresa||l.empresa)}"></div>
+      <div class="admin-field"><label class="admin-label">Servicio contratado</label>
+        <input class="admin-input" id="admin-ct-servicio-${l.id}" value="${safeHtml(ct.servicio||l._packRec||l.pack||'')}" placeholder="Pack Inmobiliaria 360..."></div>
+      <div class="admin-2col">
+        <div class="admin-field"><label class="admin-label">Importe (€)</label>
+          <input class="admin-input" id="admin-ct-importe-${l.id}" type="number" value="${ct.importe||''}"></div>
+        <div class="admin-field"><label class="admin-label">Forma de pago</label>
+          <select class="admin-select" id="admin-ct-pago-${l.id}">
+            ${['100% al aceptar','50% inicio / 50% entrega','mensual','setup + mensualidad','personalizado'].map(s=>`<option value="${s}"${ct.formaPago===s?' selected':''}>${s}</option>`).join('')}
+          </select></div>
+      </div>
+      <div class="admin-field"><label class="admin-label">Alcance</label>
+        <textarea class="admin-textarea" id="admin-ct-alcance-${l.id}" rows="2">${safeHtml(ct.alcance)}</textarea></div>
+      <div class="admin-field"><label class="admin-label">Entregables</label>
+        <textarea class="admin-textarea" id="admin-ct-entregables-${l.id}" rows="2">${safeHtml(ct.entregables)}</textarea></div>
+      <div class="admin-2col">
+        <div class="admin-field"><label class="admin-label">Fecha inicio</label>
+          <input class="admin-input" id="admin-ct-finicio-${l.id}" type="date" value="${ct.fechaInicio}"></div>
+        <div class="admin-field"><label class="admin-label">Fecha entrega</label>
+          <input class="admin-input" id="admin-ct-fentrega-${l.id}" type="date" value="${ct.fechaEntrega}"></div>
+      </div>
+      <div class="admin-field"><label class="admin-label">Condiciones y plazos</label>
+        <textarea class="admin-textarea" id="admin-ct-condiciones-${l.id}" rows="2">${safeHtml(ct.condiciones)}</textarea></div>
+      <div class="admin-field"><label class="admin-label">Notas internas</label>
+        <textarea class="admin-textarea" id="admin-ct-notas-${l.id}" rows="1">${safeHtml(ct.notas)}</textarea></div>
+      <div class="admin-action-row">
+        <button class="admin-save-btn" onclick="saveContratoAdmin(${l.id})">💾 Guardar</button>
+        <button class="admin-btn" onclick="copiarTextoContrato(${l.id})">📋 Copiar</button>
+        <button class="admin-btn" onclick="printContratoAdmin(${l.id})">🖨 PDF</button>
+        ${ct.estado==='firmado'?`<button class="admin-btn agreen" onclick="openFacturaFromContrato(${l.id})">→ Factura</button>`:''}
+      </div>
+    </div>
+  </div>`;
+
+  // Factura
+  const fc=a.factura;
+  const fcColorMap={'no-aplica':'neutral','pendiente-emitir':'warn','proforma':'warn','emitida':'info','enviada':'info','cobrada':'ok','vencida':'danger','cancelada':'neutral'};
+  const factura=`<div class="admin-block">
+    <div class="admin-block-head" onclick="toggleAdminBlock(event,'adb-fc-${l.id}')">
+      <div class="admin-block-title"><span class="admin-block-icon">🧾</span>Factura / cobro</div>
+      <div style="display:flex;gap:6px;align-items:center">${_astBadge(fc.estado,fcColorMap)}<button class="admin-toggle">▾</button></div>
+    </div>
+    <div class="admin-block-body" id="adb-fc-${l.id}">
+      <div class="admin-info-box">ℹ La factura legal se emitirá desde herramienta externa (Holded, Quipu, Stripe…)</div>
+      <div class="admin-2col">
+        <div class="admin-field"><label class="admin-label">Estado</label>
+          <select class="admin-select" id="admin-fc-estado-${l.id}">
+            ${['no-aplica','pendiente-emitir','proforma','emitida','enviada','cobrada','vencida','cancelada'].map(s=>`<option value="${s}"${fc.estado===s?' selected':''}>${s}</option>`).join('')}
+          </select></div>
+        <div class="admin-field"><label class="admin-label">Herramienta</label>
+          <select class="admin-select" id="admin-fc-herr-${l.id}">
+            ${['','Holded','Quipu','Stripe','Otro'].map(s=>`<option value="${s}"${fc.herramienta===s?' selected':''}>${s||'— Seleccionar —'}</option>`).join('')}
+          </select></div>
+      </div>
+      <div class="admin-2col">
+        <div class="admin-field"><label class="admin-label">Importe sin IVA (€)</label>
+          <input class="admin-input" id="admin-fc-importe-${l.id}" type="number" value="${fc.importe||''}"></div>
+        <div class="admin-field"><label class="admin-label">IVA (€)</label>
+          <input class="admin-input" id="admin-fc-iva-${l.id}" type="number" value="${fc.iva||''}"></div>
+      </div>
+      <div class="admin-2col">
+        <div class="admin-field"><label class="admin-label">Total (€)</label>
+          <input class="admin-input" id="admin-fc-total-${l.id}" type="number" value="${fc.total||''}"></div>
+        <div class="admin-field"><label class="admin-label">Nº factura externo</label>
+          <input class="admin-input" id="admin-fc-numero-${l.id}" value="${safeHtml(fc.numeroExterno)}" placeholder="2026-001"></div>
+      </div>
+      <div class="admin-field"><label class="admin-label">Enlace externo</label>
+        <div style="display:grid;grid-template-columns:1fr auto;gap:6px">
+          <input class="admin-input" id="admin-fc-enlace-${l.id}" type="url" value="${safeHtml(fc.enlaceExterno)}" placeholder="https://app.holded.com/...">
+          <button class="admin-btn ablue" onclick="abrirEnlaceExterno(_gav('fc-enlace',${l.id}))">🔗</button>
+        </div>
+        <div id="admin-fc-urlwarn-${l.id}" style="font-size:10px;color:var(--red);margin-top:2px;display:none">⚠ La URL debe empezar por https://</div>
+      </div>
+      <div class="admin-2col">
+        <div class="admin-field"><label class="admin-label">Fecha emisión</label>
+          <input class="admin-input" id="admin-fc-femision-${l.id}" type="date" value="${fc.fechaEmision}"></div>
+        <div class="admin-field"><label class="admin-label">Fecha cobro</label>
+          <input class="admin-input" id="admin-fc-fcobro-${l.id}" type="date" value="${fc.fechaCobro}"></div>
+      </div>
+      <div class="admin-field"><label class="admin-label">Notas</label>
+        <textarea class="admin-textarea" id="admin-fc-notas-${l.id}" rows="1">${safeHtml(fc.notas)}</textarea></div>
+      <div class="admin-action-row">
+        <button class="admin-save-btn" onclick="saveFacturaAdmin(${l.id})">💾 Guardar</button>
+        <button class="admin-btn" onclick="copiarDatosFactura(${l.id})">📋 Datos</button>
+        ${fc.estado==='cobrada'?`<button class="admin-btn agreen" onclick="openAsesoriaFromFactura(${l.id})">→ Asesoría</button>`:''}
+      </div>
+    </div>
+  </div>`;
+
+  // Asesoría
+  const as=a.asesoria;
+  const asesoria=`<div class="admin-block">
+    <div class="admin-block-head" onclick="toggleAdminBlock(event,'adb-as-${l.id}')">
+      <div class="admin-block-title"><span class="admin-block-icon">👔</span>Pack asesoría</div>
+      <div style="display:flex;gap:6px;align-items:center">${_astBadge(as.estado,{pendiente:'warn',enviado:'ok'})}<button class="admin-toggle">▾</button></div>
+    </div>
+    <div class="admin-block-body" id="adb-as-${l.id}">
+      <div class="admin-info-box">ℹ El email se abrirá en tu cliente de correo. No se envía automáticamente.</div>
+      <div class="admin-2col">
+        <div class="admin-field"><label class="admin-label">Email del asesor</label>
+          <input class="admin-input" id="admin-as-email-${l.id}" type="email" value="${safeHtml(as.emailAsesor)}" placeholder="asesor@ejemplo.com"></div>
+        <div class="admin-field"><label class="admin-label">Estado</label>
+          <select class="admin-select" id="admin-as-estado-${l.id}">
+            <option value="pendiente"${as.estado==='pendiente'?' selected':''}>Pendiente</option>
+            <option value="enviado"${as.estado==='enviado'?' selected':''}>Enviado</option>
+          </select></div>
+      </div>
+      <div class="admin-2col">
+        <div class="admin-field"><label class="admin-label">Empresa cliente</label>
+          <input class="admin-input" id="admin-as-empresa-${l.id}" value="${safeHtml(as.empresa||l.empresa)}"></div>
+        <div class="admin-field"><label class="admin-label">CIF/NIF (opcional)</label>
+          <input class="admin-input" id="admin-as-cif-${l.id}" value="${safeHtml(as.cifNif)}" placeholder="B12345678"></div>
+      </div>
+      <div class="admin-2col">
+        <div class="admin-field"><label class="admin-label">Email facturación</label>
+          <input class="admin-input" id="admin-as-efact-${l.id}" value="${safeHtml(as.emailFacturacion||l.email||'')}" placeholder="facturacion@empresa.com"></div>
+        <div class="admin-field"><label class="admin-label">Servicio</label>
+          <input class="admin-input" id="admin-as-servicio-${l.id}" value="${safeHtml(as.servicio||a.contrato.servicio||'')}"></div>
+      </div>
+      <div class="admin-2col">
+        <div class="admin-field"><label class="admin-label">Importe sin IVA (€)</label>
+          <input class="admin-input" id="admin-as-importe-${l.id}" type="number" value="${as.importe||''}"></div>
+        <div class="admin-field"><label class="admin-label">Total con IVA (€)</label>
+          <input class="admin-input" id="admin-as-total-${l.id}" type="number" value="${as.total||''}"></div>
+      </div>
+      <div class="admin-field"><label class="admin-label">Notas para el asesor</label>
+        <textarea class="admin-textarea" id="admin-as-notas-${l.id}" rows="2">${safeHtml(as.notas)}</textarea></div>
+      <div class="admin-action-row">
+        <button class="admin-save-btn" onclick="saveAsesoriaAdmin(${l.id})">💾 Guardar</button>
+        <button class="admin-btn" onclick="copiarResumenAsesor(${l.id})">📋 Resumen</button>
+        <button class="admin-btn awa" onclick="openMailtoAsesor(${l.id})">📧 Email asesor</button>
+        <button class="admin-btn agreen" onclick="marcarEnviadoAsesor(${l.id})">✓ Enviado</button>
+      </div>
+    </div>
+  </div>`;
+
+  // Seguimiento
+  const sg=a.seguimiento;
+  const sgColorMap={'pendiente-entrega':'warn','entregado':'info','revision-pendiente':'warn','satisfecho':'ok','upsell':'ok','renovacion':'ok','dormido':'neutral'};
+  const seguimiento=`<div class="admin-block">
+    <div class="admin-block-head" onclick="toggleAdminBlock(event,'adb-sg-${l.id}')">
+      <div class="admin-block-title"><span class="admin-block-icon">⭐</span>Seguimiento / fidelización</div>
+      <div style="display:flex;gap:6px;align-items:center">${_astBadge(sg.estado,sgColorMap)}<button class="admin-toggle">▾</button></div>
+    </div>
+    <div class="admin-block-body" id="adb-sg-${l.id}">
+      <div class="admin-2col">
+        <div class="admin-field"><label class="admin-label">Estado</label>
+          <select class="admin-select" id="admin-sg-estado-${l.id}">
+            ${['pendiente-entrega','entregado','revision-pendiente','satisfecho','upsell','renovacion','dormido'].map(s=>`<option value="${s}"${sg.estado===s?' selected':''}>${s}</option>`).join('')}
+          </select></div>
+        <div class="admin-field"><label class="admin-label">Fecha de entrega</label>
+          <input class="admin-input" id="admin-sg-fentrega-${l.id}" type="date" value="${sg.fechaEntrega}"></div>
+      </div>
+      <div class="admin-2col">
+        <div class="admin-field"><label class="admin-label">Satisfacción</label>
+          <select class="admin-select" id="admin-sg-satisf-${l.id}">
+            ${['','muy satisfecho','satisfecho','neutro','insatisfecho'].map(s=>`<option value="${s}"${sg.satisfaccion===s?' selected':''}>${s||'— Valorar —'}</option>`).join('')}
+          </select></div>
+        <div class="admin-field"><label class="admin-label">Próxima revisión</label>
+          <input class="admin-input" id="admin-sg-revision-${l.id}" type="date" value="${sg.proximaRevision}"></div>
+      </div>
+      <div class="admin-field"><label class="admin-label">Oportunidad de upsell</label>
+        <input class="admin-input" id="admin-sg-upsell-${l.id}" value="${safeHtml(sg.upsell)}" placeholder="Pack mensual / web premium / campañas..."></div>
+      <div class="admin-field"><label class="admin-label">Notas post-entrega</label>
+        <textarea class="admin-textarea" id="admin-sg-notas-${l.id}" rows="2">${safeHtml(sg.notas)}</textarea></div>
+      <div class="admin-action-row">
+        <button class="admin-save-btn" onclick="saveSeguimientoAdmin(${l.id})">💾 Guardar</button>
+        <button class="admin-btn" onclick="copiarMsgPostEntrega(${l.id})">📋 Post-entrega</button>
+        <button class="admin-btn" onclick="copiarMsgUpsell(${l.id})">📋 Upsell</button>
+      </div>
+    </div>
+  </div>`;
+
+  return journey+carpeta+contrato+factura+asesoria+seguimiento+
+    `<div style="font-size:10px;color:var(--text3);text-align:center;padding:8px 0;border-top:1px solid var(--border);margin-top:6px">v1.7: Google Drive · OneDrive · Holded · Quipu · Stripe · DocuSign · Email automático</div>`;
+}
+
+// ── Admin action functions ─────────────────────────────────────────────────────
+function autoNombreCarpeta(lid){
+  const l=leads.find(x=>x.id===lid);if(!l) return;
+  if(!l._admin) l._admin=_emptyAdmin();
+  const año=new Date().getFullYear();
+  const e=l.empresa.toUpperCase().replace(/[^A-Z0-9]/g,'_').replace(/_+/g,'_').slice(0,20);
+  const s=(l._admin.contrato.servicio||l._packRec||l.pack||'PROYECTO').toUpperCase().replace(/[^A-Z0-9]/g,'_').replace(/_+/g,'_').slice(0,18);
+  const nom='CLIENTE_'+e+'_'+año+'_'+s;
+  l._admin.carpeta.nombre=nom;
+  const el=document.getElementById('admin-cp-nombre-'+lid);if(el) el.value=nom;
+}
+function toggleSeccionCarpeta(lid,sec,estado){
+  const l=leads.find(x=>x.id===lid);if(!l) return;
+  if(!l._admin) l._admin=_emptyAdmin();
+  if(l._admin.carpeta.secciones[sec]) l._admin.carpeta.secciones[sec].estado=estado;
+}
+function saveCarpetaAdmin(lid){
+  const l=leads.find(x=>x.id===lid);if(!l) return;
+  if(!l._admin) l._admin=_emptyAdmin();
+  l._admin.carpeta.nombre=_gav('cp-nombre',lid);
+  saveState();_showToast('✓ Carpeta guardada.','var(--green)');renderAll();setTimeout(()=>openModal(lid),100);
+}
+function copiarEstructuraCarpeta(lid){
+  const l=leads.find(x=>x.id===lid);if(!l) return;
+  if(!l._admin) l._admin=_emptyAdmin();
+  const nom=l._admin.carpeta.nombre||('CLIENTE_'+l.empresa.toUpperCase().replace(/\s+/g,'_')+'_'+new Date().getFullYear());
+  const txt=nom+'/\n'+Object.keys(l._admin.carpeta.secciones).map(k=>'  '+k+'/').join('\n');
+  navigator.clipboard.writeText(txt).catch(()=>{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);});
+  _showToast('✓ Estructura copiada.','var(--blue)');
+}
+function copiarChecklistCarpeta(lid){
+  const l=leads.find(x=>x.id===lid);if(!l) return;
+  if(!l._admin) l._admin=_emptyAdmin();
+  const lineas=Object.entries(l._admin.carpeta.secciones).map(([k,v])=>(v.estado==='completo'?'[x]':'[ ]')+' '+k);
+  const txt='Checklist: '+(l._admin.carpeta.nombre||l.empresa)+'\n\n'+lineas.join('\n');
+  navigator.clipboard.writeText(txt).catch(()=>{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);});
+  _showToast('✓ Checklist copiado.','var(--blue)');
+}
+function saveContratoAdmin(lid){
+  const l=leads.find(x=>x.id===lid);if(!l) return;
+  if(!l._admin) l._admin=_emptyAdmin();
+  const ct=l._admin.contrato;
+  const prev=ct.estado;
+  ct.estado=_gav('ct-estado',lid);ct.responsable=_gav('ct-resp',lid);ct.empresa=_gav('ct-empresa',lid);
+  ct.servicio=_gav('ct-servicio',lid);ct.importe=_gavn('ct-importe',lid);ct.formaPago=_gav('ct-pago',lid);
+  ct.alcance=_gav('ct-alcance',lid);ct.entregables=_gav('ct-entregables',lid);
+  ct.condiciones=_gav('ct-condiciones',lid);ct.fechaInicio=_gav('ct-finicio',lid);
+  ct.fechaEntrega=_gav('ct-fentrega',lid);ct.notas=_gav('ct-notas',lid);
+  ct.fechaActualizacion=new Date().toISOString().split('T')[0];
+  if(!ct.fechaCreacion) ct.fechaCreacion=ct.fechaActualizacion;
+  const fa=new Date().toLocaleDateString('es-ES')+' '+new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+  if(!l._actividad) l._actividad=[];
+  if(prev!==ct.estado) l._actividad.push({tipo:'sistema',texto:'Contrato: estado → '+ct.estado,fecha:fa});
+  saveState();_showToast('✓ Contrato guardado.','var(--green)');renderAll();setTimeout(()=>openModal(lid),100);
+}
+function copiarTextoContrato(lid){
+  const l=leads.find(x=>x.id===lid);if(!l) return;
+  if(!l._admin) l._admin=_emptyAdmin();
+  const ct=l._admin.contrato;
+  const txt='CONTRATO DE SERVICIOS\n⚠ DOCUMENTO INTERNO/PREPARATORIO — No válido como contrato jurídico definitivo.\n\nProveedor: Rubik SOTA / Immersphere Pro\nCliente: '+(ct.empresa||l.empresa)+'\nFecha: '+new Date().toLocaleDateString('es-ES')+'\n\nSERVICIO: '+(ct.servicio||'—')+'\nALCANCE:\n'+(ct.alcance||'—')+'\nENTREGABLES:\n'+(ct.entregables||'—')+'\nPRECIO: '+(ct.importe?ct.importe.toLocaleString('es-ES')+'€':'—')+'\nFORMA DE PAGO: '+(ct.formaPago||'—')+'\nINICIO: '+(ct.fechaInicio||'—')+' · ENTREGA: '+(ct.fechaEntrega||'—')+'\nCONDICIONES:\n'+(ct.condiciones||'—');
+  navigator.clipboard.writeText(txt).catch(()=>{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);});
+  _showToast('✓ Texto del contrato copiado.','var(--blue)');
+}
+function printContratoAdmin(lid){
+  const l=leads.find(x=>x.id===lid);if(!l) return;
+  if(!l._admin) l._admin=_emptyAdmin();
+  const ct=l._admin.contrato;
+  const fecha=new Date().toLocaleDateString('es-ES',{day:'2-digit',month:'long',year:'numeric'});
+  const html=`<div class="prop-doc">
+    <div class="prop-doc-header">
+      <div><div class="prop-doc-brand">Rubik SOTA · Immersphere Pro</div><div class="prop-doc-subbrand">Documento interno preparatorio</div></div>
+      <div class="prop-doc-meta"><div style="font-weight:700;color:#374151">${safeHtml(ct.empresa||l.empresa)}</div><div>${fecha}</div></div>
+    </div>
+    <div style="background:#fef3c7;border:2px solid #f59e0b;border-radius:8px;padding:10px 14px;margin-bottom:18px;font-family:'Inter',sans-serif;font-size:11px;color:#92400e">⚠ DOCUMENTO INTERNO / PREPARATORIO. No tiene validez jurídica por sí solo. Revisar legalmente antes de usar como contrato definitivo.</div>
+    <div class="prop-doc-title">Contrato de servicios — ${safeHtml(ct.servicio||'Servicio a definir')}</div>
+    <div class="prop-doc-section"><div class="prop-doc-section-title">Partes</div><div class="prop-doc-text"><strong>Proveedor:</strong> Rubik SOTA · ${safeHtml(ct.responsable||'Juanma')}<br><strong>Cliente:</strong> ${safeHtml(ct.empresa||l.empresa)}</div></div>
+    ${ct.servicio?'<div class="prop-doc-section"><div class="prop-doc-section-title">Servicio</div><div class="prop-doc-text">'+safeHtml(ct.servicio)+'</div></div>':''}
+    ${ct.alcance?'<div class="prop-doc-section"><div class="prop-doc-section-title">Alcance</div><div class="prop-doc-text">'+safeHtml(ct.alcance).replace(/\n/g,'<br>')+'</div></div>':''}
+    ${ct.entregables?'<div class="prop-doc-section"><div class="prop-doc-section-title">Entregables</div><div class="prop-doc-text">'+safeHtml(ct.entregables).replace(/\n/g,'<br>')+'</div></div>':''}
+    ${ct.importe?'<div class="prop-doc-section"><div class="prop-doc-section-title">Precio y pago</div><div class="prop-doc-text">'+ct.importe.toLocaleString('es-ES')+'€ · '+safeHtml(ct.formaPago)+'</div></div>':''}
+    ${ct.fechaInicio||ct.fechaEntrega?'<div class="prop-doc-section"><div class="prop-doc-section-title">Plazos</div><div class="prop-doc-text">'+(ct.fechaInicio?'Inicio: '+ct.fechaInicio+'<br>':'')+(ct.fechaEntrega?'Entrega: '+ct.fechaEntrega:'')+'</div></div>':''}
+    ${ct.condiciones?'<div class="prop-doc-section"><div class="prop-doc-section-title">Condiciones</div><div class="prop-doc-text">'+safeHtml(ct.condiciones).replace(/\n/g,'<br>')+'</div></div>':''}
+    <div class="prop-doc-footer"><div>Rubik SOTA · Immersphere Pro · juanmaes83@gmail.com</div><div>${fecha}</div></div>
+  </div>`;
+  const dest=document.getElementById('prop-print-area');
+  if(dest) dest.innerHTML=html;
+  setTimeout(()=>window.print(),50);
+}
+function openFacturaFromContrato(lid){
+  const l=leads.find(x=>x.id===lid);if(!l) return;
+  if(!l._admin) l._admin=_emptyAdmin();
+  const ct=l._admin.contrato;const fc=l._admin.factura;
+  if(ct.importe>0&&!fc.importe){fc.importe=ct.importe;fc.iva=Math.round(ct.importe*0.21*100)/100;fc.total=Math.round(ct.importe*1.21*100)/100;}
+  if(fc.estado==='no-aplica') fc.estado='pendiente-emitir';
+  saveState();renderAll();setTimeout(()=>openModal(lid),100);
+}
+function saveFacturaAdmin(lid){
+  const l=leads.find(x=>x.id===lid);if(!l) return;
+  if(!l._admin) l._admin=_emptyAdmin();
+  const fc=l._admin.factura;
+  const enlace=_gav('fc-enlace',lid);
+  const warnEl=document.getElementById('admin-fc-urlwarn-'+lid);
+  if(enlace&&!enlace.startsWith('http')){if(warnEl)warnEl.style.display='';return;}
+  if(warnEl) warnEl.style.display='none';
+  const prev=fc.estado;
+  fc.estado=_gav('fc-estado',lid);fc.importe=_gavn('fc-importe',lid);fc.iva=_gavn('fc-iva',lid);
+  fc.total=_gavn('fc-total',lid);fc.numeroExterno=_gav('fc-numero',lid);fc.herramienta=_gav('fc-herr',lid);
+  fc.enlaceExterno=enlace;fc.fechaEmision=_gav('fc-femision',lid);fc.fechaCobro=_gav('fc-fcobro',lid);fc.notas=_gav('fc-notas',lid);
+  const fa=new Date().toLocaleDateString('es-ES')+' '+new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+  if(!l._actividad) l._actividad=[];
+  if(prev!==fc.estado) l._actividad.push({tipo:'sistema',texto:'Factura: estado → '+fc.estado,fecha:fa});
+  saveState();_showToast('✓ Factura guardada.','var(--green)');renderAll();setTimeout(()=>openModal(lid),100);
+}
+function copiarDatosFactura(lid){
+  const l=leads.find(x=>x.id===lid);if(!l) return;
+  if(!l._admin) l._admin=_emptyAdmin();
+  const fc=l._admin.factura;const as=l._admin.asesoria;
+  const txt='DATOS DE FACTURACIÓN\nEmpresa: '+l.empresa+'\nCIF/NIF: '+(as.cifNif||'—')+'\nEmail: '+(as.emailFacturacion||l.email||'—')+'\nServicio: '+(l._admin.contrato.servicio||l._packRec||'—')+'\nImporte: '+(fc.importe||0)+'€\nIVA: '+(fc.iva||0)+'€\nTotal: '+(fc.total||0)+'€\nNº externo: '+(fc.numeroExterno||'—')+'\nEmisión: '+(fc.fechaEmision||'—')+'\nCobro: '+(fc.fechaCobro||'—');
+  navigator.clipboard.writeText(txt).catch(()=>{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);});
+  _showToast('✓ Datos de factura copiados.','var(--blue)');
+}
+function abrirEnlaceExterno(url){
+  if(!url||!url.startsWith('http')){_showToast('⚠ URL no válida. Debe empezar por https://','var(--gold)');return;}
+  window.open(url,'_blank');
+}
+function openAsesoriaFromFactura(lid){
+  const l=leads.find(x=>x.id===lid);if(!l) return;
+  if(!l._admin) l._admin=_emptyAdmin();
+  const fc=l._admin.factura;const as=l._admin.asesoria;
+  if(!as.empresa) as.empresa=l.empresa;
+  if(!as.servicio) as.servicio=l._admin.contrato.servicio||l._packRec||'';
+  if(!as.importe&&fc.importe) as.importe=fc.importe;
+  if(!as.iva&&fc.iva) as.iva=fc.iva;
+  if(!as.total&&fc.total) as.total=fc.total;
+  saveState();renderAll();setTimeout(()=>openModal(lid),100);
+}
+function saveAsesoriaAdmin(lid){
+  const l=leads.find(x=>x.id===lid);if(!l) return;
+  if(!l._admin) l._admin=_emptyAdmin();
+  const as=l._admin.asesoria;
+  as.emailAsesor=_gav('as-email',lid);as.estado=_gav('as-estado',lid);as.empresa=_gav('as-empresa',lid);
+  as.cifNif=_gav('as-cif',lid);as.emailFacturacion=_gav('as-efact',lid);as.servicio=_gav('as-servicio',lid);
+  as.importe=_gavn('as-importe',lid);as.total=_gavn('as-total',lid);as.notas=_gav('as-notas',lid);
+  saveState();_showToast('✓ Asesoría guardada.','var(--green)');renderAll();setTimeout(()=>openModal(lid),100);
+}
+function copiarResumenAsesor(lid){
+  const l=leads.find(x=>x.id===lid);if(!l) return;
+  if(!l._admin) l._admin=_emptyAdmin();
+  const as=l._admin.asesoria;const fc=l._admin.factura;
+  const txt='RESUMEN PARA ASESOR\nFecha: '+new Date().toLocaleDateString('es-ES')+'\n\nEmpresa: '+(as.empresa||l.empresa)+'\nCIF/NIF: '+(as.cifNif||'—')+'\nEmail facturación: '+(as.emailFacturacion||l.email||'—')+'\nServicio: '+(as.servicio||'—')+'\nImporte sin IVA: '+(as.importe||0)+'€\nTotal con IVA: '+(as.total||0)+'€\nNº factura externo: '+(fc.numeroExterno||'—')+'\nEstado factura: '+fc.estado+'\nEnlace externo: '+(fc.enlaceExterno||'—')+'\nNotas: '+(as.notas||'—');
+  navigator.clipboard.writeText(txt).catch(()=>{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);});
+  _showToast('✓ Resumen para asesor copiado.','var(--blue)');
+}
+function openMailtoAsesor(lid){
+  const l=leads.find(x=>x.id===lid);if(!l) return;
+  if(!l._admin) l._admin=_emptyAdmin();
+  const as=l._admin.asesoria;const fc=l._admin.factura;
+  if(!as.emailAsesor){_showToast('⚠ Añade el email del asesor primero.','var(--gold)');return;}
+  const asunto='Datos facturación — '+(as.empresa||l.empresa);
+  const cuerpo='Hola,\n\nDatos para la factura de:\n\nEmpresa: '+(as.empresa||l.empresa)+'\nCIF/NIF: '+(as.cifNif||'—')+'\nEmail: '+(as.emailFacturacion||l.email||'—')+'\n\nServicio: '+(as.servicio||'—')+'\nImporte sin IVA: '+(as.importe||0)+'€\nTotal con IVA: '+(as.total||0)+'€\nNº factura externo: '+(fc.numeroExterno||'—')+'\n\nNotas: '+(as.notas||'—')+'\n\nGracias.';
+  window.location.href='mailto:'+encodeURIComponent(as.emailAsesor)+'?subject='+encodeURIComponent(asunto)+'&body='+encodeURIComponent(cuerpo);
+}
+function marcarEnviadoAsesor(lid){
+  const l=leads.find(x=>x.id===lid);if(!l) return;
+  if(!l._admin) l._admin=_emptyAdmin();
+  l._admin.asesoria.estado='enviado';
+  l._admin.asesoria.fechaEnvio=new Date().toISOString().split('T')[0];
+  const fa=new Date().toLocaleDateString('es-ES')+' '+new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+  if(!l._actividad) l._actividad=[];
+  l._actividad.push({tipo:'sistema',texto:'Pack asesoría enviado al asesor.',fecha:fa});
+  saveState();_showToast('✓ Marcado como enviado al asesor.','var(--green)');renderAll();setTimeout(()=>openModal(lid),100);
+}
+function saveSeguimientoAdmin(lid){
+  const l=leads.find(x=>x.id===lid);if(!l) return;
+  if(!l._admin) l._admin=_emptyAdmin();
+  const sg=l._admin.seguimiento;
+  const prev=sg.estado;
+  sg.estado=_gav('sg-estado',lid);sg.fechaEntrega=_gav('sg-fentrega',lid);
+  sg.satisfaccion=_gav('sg-satisf',lid);sg.proximaRevision=_gav('sg-revision',lid);
+  sg.upsell=_gav('sg-upsell',lid);sg.notas=_gav('sg-notas',lid);
+  const fa=new Date().toLocaleDateString('es-ES')+' '+new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+  if(!l._actividad) l._actividad=[];
+  if(prev!==sg.estado) l._actividad.push({tipo:'sistema',texto:'Seguimiento: estado → '+sg.estado,fecha:fa});
+  saveState();_showToast('✓ Seguimiento guardado.','var(--green)');renderAll();setTimeout(()=>openModal(lid),100);
+}
+function copiarMsgPostEntrega(lid){
+  const l=leads.find(x=>x.id===lid);if(!l) return;
+  if(!l._admin) l._admin=_emptyAdmin();
+  const nombre=(l.responsable&&!l.responsable.includes('No'))?l.responsable:'equipo de '+l.empresa;
+  const sg=l._admin.seguimiento;
+  const txt='Hola '+nombre+', soy Juanma de Immersphere Pro.\n\nEl proyecto para '+l.empresa+' está entregado. Ha sido un placer trabajar juntos.\n\n¿Cómo ha sido la experiencia? Tu valoración nos ayuda a seguir mejorando.'+(sg.upsell?'\n\nCuando quieras podemos explorar: '+sg.upsell+'.':'')+'\n\nEstamos aquí para cualquier duda o ajuste.';
+  navigator.clipboard.writeText(txt).catch(()=>{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);});
+  _showToast('✓ Mensaje post-entrega copiado.','var(--blue)');
+}
+function copiarMsgUpsell(lid){
+  const l=leads.find(x=>x.id===lid);if(!l) return;
+  if(!l._admin) l._admin=_emptyAdmin();
+  const nombre=(l.responsable&&!l.responsable.includes('No'))?l.responsable:'equipo de '+l.empresa;
+  const upsell=l._admin.seguimiento.upsell||'el siguiente servicio';
+  const txt='Hola '+nombre+', soy Juanma. ¿Cómo está yendo todo desde la entrega?\n\nQuería proponerte algo para el siguiente paso: '+upsell+'. Creo que puede encajar bien y aportar valor a lo que ya habéis probado.\n\n¿Tienes 15 minutos esta semana para que te cuente cómo lo haríamos?';
+  navigator.clipboard.writeText(txt).catch(()=>{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);});
+  _showToast('✓ Mensaje de upsell copiado.','var(--blue)');
+}
+function exportMensual(){
+  const now=new Date();const mes=now.getMonth();const año=now.getFullYear();
+  const nombre=now.toLocaleDateString('es-ES',{month:'long',year:'numeric'});
+  const relevant=leads.filter(l=>{
+    if(!l._admin) return false;
+    const fc=l._admin.factura;
+    const hasAct=(l._actividad||[]).some(a=>{try{const d=new Date(a.fecha.split(' ')[0].split('/').reverse().join('-'));return d.getMonth()===mes&&d.getFullYear()===año;}catch(e){return false;}});
+    const hasFc=(fc.fechaEmision&&new Date(fc.fechaEmision).getMonth()===mes&&new Date(fc.fechaEmision).getFullYear()===año)||(fc.fechaCobro&&new Date(fc.fechaCobro).getMonth()===mes&&new Date(fc.fechaCobro).getFullYear()===año);
+    return hasAct||hasFc;
+  });
+  if(!relevant.length){_showToast('Sin actividad administrativa registrada este mes.','var(--gold)');return;}
+  const lineas=relevant.map(l=>{
+    const a=l._admin;const fc=a.factura;
+    return l.empresa+' | Contrato: '+a.contrato.estado+' | Factura: '+fc.estado+' | Total: '+(fc.total||0)+'€ | Cobro: '+(fc.fechaCobro||'—')+' | Asesor: '+a.asesoria.estado+' | Seguimiento: '+a.seguimiento.estado;
+  });
+  const txt='EXPORT MENSUAL — '+nombre+'\nGenerado: '+now.toLocaleDateString('es-ES')+'\n\n'+lineas.join('\n');
+  navigator.clipboard.writeText(txt).catch(()=>{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);});
+  _showToast('✓ Resumen mensual copiado ('+relevant.length+' leads).','var(--green)');
+  const rows=[['Empresa','Estado lead','Contrato','Factura estado','Importe','IVA','Total','Fecha emisión','Fecha cobro','Asesor','Seguimiento']];
+  relevant.forEach(l=>{const a=l._admin;const fc=a.factura;rows.push([l.empresa,l.estado||'Sin contactar',a.contrato.estado,fc.estado,fc.importe||0,fc.iva||0,fc.total||0,fc.fechaEmision||'',fc.fechaCobro||'',a.asesoria.estado,a.seguimiento.estado]);});
+  const csv=rows.map(r=>r.map(v=>'"'+(String(v||'').replace(/"/g,'""'))+'"').join(',')).join('\n');
+  const a2=document.createElement('a');
+  a2.href='data:text/csv;charset=utf-8,'+encodeURIComponent('﻿'+csv);
+  a2.download='export-mensual-'+año+'-'+String(mes+1).padStart(2,'0')+'.csv';
+  a2.click();
+}
 
 // ── Proposals ─────────────────────────────────────────────────────────────────
 let _propLeadId=null,_propCurrentId=null,_propSvcLines=[];
