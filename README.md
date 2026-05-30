@@ -114,7 +114,46 @@ Pack Demo Inmobiliaria · Pack Propiedad Premium 360 · Pack Inmobiliaria Mensua
 
 ## Pendiente
 
-### 🔜 v1.5 — Propuestas comerciales imprimibles/descargables (PDF desde navegador)
+### ✅ v1.5 — Propuestas Comerciales (100%)
+
+**Crear propuesta desde presupuesto:**
+- Botón "📋 Propuesta" en cada presupuesto guardado del Document Hub
+- Pre-rellena automáticamente empresa, responsable, servicios, importes, caducidad, forma de pago y bonus
+- Selecciona la plantilla adecuada según la línea de negocio del presupuesto
+- Datos internos (coste, margen, pipeline) nunca se transfieren a la propuesta
+
+**5 plantillas de propuesta:**
+Propuesta Inmobiliaria Demo · Propuesta Propiedad Premium 360 · Propuesta Inmobiliaria Mensual · Propuesta Immersphere SaaS · Propuesta Proyecto Personalizado
+
+**Editor de propuesta (overlay con 3 tabs):**
+- Tab Editar: título, resumen ejecutivo, diagnóstico, solución, servicios+precio, entregables, bonus, condiciones, caducidad, forma de pago, próximos pasos, nota final
+- Tab Vista previa: documento comercial visual con cabecera Rubik SOTA, secciones, tabla de servicios, CTA y pie
+- Tab Mensajes: WhatsApp corto, email completo con asunto, listos para enviar
+
+**Imprimir / Guardar PDF desde navegador:**
+- Sin dependencias externas — usa `window.print()` + `@media print`
+- Imprime solo el documento de propuesta, oculta toda la UI de la app
+- Layout A4 aproximado con tipografía limpia y colores corporativos
+
+**WhatsApp/email:** `wa.me` + `encodeURIComponent` · `mailto` + `encodeURIComponent` · sin placeholders visibles
+
+**Propuestas en Document Hub (por lead):**
+- Lista con fecha, título, estado (badge), importe total, caducidad
+- Acciones: Editar · Imprimir PDF · Duplicar · Cambiar estado · WA · Email · Eliminar
+
+**Estados:** Borrador · Preparada · Enviada · Vista · En seguimiento · Aceptada · Rechazada · Caducada
+
+**Seguimiento:** Historial de actividad · Próxima acción automática · Paso a "Propuesta"/"Cerrado" al cambiar estado
+
+**Dashboard:** 4 KPIs de propuestas (total, enviadas, aceptadas, caducadas)
+
+**Export/Import:** JSON v1.5 incluye propuestas · CSV añade 5 columnas de última propuesta
+
+**Alerta automática:** Propuesta caducada con estado "enviada" aparece en alertas comerciales del dashboard
+
+---
+
+### 🔜 v1.6 — Propuestas comerciales avanzadas / PDF externo
 ### 🔜 v1.6 — Document Hub administrativo (contratos simples, facturas, carpetas cliente)
 ### 🔜 v1.7 — Integraciones externas (Holded, Stripe, Drive, firma digital)
 ### 🔜 v2.0 — SaaS real con backend, auth y base de datos

@@ -394,6 +394,96 @@ nav{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 20px;d
 .lib-assigned{background:var(--bg);border:1px solid rgba(16,185,129,.25);border-radius:8px;padding:10px 12px;margin-bottom:10px;font-size:12px}
 .lib-assigned-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--green);margin-bottom:4px}
 
+/* ── PROPOSAL ─────────────────────────────────────────────────────────── */
+.proposal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:1600;display:none;align-items:flex-start;justify-content:center;padding:10px;overflow-y:auto}
+.proposal-overlay.open{display:flex}
+.proposal-modal{background:var(--bg2);border-radius:16px;width:100%;max-width:900px;overflow:hidden;border:1px solid var(--border);display:flex;flex-direction:column}
+.proposal-header{background:var(--bg);border-bottom:1px solid var(--border);padding:11px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;flex-shrink:0}
+.proposal-header-title{font-size:14px;font-weight:700;flex:1;min-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.proposal-header-actions{display:flex;gap:6px;align-items:center;flex-wrap:wrap;flex-shrink:0}
+.prop-header-btn{background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:5px 12px;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap}
+.prop-header-btn:hover{border-color:var(--accent);color:var(--accent2)}
+.prop-header-btn.save{background:rgba(124,58,237,.25);border-color:var(--accent);color:var(--accent2)}
+.prop-header-btn.save:hover{background:rgba(124,58,237,.4)}
+.prop-header-btn.print{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.3);color:var(--green)}
+.prop-estado-sel{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:7px;padding:5px 9px;font-size:12px;outline:none;font-family:inherit}
+.prop-tab-bar{display:flex;border-bottom:1px solid var(--border);background:var(--bg);flex-shrink:0}
+.prop-tab{background:none;border:none;border-bottom:2px solid transparent;color:var(--text2);padding:10px 18px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;margin-bottom:-1px;white-space:nowrap}
+.prop-tab.active{color:var(--accent2);border-bottom-color:var(--accent)}
+.prop-tab:hover{color:var(--text)}
+.prop-panel{padding:16px;overflow-y:auto;max-height:calc(100vh - 130px)}
+.prop-field{margin-bottom:11px}
+.prop-label{font-size:10px;color:var(--text3);font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;display:block}
+.prop-input,.prop-select{background:var(--bg);border:1px solid var(--border);color:var(--text);border-radius:7px;padding:7px 10px;font-size:12px;outline:none;font-family:inherit;width:100%}
+.prop-input:focus,.prop-select:focus{border-color:var(--accent)}
+.prop-textarea{background:var(--bg);border:1px solid var(--border);color:var(--text);border-radius:7px;padding:7px 10px;font-size:12px;outline:none;font-family:inherit;width:100%;resize:vertical;line-height:1.5;min-height:60px}
+.prop-textarea:focus{border-color:var(--accent)}
+.prop-2col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.prop-section-head{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent2);margin:14px 0 8px;padding-bottom:5px;border-bottom:1px solid var(--border)}
+.prop-svc-line{display:grid;grid-template-columns:1fr 140px auto;gap:6px;align-items:center;margin-bottom:6px}
+.prop-svc-del{background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.25);color:var(--red);border-radius:5px;padding:4px 9px;font-size:11px;cursor:pointer;min-height:unset}
+.prop-add-svc-btn{background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.3);color:var(--accent2);padding:6px 12px;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer}
+/* Proposal document preview */
+.prop-doc{background:#fff;color:#1a1a2e;border-radius:10px;padding:28px 32px;font-family:'Georgia','Times New Roman',serif;line-height:1.65;font-size:13px}
+.prop-doc-header{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #7c3aed;padding-bottom:16px;margin-bottom:20px;gap:12px}
+.prop-doc-brand{font-size:18px;font-weight:700;color:#7c3aed;letter-spacing:-.02em;font-family:'Inter',sans-serif}
+.prop-doc-subbrand{font-size:10px;color:#64748b;font-family:'Inter',sans-serif;margin-top:2px}
+.prop-doc-meta{text-align:right;font-size:11px;color:#64748b;font-family:'Inter',sans-serif;flex-shrink:0}
+.prop-doc-title{font-size:20px;font-weight:700;color:#1a1a2e;margin-bottom:6px;font-family:'Inter',sans-serif}
+.prop-doc-section{margin-bottom:18px}
+.prop-doc-section-title{font-size:12px;font-weight:700;color:#7c3aed;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px;font-family:'Inter',sans-serif;border-left:3px solid #7c3aed;padding-left:9px}
+.prop-doc-text{font-size:13px;color:#374151;line-height:1.7}
+.prop-doc-table{width:100%;border-collapse:collapse;margin:8px 0;font-family:'Inter',sans-serif;font-size:12px}
+.prop-doc-table th{background:#f3f4f6;color:#374151;font-weight:700;padding:7px 12px;text-align:left;border:1px solid #e5e7eb}
+.prop-doc-table td{padding:7px 12px;border:1px solid #e5e7eb;color:#374151;vertical-align:top}
+.prop-doc-table tr.bonus-row td{color:#059669}
+.prop-doc-highlight{background:#faf5ff;border:1px solid #ddd6fe;border-radius:8px;padding:13px 16px;margin:12px 0;font-family:'Inter',sans-serif;font-size:13px;color:#5b21b6}
+.prop-doc-cta{background:#7c3aed;color:#fff;border-radius:8px;padding:14px 18px;margin-top:22px;text-align:center;font-family:'Inter',sans-serif}
+.prop-doc-cta-text{font-size:14px;font-weight:700;margin-bottom:4px}
+.prop-doc-cta-sub{font-size:11px;opacity:.85}
+.prop-doc-footer{border-top:2px solid #e5e7eb;padding-top:12px;margin-top:20px;font-family:'Inter',sans-serif;font-size:10px;color:#9ca3af;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+/* Proposal status badges */
+.pst{padding:2px 8px;border-radius:5px;font-size:10px;font-weight:700}
+.pst-borrador{background:rgba(100,116,139,.15);color:var(--text3);border:1px solid rgba(100,116,139,.3)}
+.pst-preparada{background:rgba(168,85,247,.15);color:var(--accent2);border:1px solid rgba(168,85,247,.3)}
+.pst-enviada{background:rgba(59,130,246,.15);color:var(--blue);border:1px solid rgba(59,130,246,.3)}
+.pst-vista{background:rgba(245,158,11,.15);color:var(--gold);border:1px solid rgba(245,158,11,.3)}
+.pst-seguimiento{background:rgba(245,158,11,.2);color:var(--gold);border:1px solid rgba(245,158,11,.4)}
+.pst-aceptada{background:rgba(16,185,129,.15);color:var(--green);border:1px solid rgba(16,185,129,.3)}
+.pst-rechazada{background:rgba(239,68,68,.15);color:var(--red);border:1px solid rgba(239,68,68,.3)}
+.pst-caducada{background:rgba(100,116,139,.1);color:var(--text3);border:1px solid rgba(100,116,139,.2)}
+/* Proposal in Document Hub */
+.prop-hub-item{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:11px 14px;margin-bottom:8px}
+.prop-hub-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:4px}
+.prop-hub-title{font-size:13px;font-weight:600;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.prop-hub-actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+.prop-hub-btn{background:var(--bg2);border:1px solid var(--border);color:var(--text2);padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;min-height:unset;text-decoration:none;display:inline-flex;align-items:center}
+.prop-hub-btn:hover{border-color:var(--accent);color:var(--accent2)}
+.prop-msg-tab{background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:5px 10px;border-radius:7px;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s}
+.prop-msg-tab.active{background:rgba(124,58,237,.2);border-color:var(--accent);color:var(--accent2)}
+.prop-msg-panel{display:none;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:11px;font-size:12px;color:var(--text2);line-height:1.6;white-space:pre-wrap;max-height:200px;overflow-y:auto;word-break:break-word}
+.prop-msg-panel.active{display:block}
+.prop-create-btn{background:linear-gradient(135deg,rgba(16,185,129,.25),rgba(6,182,212,.15));border:1px solid rgba(16,185,129,.35);color:var(--green);padding:10px 18px;border-radius:9px;font-size:12px;font-weight:700;cursor:pointer;width:100%;transition:all .2s;margin-top:4px}
+.prop-create-btn:hover{background:linear-gradient(135deg,rgba(16,185,129,.35),rgba(6,182,212,.25))}
+/* Print area */
+#prop-print-area{display:none}
+@media print{
+  body>*:not(#prop-print-area){display:none!important}
+  #prop-print-area{display:block!important;background:#fff;padding:10mm}
+  #prop-print-area .prop-doc{border-radius:0;box-shadow:none;padding:0}
+  @page{margin:10mm 15mm}
+}
+/* Responsive */
+@media(max-width:768px){
+  .prop-tab-bar{overflow-x:auto;scrollbar-width:none}
+  .prop-tab{padding:8px 12px;font-size:12px}
+  .prop-2col{grid-template-columns:1fr}
+  .prop-svc-line{grid-template-columns:1fr auto}
+  .prop-doc{padding:14px 16px;font-size:12px}
+  .prop-doc-header{flex-direction:column;gap:8px}
+  .prop-doc-title{font-size:16px}
+}
+
 /* DUPLICAR BUTTON */
 .dup-btn{background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.3);color:var(--blue);padding:9px 18px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;width:100%;transition:all .2s;margin-top:6px}
 .dup-btn:hover{background:rgba(59,130,246,.25);border-color:var(--blue)}
@@ -607,6 +697,14 @@ nav{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 20px;d
     <div class="kpi orange"><div class="kpi-label">💰 Valor presupuestado</div><div class="kpi-value" id="kpi-q-valor">—</div><div class="kpi-sub">Base imponible total</div></div>
     <div class="kpi lime"><div class="kpi-label">📊 Pipeline presupuestos</div><div class="kpi-value" id="kpi-q-pipeline">—</div><div class="kpi-sub">Ponderado por prob.</div></div>
     <div class="kpi red"><div class="kpi-label">⏰ Vencidos</div><div class="kpi-value" id="kpi-q-vencidos">—</div><div class="kpi-sub">Requieren seguimiento</div></div>
+  </div>
+
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text3);margin-bottom:8px">Propuestas comerciales</div>
+  <div class="kpi-grid" style="margin-bottom:20px">
+    <div class="kpi blue"><div class="kpi-label">📋 Total propuestas</div><div class="kpi-value" id="kpi-p-total">—</div><div class="kpi-sub">Todos los leads</div></div>
+    <div class="kpi gold"><div class="kpi-label">📤 Enviadas</div><div class="kpi-value" id="kpi-p-enviadas">—</div><div class="kpi-sub">En seguimiento</div></div>
+    <div class="kpi green"><div class="kpi-label">✓ Aceptadas</div><div class="kpi-value" id="kpi-p-aceptadas">—</div><div class="kpi-sub">Cerradas</div></div>
+    <div class="kpi red"><div class="kpi-label">⏰ Caducadas</div><div class="kpi-value" id="kpi-p-caducadas">—</div><div class="kpi-sub">Requieren atención</div></div>
   </div>
 
   <div id="dash-alertas" style="margin-bottom:20px"></div>
@@ -954,6 +1052,133 @@ nav{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 20px;d
   </div>
 </div>
 
+<!-- PROPOSAL OVERLAY -->
+<div class="proposal-overlay" id="proposal-overlay">
+  <div class="proposal-modal">
+    <div class="proposal-header">
+      <div class="proposal-header-title" id="prop-overlay-title">Propuesta comercial</div>
+      <div class="proposal-header-actions">
+        <select class="prop-estado-sel" id="prop-estado">
+          <option value="borrador">Borrador</option>
+          <option value="preparada">Preparada</option>
+          <option value="enviada">Enviada</option>
+          <option value="vista">Vista</option>
+          <option value="seguimiento">En seguimiento</option>
+          <option value="aceptada">Aceptada</option>
+          <option value="rechazada">Rechazada</option>
+          <option value="caducada">Caducada</option>
+        </select>
+        <button class="prop-header-btn print" onclick="printProposal()">🖨 PDF</button>
+        <button class="prop-header-btn save" onclick="saveProposal()">💾 Guardar</button>
+        <button class="prop-header-btn" onclick="closeProposalEditor()">✕</button>
+      </div>
+    </div>
+    <div class="prop-tab-bar">
+      <button class="prop-tab active" data-tab="edit" onclick="_showPropTab('edit')">✏ Editar</button>
+      <button class="prop-tab" data-tab="preview" onclick="_showPropTab('preview')">👁 Vista previa</button>
+      <button class="prop-tab" data-tab="messages" onclick="_showPropTab('messages')">💬 Mensajes</button>
+    </div>
+
+    <!-- EDIT PANEL -->
+    <div class="prop-panel" id="prop-edit-panel">
+      <div class="prop-field">
+        <label class="prop-label">Plantilla base</label>
+        <select class="prop-select" id="prop-plantilla" onchange="applyPropTemplate(this.value)">
+          <option value="">— Sin plantilla —</option>
+          <option value="inmo-demo">Propuesta Inmobiliaria Demo</option>
+          <option value="inmo-premium360">Propuesta Propiedad Premium 360</option>
+          <option value="inmo-mensual">Propuesta Inmobiliaria Mensual</option>
+          <option value="saas">Propuesta Immersphere SaaS</option>
+          <option value="custom">Propuesta Proyecto Personalizado</option>
+        </select>
+      </div>
+      <div class="prop-field">
+        <label class="prop-label">Título de la propuesta</label>
+        <input class="prop-input" id="prop-titulo" type="text" placeholder="Propuesta comercial para [Empresa]">
+      </div>
+      <div class="prop-section-head">Contenido comercial</div>
+      <div class="prop-field">
+        <label class="prop-label">Resumen ejecutivo</label>
+        <textarea class="prop-textarea" id="prop-resumen" rows="3" placeholder="Descripción clara del valor que aportamos..."></textarea>
+      </div>
+      <div class="prop-field">
+        <label class="prop-label">Diagnóstico / oportunidad detectada</label>
+        <textarea class="prop-textarea" id="prop-problema" rows="3" placeholder="Situación actual del cliente y oportunidad identificada..."></textarea>
+      </div>
+      <div class="prop-field">
+        <label class="prop-label">Solución propuesta</label>
+        <textarea class="prop-textarea" id="prop-solucion" rows="3" placeholder="Cómo resolvemos el problema..."></textarea>
+      </div>
+      <div class="prop-section-head">Servicios y precio (visible para el cliente)</div>
+      <div id="prop-svc-lines"></div>
+      <button class="prop-add-svc-btn" onclick="addPropSvcLine()">+ Añadir servicio</button>
+      <div class="prop-field" style="margin-top:10px">
+        <label class="prop-label">Bonus incluido</label>
+        <input class="prop-input" id="prop-bonus" type="text" placeholder="QR escaparate gratuito, consultoría 30 min...">
+      </div>
+      <div class="prop-section-head">Condiciones y plazos</div>
+      <div class="prop-2col">
+        <div class="prop-field">
+          <label class="prop-label">Caducidad</label>
+          <input class="prop-input" id="prop-caducidad" type="text" placeholder="7 días / 30 junio 2026">
+        </div>
+        <div class="prop-field">
+          <label class="prop-label">Forma de pago</label>
+          <select class="prop-select" id="prop-formapago">
+            <option>100% al aceptar</option>
+            <option>50% inicio / 50% entrega</option>
+            <option>mensual</option>
+            <option>setup + mensualidad</option>
+            <option>personalizado</option>
+          </select>
+        </div>
+      </div>
+      <div class="prop-field">
+        <label class="prop-label">Condiciones generales</label>
+        <textarea class="prop-textarea" id="prop-condiciones" rows="2" placeholder="Condiciones de producción, revisiones, entrega..."></textarea>
+      </div>
+      <div class="prop-field">
+        <label class="prop-label">Entregables</label>
+        <textarea class="prop-textarea" id="prop-entregables" rows="3" placeholder="Lista de entregables incluidos..."></textarea>
+      </div>
+      <div class="prop-field">
+        <label class="prop-label">Próximos pasos</label>
+        <textarea class="prop-textarea" id="prop-proxpasos" rows="3" placeholder="1. Confirmación\n2. Inicio de producción\n3. Entrega..."></textarea>
+      </div>
+      <div class="prop-field">
+        <label class="prop-label">Nota final / CTA</label>
+        <textarea class="prop-textarea" id="prop-notafinal" rows="2" placeholder="Mensaje de cierre y llamada a la acción..."></textarea>
+      </div>
+    </div>
+
+    <!-- PREVIEW PANEL -->
+    <div class="prop-panel" id="prop-preview-panel" style="display:none;background:var(--bg3)">
+      <div id="prop-preview-doc"><div style="font-size:13px;color:var(--text3);text-align:center;padding:30px">Cambia a la pestaña Vista previa para generar el documento.</div></div>
+    </div>
+
+    <!-- MESSAGES PANEL -->
+    <div class="prop-panel" id="prop-msg-panel-section" style="display:none">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent2);margin-bottom:10px">Mensajes para enviar</div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
+        <button class="prop-msg-tab active" data-tab="wa" onclick="setPropMsgTab('wa')">💬 WhatsApp</button>
+        <button class="prop-msg-tab" data-tab="email" onclick="setPropMsgTab('email')">📧 Email</button>
+        <button class="prop-msg-tab" data-tab="emailas" onclick="setPropMsgTab('emailas')">📋 Asunto</button>
+      </div>
+      <div class="prop-msg-panel active" data-panel="wa" id="prop-msg-wa"></div>
+      <div class="prop-msg-panel" data-panel="email" id="prop-msg-email"></div>
+      <div class="prop-msg-panel" data-panel="emailas" id="prop-msg-email-as"></div>
+      <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
+        <button class="q-msg-btn" id="prop-copy-msg" onclick="copyPropMsg()">📋 Copiar</button>
+        <a class="q-msg-btn wa" id="prop-btn-wa" href="#" target="_blank">💬 WhatsApp</a>
+        <a class="q-msg-btn mail" id="prop-btn-mail" href="#">📧 Email</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRINT AREA (solo visible al imprimir) -->
+<div id="prop-print-area"></div>
+
 <!-- EDIT OVERLAY -->
 <div class="edit-overlay" id="edit-overlay">
   <div class="edit-modal">
@@ -977,6 +1202,50 @@ nav{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 20px;d
 </div>
 
 <script>
+
+// ── Proposal Templates ───────────────────────────────────────────────────────
+const PROPOSAL_TEMPLATES = [
+  {id:'inmo-demo',nombre:'Propuesta Inmobiliaria Demo',lineaNegocio:'Immersphere Pro Inmobiliarias',
+    resumenEjecutivo:'Le presentamos una propuesta de primer contacto para {empresa}: una prueba visual de bajo riesgo que convierte una propiedad en una experiencia interactiva navegable desde el móvil, sin cambiar nada de su sistema actual de ventas.',
+    problemaDetectado:'El catálogo de propiedades de {empresa} compite con otras agencias en los mismos portales. El cliente potencial ve las mismas fotos en todos lados, visita sin filtrar y consume tiempo comercial sin garantía de interés real.',
+    solucionPropuesta:'Immersphere Pro propone convertir una propiedad concreta en un tour 360° interactivo con hotspots, QR de escaparate y ficha visual compartible. El cliente puede recorrerla desde el móvil antes de visitar. El resultado es visible en 3-5 días hábiles.',
+    entregables:'• Tour 360° interactivo de la propiedad seleccionada\n• Hotspots informativos integrados\n• QR de escaparate listo para imprimir\n• Ficha comercial digital compartible por WhatsApp y web\n• Enlace propio de la propiedad\n• Analítica básica de visitas',
+    condiciones:'La propuesta incluye una propiedad piloto. Si los resultados son satisfactorios, se propone un pack mensual. Entrega en 3-5 días hábiles tras confirmación y recepción del material.',
+    proximosPasos:'1. Confirmación de la propiedad piloto\n2. Envío de fotos y datos de la propiedad\n3. Inicio de producción en 24h\n4. Revisión y entrega en 3-5 días hábiles\n5. Seguimiento de resultados en 30 días',
+    notaFinal:'Estamos disponibles para resolver cualquier duda por teléfono o WhatsApp. Proponemos avanzar esta semana para que el resultado esté listo antes del fin de mes.'},
+  {id:'inmo-premium360',nombre:'Propuesta Propiedad Premium 360',lineaNegocio:'Immersphere Pro Inmobiliarias',
+    resumenEjecutivo:'Le presentamos una propuesta de presentación completa para una propiedad de alto valor de {empresa}: tour 360°, landing individual, vídeo y QR integrados en una experiencia coherente para web, WhatsApp y escaparate físico.',
+    problemaDetectado:'Las propiedades de alto valor de {empresa} merecen una presentación a la altura de su precio. Una propiedad premium mostrada solo con fotos en un portal pierde potencial comprador antes de la visita física.',
+    solucionPropuesta:'Immersphere Pro propone una suite de presentación completa: tour 360° interactivo, landing individual de la propiedad, vídeo vertical para redes y QR físico. El comprador puede explorar la propiedad en detalle antes de comprometerse con una visita.',
+    entregables:'• Tour 360° interactivo con hotspots informativos\n• Landing individual de la propiedad con formulario de contacto\n• Vídeo vertical (30-60s) para Instagram y WhatsApp\n• Copy comercial profesional\n• QR de escaparate en alta resolución\n• Analítica de visitas y contactos generados',
+    condiciones:'Producción completa en 5-7 días hábiles. Se requiere acceso a la propiedad o material fotográfico en alta calidad. El precio incluye una ronda de revisión por elemento.',
+    proximosPasos:'1. Confirmación de la propiedad seleccionada\n2. Sesión fotográfica o envío de material existente\n3. Producción: tour + vídeo + copy + QR\n4. Revisión y aprobación\n5. Publicación y entrega de todos los activos',
+    notaFinal:'Esta propuesta tiene validez limitada. Proponemos arrancar esta semana para tener la propiedad lista con toda su presentación antes del próximo ciclo de visitas.'},
+  {id:'inmo-mensual',nombre:'Propuesta Inmobiliaria Mensual',lineaNegocio:'Immersphere Pro Inmobiliarias',
+    resumenEjecutivo:'Le proponemos a {empresa} un sistema de producción mensual recurrente para presentar sus propiedades de forma visual, diferenciada y medible, con un coste fijo mensual y sin compromiso de permanencia a largo plazo.',
+    problemaDetectado:'{empresa} necesita renovar su presentación visual de forma constante. Gestionar la producción de contenidos de forma puntual genera inconsistencia, retrasos y coste variable impredecible.',
+    solucionPropuesta:'Immersphere Pro ofrece un pack mensual con propiedades, vídeos, contenidos y analítica. Cada mes se renuevan los activos visuales del catálogo activo, garantizando que las propiedades prioritarias siempre tienen una presentación de calidad.',
+    entregables:'• 3 propiedades con tour 360° por mes\n• Vídeos cortos para redes sociales\n• Mantenimiento y actualización de contenidos\n• Informe mensual de rendimiento\n• Soporte y ajustes incluidos',
+    condiciones:'Servicio mensual renovable. Mínimo 3 meses para garantizar resultados medibles. No incluye inversión publicitaria en plataformas.',
+    proximosPasos:'1. Definición del catálogo de propiedades prioritarias\n2. Planificación del primer mes\n3. Inicio de producción\n4. Entrega y revisión mensual\n5. Informe y propuesta de continuidad al mes 3',
+    notaFinal:'Comenzar este mes garantiza tener el sistema en marcha antes del próximo trimestre. Proponemos una llamada de 30 minutos para definir el catálogo del primer mes.'},
+  {id:'saas',nombre:'Propuesta Immersphere SaaS',lineaNegocio:'Immersphere Pro SaaS',
+    resumenEjecutivo:'Le presentamos la propuesta de acceso a la plataforma Immersphere Pro para {empresa}: una solución SaaS para gestionar espacios visuales interactivos de forma autónoma, escalable y con marca propia.',
+    problemaDetectado:'{empresa} necesita una plataforma estable para crear y gestionar experiencias visuales sin depender de producciones externas. La dependencia de producción puntual genera cuellos de botella y coste creciente.',
+    solucionPropuesta:'Immersphere Pro ofrece acceso a su plataforma SaaS configurada con la identidad visual de {empresa}, que permite crear, publicar y analizar espacios interactivos de forma autónoma y escalable.',
+    entregables:'• Acceso a la plataforma según el plan contratado\n• Onboarding y formación inicial (2h)\n• Configuración de identidad visual básica\n• Soporte técnico por email\n• Analítica integrada de cada espacio\n• Actualizaciones de plataforma incluidas',
+    condiciones:'Cuota mensual recurrente. El setup inicial es un pago único. La plataforma es accesible desde cualquier dispositivo sin instalación.',
+    proximosPasos:'1. Confirmación del plan elegido\n2. Setup inicial y configuración\n3. Sesión de onboarding (2h)\n4. Primer espacio activo en 48h\n5. Revisión de resultados al mes 1',
+    notaFinal:'La plataforma está lista para activarse esta semana. Proponemos una demo en vivo de 20 minutos antes de confirmar para que el equipo pueda evaluarla directamente.'},
+  {id:'custom',nombre:'Propuesta Proyecto Personalizado',lineaNegocio:'Proyecto personalizado',
+    resumenEjecutivo:'Le presentamos una propuesta a medida para {empresa}, combinando los servicios de Rubik SOTA e Immersphere Pro que mejor se adaptan a los objetivos específicos de su proyecto.',
+    problemaDetectado:'{empresa} tiene necesidades específicas que no encajan en un pack estándar. La falta de una solución personalizada genera ruido entre proveedores y resultados parciales que no cubren el objetivo global.',
+    solucionPropuesta:'Rubik SOTA e Immersphere Pro ofrecen una solución a medida construida sobre los servicios que realmente necesita {empresa}: sin sobrecoste por servicios no utilizados y con un único interlocutor para todo el proyecto.',
+    entregables:'• Servicios seleccionados según el alcance acordado\n• Planificación detallada antes del inicio\n• Entrega por fases con revisión\n• Documentación del proyecto\n• Soporte durante la producción',
+    condiciones:'Alcance, precio y plazos confirmados antes del inicio. Revisiones incluidas según lo acordado. Cambios fuera de alcance se presupuestan por separado.',
+    proximosPasos:'1. Confirmación del alcance definitivo\n2. Brief detallado del proyecto\n3. Inicio de producción por fases\n4. Revisión y entrega según calendario\n5. Cierre y seguimiento post-entrega',
+    notaFinal:'Estamos listos para arrancar en cuanto recibamos la confirmación. Proponemos definir el calendario de entrega en una llamada breve esta semana.'}
+];
 
 // ── Services Catalog ──────────────────────────────────────────────────────────
 const SERVICES_CATALOG = [
@@ -1066,6 +1335,7 @@ function loadState(){
         if(r.objecionAsignada!==undefined) l._objecionAsignada=r.objecionAsignada;
         if(r.cierreAsignado!==undefined) l._cierreAsignado=r.cierreAsignado;
         if(r.presupuestos!==undefined) l._presupuestos=r.presupuestos;
+        if(r.propuestas!==undefined) l._propuestas=r.propuestas;
         if(r.edits) { Object.assign(l, r.edits); l._edits=r.edits; }
         if(r.comercial){
           l._valorPotencial=r.comercial.valorPotencial||0;
@@ -1089,7 +1359,7 @@ function saveState(){
     st[l.id]={
       estado:l.estado,notas:l._notas||'',proxAccion:l._proxAccion||'',proxFecha:l._proxFecha||'',
       temp:l._temp||'',actividad:l._actividad||[],edits:l._edits||{},
-      fechaEstado:l._fechaEstado||'',objecionAsignada:l._objecionAsignada||'',cierreAsignado:l._cierreAsignado||'',presupuestos:l._presupuestos||[],
+      fechaEstado:l._fechaEstado||'',objecionAsignada:l._objecionAsignada||'',cierreAsignado:l._cierreAsignado||'',presupuestos:l._presupuestos||[],propuestas:l._propuestas||[],
       comercial:{valorPotencial:l._valorPotencial||0,probabilidad:l._probabilidad||10,presupuesto:l._presupuesto||'',packRec:l._packRec||'',ultimoContacto:l._ultimoContacto||''}
     };
   });
@@ -1576,6 +1846,17 @@ function renderDashboard(){
   setKQ('kpi-q-valor',qValor?Math.round(qValor).toLocaleString('es-ES')+'€':'—');
   setKQ('kpi-q-pipeline',qPipeline?Math.round(qPipeline).toLocaleString('es-ES')+'€':'—');
   setKQ('kpi-q-vencidos',qVencidos||'—');
+  // Proposal KPIs
+  const allP=leads.flatMap(l=>l._propuestas||[]);
+  const hoyStr=new Date().toISOString().split('T')[0];
+  const pEnviadas=allP.filter(p=>['enviada','vista','seguimiento'].includes(p.estado)).length;
+  const pAceptadas=allP.filter(p=>p.estado==='aceptada').length;
+  const pCaducadas=allP.filter(p=>p.estado==='enviada'&&p.caducidad&&p.caducidad<hoyStr).length;
+  const setKP=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
+  setKP('kpi-p-total',allP.length||'—');
+  setKP('kpi-p-enviadas',pEnviadas||'—');
+  setKP('kpi-p-aceptadas',pAceptadas||'—');
+  setKP('kpi-p-caducadas',pCaducadas||'—');
 
   // Top 5
   const top5=[...leads].sort((a,b)=>b.score-a.score).slice(0,5);
@@ -1805,7 +2086,7 @@ function exportarJSON(){
       estado:l.estado,notas:l._notas||'',proxAccion:l._proxAccion||'',proxFecha:l._proxFecha||'',
       temp:l._temp||'',actividad:l._actividad||[],edits:l._edits||{},
       fechaEstado:l._fechaEstado||'',objecionAsignada:l._objecionAsignada||'',cierreAsignado:l._cierreAsignado||'',
-      presupuestos:l._presupuestos||[],
+      presupuestos:l._presupuestos||[],propuestas:l._propuestas||[],
       comercial:{valorPotencial:l._valorPotencial||0,probabilidad:l._probabilidad||10,presupuesto:l._presupuesto||'',packRec:l._packRec||'',ultimoContacto:l._ultimoContacto||''}
     };
   });
@@ -1839,6 +2120,7 @@ function importarJSON(){
           if(r.objecionAsignada!==undefined) l._objecionAsignada=r.objecionAsignada;
           if(r.cierreAsignado!==undefined) l._cierreAsignado=r.cierreAsignado;
           if(r.presupuestos!==undefined) l._presupuestos=r.presupuestos;
+          if(r.propuestas!==undefined) l._propuestas=r.propuestas;
           if(r.comercial){
             l._valorPotencial=r.comercial.valorPotencial||0;
             l._probabilidad=r.comercial.probabilidad||10;
@@ -1856,12 +2138,14 @@ function importarJSON(){
   input.click();
 }
 function exportarCSV(){
-  const rows=[['ID','Empresa','Sector','Zona','Prioridad','Score','Temperatura','Estado','Valor potencial (€)','Probabilidad (%)','Pipeline ponderado (€)','Pack rec.','Precio orientativo','Próxima acción','Fecha próxima acción','Último contacto','Objeción asignada','Cierre asignado','Último presupuesto estado','Último presupuesto total (€)','Último presupuesto fecha','Último presupuesto caducidad','Notas']];
+  const rows=[['ID','Empresa','Sector','Zona','Prioridad','Score','Temperatura','Estado','Valor potencial (€)','Probabilidad (%)','Pipeline ponderado (€)','Pack rec.','Precio orientativo','Próxima acción','Fecha próxima acción','Último contacto','Objeción asignada','Cierre asignado','Último presupuesto estado','Último presupuesto total (€)','Último presupuesto fecha','Último presupuesto caducidad','Última propuesta estado','Última propuesta título','Última propuesta total (€)','Última propuesta fecha','Última propuesta caducidad','Notas']];
   leads.forEach(l=>{
     const pp=Math.round((l._valorPotencial||0)*(l._probabilidad||10)/100);
     const pqs=l._presupuestos||[];
     const lastQ=pqs.length?pqs[pqs.length-1]:null;
-    rows.push([l.id,l.empresa,l.sector,l.zona,l.prioridad,l.score,getTempCfg(calcTemp(l)).label,l.estado||'Sin contactar',l._valorPotencial||0,l._probabilidad||10,pp,l._packRec||l.pack||'',l.precio,l._proxAccion||'',l._proxFecha||'',l._ultimoContacto||'',l._objecionAsignada||'',l._cierreAsignado||'',lastQ?lastQ.estado:'',lastQ?lastQ.total:'',lastQ?lastQ.fechaActualizacion:'',lastQ?lastQ.caducidad:'',l._notas||'']);
+    const pps=l._propuestas||[];
+    const lastP=pps.length?pps[pps.length-1]:null;
+    rows.push([l.id,l.empresa,l.sector,l.zona,l.prioridad,l.score,getTempCfg(calcTemp(l)).label,l.estado||'Sin contactar',l._valorPotencial||0,l._probabilidad||10,pp,l._packRec||l.pack||'',l.precio,l._proxAccion||'',l._proxFecha||'',l._ultimoContacto||'',l._objecionAsignada||'',l._cierreAsignado||'',lastQ?lastQ.estado:'',lastQ?lastQ.total:'',lastQ?lastQ.fechaActualizacion:'',lastQ?lastQ.caducidad:'',lastP?lastP.estado:'',lastP?lastP.titulo:'',lastP?lastP.total:'',lastP?lastP.fechaActualizacion:'',lastP?lastP.caducidad:'',l._notas||'']);
   });
   const csv=rows.map(r=>r.map(v=>'"'+(String(v||'').replace(/"/g,'""'))+'"').join(',')).join('\n');
   const a=document.createElement('a');
@@ -2120,6 +2404,34 @@ function openModal(id){
     <!-- DOCUMENT HUB (Próximamente) -->
     <div class="modal-section">
       <div class="modal-section-title">Documentos</div>
+      <!-- PROPUESTAS EN DOCUMENT HUB -->
+      <div style="margin-bottom:16px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--green)">📋 Propuestas comerciales</span>
+          <button class="quote-hub-btn" style="background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.3);color:var(--green)" onclick="openProposalEditor(${l.id},null)">+ Nueva</button>
+        </div>
+        ${(l._propuestas&&l._propuestas.length)?(l._propuestas.slice().reverse().map(p=>`
+          <div class="prop-hub-item">
+            <div class="prop-hub-head">
+              <div class="prop-hub-title">${safeHtml(p.titulo||'Propuesta comercial')}</div>
+              <div style="text-align:right;flex-shrink:0">${_propBadge(p.estado)}</div>
+            </div>
+            <div style="font-size:11px;color:var(--text3)">${p.fechaActualizacion} ${p.caducidad?'· Val.: '+safeHtml(p.caducidad):''} ${p.total?'· '+formatEuro(p.total):''}</div>
+            <div class="prop-hub-actions">
+              <button class="prop-hub-btn" onclick="openProposalEdit(${l.id},'${p.id}')">✏ Editar</button>
+              <button class="prop-hub-btn" onclick="printProposalById(${l.id},'${p.id}')">🖨 PDF</button>
+              <button class="prop-hub-btn" onclick="duplicarPropuesta(${l.id},'${p.id}')">⧉ Dup.</button>
+              <select class="prop-hub-btn" style="padding:4px 6px" onchange="cambiarEstadoProp(${l.id},'${p.id}',this.value);this.value='${p.estado}'">
+                <option value="${p.estado}" selected>${p.estado}</option>
+                ${['borrador','preparada','enviada','vista','seguimiento','aceptada','rechazada','caducada'].filter(s=>s!==p.estado).map(s=>'<option value="'+s+'">→ '+s+'</option>').join('')}
+              </select>
+              ${p.mensajesGenerados&&p.mensajesGenerados.wa?`<a class="prop-hub-btn" style="background:rgba(22,163,74,.15);border-color:rgba(22,163,74,.3);color:#4ade80" href="https://wa.me/${l.whatsapp?l.whatsapp.replace(/\\D/g,''):''+'?text='+encodeURIComponent(p.mensajesGenerados.wa)}" target="_blank">💬 WA</a>`:''}
+              ${p.mensajesGenerados&&p.mensajesGenerados.email&&l.email?`<a class="prop-hub-btn mail" style="background:rgba(59,130,246,.15);border-color:rgba(59,130,246,.3);color:var(--blue)" href="mailto:${encodeURIComponent(l.email)}?subject=${encodeURIComponent(p.mensajesGenerados.emailAs||'Propuesta')}&&body=${encodeURIComponent(p.mensajesGenerados.email||'')}">📧 Email</a>`:''}
+              <button class="prop-hub-btn" style="color:var(--red);border-color:rgba(239,68,68,.3)" onclick="eliminarPropuesta(${l.id},'${p.id}')">✕</button>
+            </div>
+          </div>`).join('')):`<div style="font-size:12px;color:var(--text3);text-align:center;padding:10px;background:var(--bg3);border:1px dashed var(--border);border-radius:8px">Sin propuestas todavía. Crea una desde un presupuesto o usa el botón "+ Nueva".</div>`}
+      </div>
+
       <!-- PRESUPUESTOS EN DOCUMENT HUB -->
       <div style="margin-bottom:14px">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
@@ -2135,6 +2447,7 @@ function openModal(id){
             <div style="font-size:11px;color:var(--text3);margin-bottom:6px">Base: ${q.baseImponible?q.baseImponible.toLocaleString('es-ES',{minimumFractionDigits:2})+'€':'—'} · Margen: ${q.margenPorcentaje?q.margenPorcentaje.toFixed(0)+'%':'—'} · Prob.: ${q.probabilidadCierre||0}%</div>
             <div class="quote-hub-actions">
               <button class="quote-hub-btn" onclick="openQuoteEdit(${l.id},'${q.id}')">✏ Editar</button>
+              <button class="quote-hub-btn" style="background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.3);color:var(--green)" onclick="createProposalFromQuote(${l.id},'${q.id}')">📋 Propuesta</button>
               <button class="quote-hub-btn" onclick="duplicarPresupuesto(${l.id},'${q.id}')">⧉ Dup.</button>
               <select class="quote-hub-btn" style="padding:4px 6px" onchange="cambiarEstadoQ(${l.id},'${q.id}',this.value);this.value='${q.estado}'">
                 <option value="${q.estado}" selected>${q.estado}</option>
@@ -2285,6 +2598,11 @@ function calcAlertas(){
     if(l._objecionAsignada&&!l._cierreAsignado){
       alertas.push({lead:l,tipo:'objecion-sin-cierre',icon:'⚠',msg:'Objeción detectada sin cierre asignado.',accion:'Seleccionar cierre desde la biblioteca'});
     }
+    // Propuesta caducada
+    const hoy=new Date().toISOString().split('T')[0];
+    (l._propuestas||[]).filter(p=>p.estado==='enviada'&&p.caducidad&&p.caducidad<hoy).forEach(()=>{
+      alertas.push({lead:l,tipo:'propuesta-caducada',icon:'⏰',msg:'Propuesta enviada caducada sin respuesta.',accion:'Recontactar con nueva oferta'});
+    });
   });
   const seen=new Set();
   return alertas.filter(a=>{
@@ -2868,6 +3186,376 @@ function restaurarCatalogo(){
 
 function cerrarSvcEdit(){document.getElementById('svc-edit-overlay').classList.remove('open');}
 
+// ── Proposals ─────────────────────────────────────────────────────────────────
+let _propLeadId=null,_propCurrentId=null,_propSvcLines=[];
+
+function openProposalEditor(leadId,quoteId){
+  _propLeadId=leadId;_propCurrentId=null;_propSvcLines=[];
+  const l=leads.find(x=>x.id===leadId);if(!l) return;
+  document.getElementById('prop-overlay-title').textContent='Propuesta — '+l.empresa;
+  document.getElementById('prop-estado').value='borrador';
+  if(quoteId){
+    const q=(l._presupuestos||[]).find(x=>x.id===quoteId);
+    const tpl=q?PROPOSAL_TEMPLATES.find(t=>t.lineaNegocio===q.lineaNegocio)||PROPOSAL_TEMPLATES[4]:PROPOSAL_TEMPLATES[0];
+    if(q) _fillFromQuote(l,q,tpl); else _fillFromLead(l,tpl);
+  } else {
+    _fillFromLead(l,PROPOSAL_TEMPLATES[0]);
+  }
+  renderPropSvcLines();
+  _showPropTab('edit');
+  document.getElementById('proposal-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function openProposalEdit(leadId,propId){
+  _propLeadId=leadId;_propCurrentId=propId;
+  const l=leads.find(x=>x.id===leadId);
+  const p=(l&&l._propuestas||[]).find(x=>x.id===propId);
+  if(!l||!p) return;
+  document.getElementById('prop-overlay-title').textContent='Propuesta — '+l.empresa;
+  const setV=(id,v)=>{const el=document.getElementById(id);if(el)el.value=v||'';};
+  setV('prop-estado',p.estado);setV('prop-plantilla',p.plantilla);setV('prop-titulo',p.titulo);
+  setV('prop-resumen',p.resumenEjecutivo);setV('prop-problema',p.problemaDetectado);
+  setV('prop-solucion',p.solucionPropuesta);setV('prop-entregables',p.entregables);
+  setV('prop-bonus',p.bonus);setV('prop-condiciones',p.condiciones);
+  setV('prop-caducidad',p.caducidad);setV('prop-formapago',p.formaPago);
+  setV('prop-proxpasos',p.proximosPasos);setV('prop-notafinal',p.notaFinal);
+  _propSvcLines=JSON.parse(JSON.stringify(p.serviciosIncluidos||[]));
+  renderPropSvcLines();
+  _showPropTab('edit');
+  document.getElementById('proposal-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeProposalEditor(){
+  document.getElementById('proposal-overlay').classList.remove('open');
+  document.body.style.overflow='';
+  _propLeadId=null;_propCurrentId=null;_propSvcLines=[];
+}
+
+function _fillFromQuote(l,q,tpl){
+  const sub=txt=>(txt||'').replace(/\{empresa\}/g,l.empresa).replace(/\{nombre\}/g,(l.responsable&&!l.responsable.includes('No'))?l.responsable:'');
+  const setV=(id,v)=>{const el=document.getElementById(id);if(el)el.value=v||'';};
+  setV('prop-plantilla',tpl.id);
+  setV('prop-titulo',(q.packNombre?q.packNombre+' ':'Propuesta ')+'para '+l.empresa);
+  setV('prop-resumen',sub(tpl.resumenEjecutivo));
+  setV('prop-problema',sub(tpl.problemaDetectado));
+  setV('prop-solucion',sub(tpl.solucionPropuesta));
+  setV('prop-entregables',tpl.entregables);
+  setV('prop-bonus',(q.lineas||[]).filter(li=>li.esBonus).map(li=>li.nombre).join(', '));
+  setV('prop-condiciones',tpl.condiciones);
+  setV('prop-caducidad',q.caducidad);
+  setV('prop-formapago',q.formaPago||'100% al aceptar');
+  setV('prop-proxpasos',tpl.proximosPasos);
+  setV('prop-notafinal',tpl.notaFinal);
+  _propSvcLines=(q.lineas||[]).filter(li=>!li.esBonus).map(li=>({
+    nombre:li.nombre,
+    precio:li.esOpcional?'(opcional) '+formatEuro((li.cantidad||0)*(li.precioUnitario||0)):formatEuro((li.cantidad||0)*(li.precioUnitario||0))
+  }));
+}
+
+function _fillFromLead(l,tpl){
+  const sub=txt=>(txt||'').replace(/\{empresa\}/g,l.empresa).replace(/\{nombre\}/g,'');
+  const setV=(id,v)=>{const el=document.getElementById(id);if(el)el.value=v||'';};
+  setV('prop-plantilla',tpl.id);
+  setV('prop-titulo',tpl.nombre+' para '+l.empresa);
+  setV('prop-resumen',sub(tpl.resumenEjecutivo));
+  setV('prop-problema',sub(tpl.problemaDetectado));
+  setV('prop-solucion',sub(tpl.solucionPropuesta));
+  setV('prop-entregables',tpl.entregables);
+  setV('prop-bonus','');
+  setV('prop-condiciones',tpl.condiciones);
+  setV('prop-caducidad','');setV('prop-formapago','100% al aceptar');
+  setV('prop-proxpasos',tpl.proximosPasos);
+  setV('prop-notafinal',tpl.notaFinal);
+  _propSvcLines=[];
+}
+
+function applyPropTemplate(tplId){
+  const tpl=PROPOSAL_TEMPLATES.find(t=>t.id===tplId);if(!tpl) return;
+  const l=leads.find(x=>x.id===_propLeadId);if(!l) return;
+  const sub=txt=>(txt||'').replace(/\{empresa\}/g,l.empresa).replace(/\{nombre\}/g,'');
+  ['resumen','problema','solucion','entregables','condiciones','proxpasos','notafinal'].forEach((k,i)=>{
+    const vals=[tpl.resumenEjecutivo,tpl.problemaDetectado,tpl.solucionPropuesta,tpl.entregables,tpl.condiciones,tpl.proximosPasos,tpl.notaFinal];
+    const el=document.getElementById('prop-'+k);if(el) el.value=sub(vals[i]);
+  });
+}
+
+function addPropSvcLine(){
+  _propSvcLines.push({nombre:'Servicio',precio:''});renderPropSvcLines();
+}
+function removePropSvcLine(idx){_propSvcLines.splice(idx,1);renderPropSvcLines();}
+function updatePropSvcLine(idx,field,val){if(_propSvcLines[idx])_propSvcLines[idx][field]=val;}
+
+function renderPropSvcLines(){
+  const el=document.getElementById('prop-svc-lines');if(!el) return;
+  if(!_propSvcLines.length){
+    el.innerHTML='<div style="font-size:12px;color:var(--text3);padding:8px 0">Sin servicios añadidos. Crea la propuesta desde un presupuesto o añade líneas manualmente.</div>';
+    return;
+  }
+  el.innerHTML=_propSvcLines.map((li,i)=>`
+    <div class="prop-svc-line">
+      <input class="prop-input" value="${safeHtml(li.nombre)}" placeholder="Nombre del servicio" oninput="updatePropSvcLine(${i},'nombre',this.value)">
+      <input class="prop-input" value="${safeHtml(li.precio||'')}" placeholder="Precio / incluido" oninput="updatePropSvcLine(${i},'precio',this.value)">
+      <button class="prop-svc-del" onclick="removePropSvcLine(${i})">✕</button>
+    </div>`).join('');
+}
+
+function _showPropTab(tab){
+  document.querySelectorAll('.prop-tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
+  ['prop-edit-panel','prop-preview-panel','prop-msg-panel-section'].forEach(id=>{
+    const el=document.getElementById(id);if(el)el.style.display='none';
+  });
+  if(tab==='edit'){const e=document.getElementById('prop-edit-panel');if(e)e.style.display='';}
+  else if(tab==='preview'){const e=document.getElementById('prop-preview-panel');if(e)e.style.display='';renderProposalPreview();}
+  else if(tab==='messages'){const e=document.getElementById('prop-msg-panel-section');if(e)e.style.display='';generateProposalMessages();}
+}
+
+function _propNlToBr(txt){return safeHtml(txt||'').replace(/\n/g,'<br>');}
+
+function _buildPropDocHTML(l,p){
+  const titulo=p.titulo||'Propuesta comercial';
+  const fecha=new Date().toLocaleDateString('es-ES',{day:'2-digit',month:'long',year:'numeric'});
+  const nombre=(l.responsable&&!l.responsable.includes('No'))?l.responsable:'Equipo de '+l.empresa;
+  let precioStr='',totalStr='',ivaStr='',descStr='';
+  if(p.precio>0||p.total>0){
+    precioStr=formatEuro(p.precio||0);
+    totalStr=formatEuro(p.total||0);
+    ivaStr=formatEuro(p.iva||0);
+    if(p.descuento>0) descStr=formatEuro(p.descuento);
+  }
+  const svcs=p.serviciosIncluidos||[];
+  return `<div class="prop-doc">
+    <div class="prop-doc-header">
+      <div>
+        <div class="prop-doc-brand">Rubik SOTA · Immersphere Pro</div>
+        <div class="prop-doc-subbrand">Visualización inmobiliaria de nueva generación</div>
+      </div>
+      <div class="prop-doc-meta">
+        <div style="font-weight:700;color:#374151">${safeHtml(l.empresa)}</div>
+        <div>${safeHtml(nombre)}</div>
+        <div style="margin-top:4px">${fecha}</div>
+        ${p.caducidad?'<div style="color:#dc2626;font-weight:600;margin-top:3px">Válida hasta: '+safeHtml(p.caducidad)+'</div>':''}
+      </div>
+    </div>
+    <div class="prop-doc-title">${safeHtml(titulo)}</div>
+    ${p.resumenEjecutivo?`<div class="prop-doc-section"><div class="prop-doc-section-title">Resumen ejecutivo</div><div class="prop-doc-text">${_propNlToBr(p.resumenEjecutivo)}</div></div>`:''}
+    ${p.problemaDetectado?`<div class="prop-doc-section"><div class="prop-doc-section-title">Diagnóstico y oportunidad</div><div class="prop-doc-text">${_propNlToBr(p.problemaDetectado)}</div></div>`:''}
+    ${p.solucionPropuesta?`<div class="prop-doc-section"><div class="prop-doc-section-title">Solución propuesta</div><div class="prop-doc-text">${_propNlToBr(p.solucionPropuesta)}</div></div>`:''}
+    ${svcs.length?`<div class="prop-doc-section"><div class="prop-doc-section-title">Servicios incluidos</div>
+      <table class="prop-doc-table"><thead><tr><th>Servicio</th><th style="text-align:right">Precio</th></tr></thead><tbody>
+      ${svcs.map(li=>'<tr><td>'+safeHtml(li.nombre)+'</td><td style="text-align:right;font-weight:600">'+safeHtml(li.precio||'—')+'</td></tr>').join('')}
+      ${p.bonus?'<tr class="bonus-row"><td>🎁 '+safeHtml(p.bonus)+'</td><td style="text-align:right">Incluido</td></tr>':''}
+      ${descStr?'<tr><td style="color:#059669">Descuento aplicado</td><td style="text-align:right;color:#059669">-'+descStr+'</td></tr>':''}
+      </tbody></table>
+      ${totalStr?`<div class="prop-doc-highlight">
+        <div style="display:flex;justify-content:space-between;margin-bottom:5px"><span>Base imponible</span><span style="font-weight:700">${precioStr}</span></div>
+        ${ivaStr?'<div style="display:flex;justify-content:space-between;opacity:.75;margin-bottom:5px"><span>IVA (21%)</span><span>'+ivaStr+'</span></div>':''}
+        <div style="display:flex;justify-content:space-between;font-size:15px;font-weight:700;color:#6d28d9;border-top:1px solid #ddd6fe;padding-top:8px;margin-top:4px"><span>TOTAL</span><span>${totalStr}</span></div>
+        ${p.formaPago?'<div style="margin-top:7px;font-size:12px;opacity:.8">Forma de pago: '+safeHtml(p.formaPago)+'</div>':''}
+      </div>`:''}
+    </div>`:''}
+    ${p.entregables?`<div class="prop-doc-section"><div class="prop-doc-section-title">Entregables</div><div class="prop-doc-text">${_propNlToBr(p.entregables)}</div></div>`:''}
+    ${p.condiciones?`<div class="prop-doc-section"><div class="prop-doc-section-title">Condiciones</div><div class="prop-doc-text">${_propNlToBr(p.condiciones)}</div></div>`:''}
+    ${p.proximosPasos?`<div class="prop-doc-section"><div class="prop-doc-section-title">Próximos pasos</div><div class="prop-doc-text">${_propNlToBr(p.proximosPasos)}</div></div>`:''}
+    <div class="prop-doc-cta">
+      <div class="prop-doc-cta-text">¿Avanzamos esta semana?</div>
+      <div class="prop-doc-cta-sub">${safeHtml(p.notaFinal||'Estamos disponibles para resolver cualquier duda por WhatsApp o teléfono.')}</div>
+    </div>
+    <div class="prop-doc-footer">
+      <div><strong>Rubik SOTA · Immersphere Pro</strong> · juanmaes83@gmail.com</div>
+      ${p.caducidad?'<div>Oferta válida hasta: '+safeHtml(p.caducidad)+'</div>':''}
+    </div>
+  </div>`;
+}
+
+function renderProposalPreview(){
+  const l=leads.find(x=>x.id===_propLeadId);if(!l) return;
+  const gv=id=>{const e=document.getElementById(id);return e?e.value||'':''};
+  const p={
+    titulo:gv('prop-titulo'),resumenEjecutivo:gv('prop-resumen'),problemaDetectado:gv('prop-problema'),
+    solucionPropuesta:gv('prop-solucion'),entregables:gv('prop-entregables'),bonus:gv('prop-bonus'),
+    condiciones:gv('prop-condiciones'),caducidad:gv('prop-caducidad'),formaPago:gv('prop-formapago'),
+    proximosPasos:gv('prop-proxpasos'),notaFinal:gv('prop-notafinal'),
+    serviciosIncluidos:JSON.parse(JSON.stringify(_propSvcLines)),
+    precio:0,total:0,iva:0,descuento:0
+  };
+  const existing=_propCurrentId?(l._propuestas||[]).find(x=>x.id===_propCurrentId):null;
+  if(existing){p.precio=existing.precio||0;p.total=existing.total||0;p.iva=existing.iva||0;p.descuento=existing.descuento||0;}
+  const el=document.getElementById('prop-preview-doc');
+  if(el) el.innerHTML=_buildPropDocHTML(l,p);
+}
+
+function generateProposalMessages(){
+  const l=leads.find(x=>x.id===_propLeadId);if(!l) return {};
+  const nombre=(l.responsable&&!l.responsable.includes('No'))?l.responsable:'equipo de '+l.empresa;
+  const titulo=document.getElementById('prop-titulo')?.value||'Propuesta comercial';
+  const caducidad=document.getElementById('prop-caducidad')?.value||'7 días';
+  const formaPago=document.getElementById('prop-formapago')?.value||'a convenir';
+  const existing=_propCurrentId?(l._propuestas||[]).find(x=>x.id===_propCurrentId):null;
+  const totalStr=existing&&existing.total?formatEuro(existing.total):'—';
+  const baseStr=existing&&existing.precio?formatEuro(existing.precio):'—';
+  const wa=`Hola ${nombre}, soy Juanma de Immersphere Pro.\n\nTe envío la propuesta para ${l.empresa}:\n\n📋 ${titulo}\n💰 Inversión: ${totalStr} (IVA incl.)\n💳 Pago: ${formaPago}\n⏰ Válida: ${caducidad}\n\n¿La revisamos esta semana?`;
+  const emailAs=`${titulo} — Immersphere Pro`;
+  const emailBody=`Hola ${nombre},\n\nTe envío la propuesta comercial para ${l.empresa}:\n\n${titulo}\n\nInversión: ${totalStr} (IVA incluido)\nBase imponible: ${baseStr}\nForma de pago: ${formaPago}\nVálida hasta: ${caducidad}\n\nPuedes consultar el detalle de servicios, entregables y próximos pasos en la propuesta completa.\n\n¿Podemos confirmar esta semana?\n\nSaludos,\nJuanma\nImmersphere Pro\njuanmaes83@gmail.com`;
+  const setTxt=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+  setTxt('prop-msg-wa',wa);setTxt('prop-msg-email',emailBody);setTxt('prop-msg-email-as',emailAs);
+  const waNum=l.whatsapp?l.whatsapp.replace(/\D/g,''):'';
+  const bWa=document.getElementById('prop-btn-wa');
+  const bMail=document.getElementById('prop-btn-mail');
+  if(bWa){if(waNum){bWa.href='https://wa.me/'+waNum+'?text='+encodeURIComponent(wa);bWa.style.display='inline-flex';}else bWa.style.display='none';}
+  if(bMail&&l.email) bMail.href='mailto:'+encodeURIComponent(l.email)+'?subject='+encodeURIComponent(emailAs)+'&body='+encodeURIComponent(emailBody);
+  return{wa,emailAs,email:emailBody};
+}
+
+function setPropMsgTab(tab){
+  document.querySelectorAll('.prop-msg-tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
+  document.querySelectorAll('.prop-msg-panel').forEach(p=>p.classList.toggle('active',p.dataset.panel===tab));
+}
+
+function copyPropMsg(){
+  const panel=document.querySelector('.prop-msg-panel.active');if(!panel) return;
+  navigator.clipboard.writeText(panel.textContent).catch(()=>{const ta=document.createElement('textarea');ta.value=panel.textContent;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);});
+  const btn=document.getElementById('prop-copy-msg');
+  if(btn){btn.textContent='✓ Copiado';setTimeout(()=>btn.textContent='📋 Copiar',2000);}
+}
+
+function saveProposal(){
+  const l=leads.find(x=>x.id===_propLeadId);if(!l) return;
+  const now=new Date();
+  const fechaISO=now.toISOString().split('T')[0];
+  const fechaAct=now.toLocaleDateString('es-ES')+' '+now.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+  const gv=id=>{const e=document.getElementById(id);return e?e.value||'':''};
+  const estado=gv('prop-estado')||'borrador';
+  const titulo=gv('prop-titulo')||'Propuesta comercial';
+  const msgs=generateProposalMessages()||{};
+  const old=_propCurrentId?(l._propuestas||[]).find(x=>x.id===_propCurrentId):null;
+  // Inherit financial data from linked quote if available
+  let precio=old?old.precio||0:0,total=old?old.total||0:0,iva=old?old.iva||0:0,descuento=old?old.descuento||0:0;
+  const prop={
+    id:_propCurrentId||('p-'+Date.now()),
+    quoteId:old?old.quoteId||null:null,
+    fechaCreacion:old?old.fechaCreacion:fechaISO,
+    fechaActualizacion:fechaISO,
+    estado,plantilla:gv('prop-plantilla'),titulo,
+    resumenEjecutivo:gv('prop-resumen'),problemaDetectado:gv('prop-problema'),
+    solucionPropuesta:gv('prop-solucion'),
+    serviciosIncluidos:JSON.parse(JSON.stringify(_propSvcLines)),
+    entregables:gv('prop-entregables'),bonus:gv('prop-bonus'),
+    condiciones:gv('prop-condiciones'),caducidad:gv('prop-caducidad'),
+    formaPago:gv('prop-formapago'),proximosPasos:gv('prop-proxpasos'),notaFinal:gv('prop-notafinal'),
+    precio,total,iva,descuento,
+    mensajesGenerados:{wa:msgs.wa||'',emailAs:msgs.emailAs||'',email:msgs.email||''},
+    historialSeguimiento:old?old.historialSeguimiento||[]:[]
+  };
+  if(!l._propuestas) l._propuestas=[];
+  if(_propCurrentId){const idx=l._propuestas.findIndex(x=>x.id===_propCurrentId);if(idx>=0)l._propuestas[idx]=prop;else l._propuestas.push(prop);}
+  else l._propuestas.push(prop);
+  if(!l._actividad) l._actividad=[];
+  l._actividad.push({tipo:'propuesta',texto:(_propCurrentId?'Propuesta actualizada: ':'Propuesta creada: ')+titulo+' · '+estado,fecha:fechaAct});
+  if(estado==='enviada'&&(l.estado==='Sin contactar'||l.estado==='Contactado')){
+    if(confirm('¿Pasar el lead a estado "Propuesta"?')){l.estado='Propuesta';l._fechaEstado=fechaISO;}
+  }
+  if(estado==='aceptada'&&l.estado!=='Cerrado'){
+    if(confirm('Propuesta aceptada. ¿Pasar el lead a "Cerrado"?')){l.estado='Cerrado';l._fechaEstado=fechaISO;}
+  }
+  if(!l._proxAccion&&estado==='enviada'){
+    l._proxAccion='Seguimiento de propuesta en 48h';
+    const d=new Date();d.setDate(d.getDate()+2);l._proxFecha=d.toISOString().split('T')[0];
+  }
+  saveState();renderAll();closeProposalEditor();
+  _showToast('✓ Propuesta guardada correctamente.','var(--green)');
+}
+
+function printProposal(){
+  const l=leads.find(x=>x.id===_propLeadId);if(!l) return;
+  renderProposalPreview();
+  const src=document.getElementById('prop-preview-doc');
+  const dest=document.getElementById('prop-print-area');
+  if(src&&dest) dest.innerHTML=src.innerHTML;
+  setTimeout(()=>window.print(),50);
+}
+
+function printProposalById(leadId,propId){
+  const l=leads.find(x=>x.id===leadId);
+  const p=(l&&l._propuestas||[]).find(x=>x.id===propId);
+  if(!l||!p) return;
+  const dest=document.getElementById('prop-print-area');
+  if(dest) dest.innerHTML=_buildPropDocHTML(l,p);
+  setTimeout(()=>window.print(),50);
+}
+
+function duplicarPropuesta(leadId,propId){
+  const l=leads.find(x=>x.id===leadId);
+  const p=(l&&l._propuestas||[]).find(x=>x.id===propId);if(!p) return;
+  const now=new Date();
+  const copia={...JSON.parse(JSON.stringify(p)),id:'p-'+Date.now(),fechaCreacion:now.toISOString().split('T')[0],fechaActualizacion:now.toISOString().split('T')[0],estado:'borrador'};
+  if(!l._propuestas)l._propuestas=[];
+  l._propuestas.push(copia);
+  saveState();renderAll();setTimeout(()=>openModal(leadId),100);
+}
+
+function eliminarPropuesta(leadId,propId){
+  if(!confirm('¿Eliminar esta propuesta? No se puede deshacer.')) return;
+  const l=leads.find(x=>x.id===leadId);if(!l) return;
+  l._propuestas=(l._propuestas||[]).filter(x=>x.id!==propId);
+  saveState();renderAll();setTimeout(()=>openModal(leadId),100);
+}
+
+function cambiarEstadoProp(leadId,propId,estado){
+  const l=leads.find(x=>x.id===leadId);if(!l) return;
+  const p=(l._propuestas||[]).find(x=>x.id===propId);if(!p) return;
+  p.estado=estado;p.fechaActualizacion=new Date().toISOString().split('T')[0];
+  if(!p.historialSeguimiento) p.historialSeguimiento=[];
+  p.historialSeguimiento.push({fecha:new Date().toLocaleDateString('es-ES'),accion:'Estado → '+estado});
+  if(!l._actividad) l._actividad=[];
+  const fechaAct=new Date().toLocaleDateString('es-ES')+' '+new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+  l._actividad.push({tipo:'propuesta',texto:'Propuesta "'+p.titulo+'": estado → '+estado,fecha:fechaAct});
+  if(estado==='aceptada'&&l.estado!=='Cerrado'){
+    if(confirm('Propuesta aceptada. ¿Pasar el lead a "Cerrado"?')){l.estado='Cerrado';l._fechaEstado=new Date().toISOString().split('T')[0];}
+  }
+  saveState();renderAll();setTimeout(()=>openModal(leadId),100);
+}
+
+function createProposalFromQuote(leadId,quoteId){
+  const l=leads.find(x=>x.id===leadId);
+  const q=(l&&l._presupuestos||[]).find(x=>x.id===quoteId);
+  if(!q){openProposalEditor(leadId,null);return;}
+  // Pre-load financial data from quote
+  _propLeadId=leadId;_propCurrentId=null;_propSvcLines=[];
+  const tpl=PROPOSAL_TEMPLATES.find(t=>t.lineaNegocio===q.lineaNegocio)||PROPOSAL_TEMPLATES[4];
+  _fillFromQuote(l,q,tpl);
+  renderPropSvcLines();
+  // Save a draft proposal with financial data linked before opening editor
+  const now=new Date();
+  const draftId='p-'+Date.now();
+  const sub=txt=>(txt||'').replace(/\{empresa\}/g,l.empresa).replace(/\{nombre\}/g,'');
+  const draft={
+    id:draftId,quoteId,
+    fechaCreacion:now.toISOString().split('T')[0],fechaActualizacion:now.toISOString().split('T')[0],
+    estado:'borrador',plantilla:tpl.id,
+    titulo:(q.packNombre?q.packNombre+' ':'Propuesta ')+'para '+l.empresa,
+    resumenEjecutivo:sub(tpl.resumenEjecutivo),problemaDetectado:sub(tpl.problemaDetectado),
+    solucionPropuesta:sub(tpl.solucionPropuesta),
+    serviciosIncluidos:_propSvcLines.slice(),
+    entregables:tpl.entregables,bonus:(q.lineas||[]).filter(li=>li.esBonus).map(li=>li.nombre).join(', '),
+    condiciones:tpl.condiciones,caducidad:q.caducidad||'',formaPago:q.formaPago||'100% al aceptar',
+    proximosPasos:tpl.proximosPasos,notaFinal:tpl.notaFinal,
+    precio:q.baseImponible||0,total:q.total||0,iva:q.iva||0,descuento:q.descuento||0,
+    mensajesGenerados:{},historialSeguimiento:[]
+  };
+  if(!l._propuestas)l._propuestas=[];
+  l._propuestas.push(draft);
+  _propCurrentId=draftId;
+  saveState();
+  openProposalEdit(leadId,draftId);
+}
+
+function _propBadge(estado){
+  const m={borrador:'pst-borrador',preparada:'pst-preparada',enviada:'pst-enviada',vista:'pst-vista',seguimiento:'pst-seguimiento',aceptada:'pst-aceptada',rechazada:'pst-rechazada',caducada:'pst-caducada'};
+  return`<span class="pst ${m[estado]||'pst-borrador'}">${estado||'borrador'}</span>`;
+}
+
 function renderAll(){renderDashboard();renderLeads();renderTop10();renderPipeline();renderJourney();renderCatalogo();}
 
 // ── Events ────────────────────────────────────────────────────────────────────
@@ -2915,7 +3603,7 @@ function copyQuoteWA(leadId,qId){
 }
 
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){closeModalBtn();closeEditForm();closeOfertaForm();closeQuoteBuilder();cerrarSvcEdit();}
+  if(e.key==='Escape'){closeModalBtn();closeEditForm();closeOfertaForm();closeQuoteBuilder();cerrarSvcEdit();closeProposalEditor();}
 });
 
 // Render promo chips in oferta overlay
