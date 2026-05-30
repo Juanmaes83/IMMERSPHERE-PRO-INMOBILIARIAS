@@ -1,0 +1,26 @@
+# Vercel ignores these files during deployment
+# (mirrors .gitignore for files that exist locally but aren't tracked)
+
+# Large binary assets — local only, not needed for deployment
+*.mp4
+*.png
+*.jpg
+*.jpeg
+
+# Temp / dev files — local only
+_temp_*.js
+audit_*.js
+check_syntax*.js
+generate_crm.js
+leads_*.json
+leads_*.js
+objections_raw.json
+top10_raw.json
+hf_*.png
+ChatGPT*.png
+
+# Dependencies
+node_modules/
+
+# Vercel internal
+.vercel/

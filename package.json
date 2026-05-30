@@ -4,7 +4,7 @@
   "private": true,
   "description": "Immersphere Pro CRM — Backend Serverless (Vercel Functions). v1.8A dry-run.",
   "engines": {
-    "node": "18.x"
+    "node": "24.x"
   },
   "scripts": {
     "dev": "vercel dev"
