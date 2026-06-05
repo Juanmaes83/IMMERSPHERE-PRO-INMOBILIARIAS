@@ -72,8 +72,8 @@
     .service-mini .use-case{margin-top:auto;color:var(--gold);font-size:.76rem}
     .process-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.8rem}
     .process-card .num{font-family:var(--font-display);font-size:2.6rem;font-weight:800;color:rgba(0,212,255,.18);line-height:1;margin-bottom:.7rem}
-    .packs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-    .pack-card{min-height:420px;display:flex;flex-direction:column}
+    .packs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+    .pack-card{min-height:500px;display:flex;flex-direction:column}
     .pack-card.featured{border-color:rgba(0,212,255,.38);box-shadow:0 24px 70px rgba(0,212,255,.08)}
     .pack-card h3{font-size:1.6rem}
     .pack-card.featured::after{content:'Recomendado para lanzamiento';position:absolute;top:1rem;right:1rem;font-family:var(--font-mono);font-size:.45rem;color:var(--bg-primary);background:var(--accent);border-radius:999px;padding:.35rem .55rem;text-transform:uppercase;letter-spacing:1px}
@@ -81,7 +81,8 @@
     .sector-grid,.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
     .contact-panel{text-align:center;background:radial-gradient(circle at top,rgba(0,212,255,.18),transparent 42%),linear-gradient(145deg,#0d1520,#060a10);border:1px solid rgba(0,212,255,.24);border-radius:28px;padding:4.5rem 2rem;box-shadow:0 30px 90px rgba(0,0,0,.35)}
     .contact-actions{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap;margin-top:1.6rem}
-    @media(max-width:960px){.matrix-grid,.process-grid{grid-template-columns:repeat(2,1fr)}.packs-grid,.sector-grid,.results-grid,.split-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:1180px){.packs-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:960px){.matrix-grid,.process-grid{grid-template-columns:repeat(2,1fr)}.sector-grid,.results-grid,.split-grid{grid-template-columns:1fr 1fr}}
     @media(max-width:640px){.commercial-section{padding:4rem 1rem}.matrix-grid,.process-grid,.packs-grid,.sector-grid,.results-grid,.split-grid{grid-template-columns:1fr}.svc-hero-ctas{flex-direction:column}.svc-primary-cta,.svc-secondary-cta{width:100%}}
 
     /* SERVICE SECTIONS */
@@ -172,7 +173,7 @@
     .bprem-demo-label{font-family:var(--font-mono);font-size:.52rem;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;text-align:center;margin-bottom:1.2rem}
 
     /* CHATBOT SECTION */
-    .chatbot-section{padding:8rem 2rem 7rem;background:var(--bg-primary);border-top:4px solid transparent;border-image:linear-gradient(90deg,transparent,rgba(0,212,255,.15) 20%,rgba(0,212,255,.15) 80%,transparent) 1;position:relative;overflow:hidden}
+    .chatbot-section{padding:4rem 2rem 3rem;background:var(--bg-primary);border-top:4px solid transparent;border-image:linear-gradient(90deg,transparent,rgba(0,212,255,.15) 20%,rgba(0,212,255,.15) 80%,transparent) 1;position:relative;overflow:hidden}
     .chatbot-section::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(ellipse,rgba(0,212,255,.05) 0%,transparent 70%);pointer-events:none}
     .chatbot-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:3rem}
     @media(min-width:900px){.chatbot-inner{grid-template-columns:320px 1fr 1.1fr;align-items:start;gap:2.5rem}}
@@ -181,7 +182,7 @@
     /* ANA — AGENT 3D CARD */
     .ana-wrap{display:flex;flex-direction:column;align-items:center;gap:1rem;position:sticky;top:8rem}
     @media(max-width:899px){.ana-wrap{display:none}}
-    .ana-scene{width:260px;height:360px;perspective:900px;cursor:grab}
+    .ana-scene{width:200px;height:280px;perspective:900px;cursor:grab}
     .ana-scene:active{cursor:grabbing}
     .ana-card{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .08s linear;border-radius:22px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(0,212,255,.12)}
     .ana-card img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;border-radius:22px;mix-blend-mode:lighten}
@@ -281,7 +282,7 @@
   <section class="svc-hero">
     <div class="svc-hero-badge">Comunicación visual · Marketing · Publicidad · Inmobiliario</div>
     <h1 class="svc-hero-title">Servicios visuales para vender espacios <span>antes de la visita</span></h1>
-    <p class="svc-hero-sub">Vídeo, renders, tours, webs, campañas y materiales comerciales para inmobiliarias, estudios, promotoras, constructoras e interioristas. No vendemos piezas sueltas: construimos sistemas visuales para presentar, promocionar y vender espacios.</p>
+    <p class="svc-hero-sub">Estrategia visual, producción y campañas para vender espacios. Vídeo, renders, webs, piezas sociales, dossiers y materiales comerciales para inmobiliarias, estudios, promotoras, constructoras e interioristas.</p>
     <div class="svc-hero-ctas">
       <a href="#contacto" class="svc-primary-cta">Solicitar propuesta</a>
       <a href="#servicios" class="svc-secondary-cta">Ver servicios</a>
@@ -369,7 +370,7 @@
         <div class="svc-feature reveal"><h4>Renders fotorrealistas</h4><p>Interiores y exteriores indistinguibles de la fotografía real. Galerías, dossiers y materiales de venta de nivel internacional.</p></div>
         <div class="svc-feature reveal"><h4>Vídeo branding corporativo</h4><p>Piezas audiovisuales que posicionan la marca del cliente como referente del sector. Guión, producción y postproducción incluidos.</p></div>
         <div class="svc-feature reveal"><h4>Reels & Social Media</h4><p>Contenido vertical para Instagram Reels, TikTok, YouTube Shorts y WhatsApp Status. Optimizado para captar atención en los primeros 2 segundos.</p></div>
-        <div class="svc-feature reveal"><h4>Tours virtuales 360° y Gaussian Splats</h4><p>Experiencias inmersivas que el comprador visita desde su móvil sin app ni descarga. Disponibles 24/7, cualquier dispositivo.</p></div>
+        <div class="svc-feature reveal"><h4>Recorridos y experiencias visuales</h4><p>Presentaciones interactivas que el comprador explora desde su móvil sin app ni descarga. Disponibles 24/7, cualquier dispositivo.</p></div>
       </div>
     </div>
   </section>
@@ -640,7 +641,7 @@
         <div class="chatbot-num">08</div>
         <span class="chatbot-pill">En vivo 24/7</span>
         <span class="chatbot-badge">Chatbot Inmobiliario · IA Personalizada</span>
-        <h2 class="chatbot-title">Tu agente inmobiliario<br><span>siempre disponible</span></h2>
+        <h2 class="chatbot-title">Agente IA opcional<br><span>para tu web inmobiliaria</span></h2>
         <p class="chatbot-body">Despliega un agente digital inteligente entrenado exclusivamente con tu catálogo de propiedades, tu marca y tus estrategias comerciales. Responde en tiempo real a cualquier cliente, en cualquier idioma, con el conocimiento exacto de cada vivienda: metros, acabados, precio, zona, disponibilidad y argumentario de venta. Sin horarios. Sin pérdida de leads.</p>
         <a href="#contacto" class="chatbot-cta">Solicitar demo del chatbot →</a>
       </div>
@@ -707,14 +708,14 @@
       <div class="commercial-head reveal">
         <span class="commercial-badge">Cómo trabajamos</span>
         <h2 class="commercial-title">Cómo convertimos tu proyecto en una herramienta de venta</h2>
-        <p class="commercial-sub">No empezamos por una pieza. Empezamos por entender qué tiene que pasar para que el cliente avance.</p>
+        <p class="commercial-sub">No empezamos por una pieza. Empezamos por entender qué tiene que pasar para que el cliente avance desde el primer impacto hasta la solicitud comercial.</p>
       </div>
       <div class="process-grid">
         <article class="premium-card process-card reveal"><div class="num">01</div><h3>Diagnóstico</h3><p>Entendemos el proyecto, el público y el objetivo comercial.</p></article>
-        <article class="premium-card process-card reveal"><div class="num">02</div><h3>Narrativa visual</h3><p>Definimos qué hay que contar para que el cliente entienda, imagine y decida.</p></article>
-        <article class="premium-card process-card reveal"><div class="num">03</div><h3>Producción</h3><p>Creamos vídeos, renders, tours, web, dossier o campaña según el caso.</p></article>
-        <article class="premium-card process-card reveal"><div class="num">04</div><h3>Activación</h3><p>Adaptamos las piezas a web, redes, presentación, QR, anuncios o materiales.</p></article>
-        <article class="premium-card process-card reveal"><div class="num">05</div><h3>Optimización</h3><p>Revisamos respuesta, fricción y oportunidades de mejora.</p></article>
+        <article class="premium-card process-card reveal"><div class="num">02</div><h3>Producción visual</h3><p>Definimos qué hay que contar y producimos los activos que hacen entendible y deseable el espacio.</p></article>
+        <article class="premium-card process-card reveal"><div class="num">03</div><h3>Web / campaña</h3><p>Convertimos vídeos, renders, dossier y piezas sociales en una presencia comercial coherente.</p></article>
+        <article class="premium-card process-card reveal"><div class="num">04</div><h3>Captación</h3><p>Activamos la presentación en web, redes, anuncios, QR o materiales para generar solicitudes cualificadas.</p></article>
+        <article class="premium-card process-card reveal"><div class="num">05</div><h3>Seguimiento</h3><p>Revisamos respuesta, fricción y oportunidades para mejorar el mensaje y preparar la siguiente acción comercial.</p></article>
       </div>
     </div>
   </section>
@@ -723,13 +724,14 @@
     <div class="commercial-inner">
       <div class="commercial-head reveal">
         <span class="commercial-badge">Formas de trabajar</span>
-        <h2 class="commercial-title">Packs orientativos, no cerrados</h2>
-        <p class="commercial-sub">Cada proyecto se dimensiona según objetivo, canal y material disponible. Estos niveles ayudan a decidir por dónde empezar.</p>
+        <h2 class="commercial-title">Packs comerciales para vender mejor</h2>
+        <p class="commercial-sub">Cada proyecto se dimensiona según objetivo, canal y material disponible. Estos cuatro niveles ayudan a empezar sin convertir la web en una herramienta técnica.</p>
       </div>
       <div class="packs-grid">
-        <article class="premium-card pack-card reveal"><h3>Visual Start</h3><p>Para estudios, inmobiliarias o profesionales que necesitan mejorar su presentación visual.</p><ul><li>Vídeo corto o pieza principal.</li><li>Selección visual para redes.</li><li>Adaptación básica para web.</li><li>Copy comercial.</li></ul><p class="pack-result">Resultado: una presentación más profesional y fácil de compartir.</p><a href="#contacto" class="svc-cta-link">Quiero empezar →</a></article>
-        <article class="premium-card pack-card featured reveal"><h3>Premium Launch</h3><p>Para lanzar una propiedad, promoción, reforma, showroom o proyecto de arquitectura.</p><ul><li>Vídeo principal.</li><li>Renders o carrusel visual.</li><li>Landing o sección web.</li><li>Piezas sociales.</li><li>Dossier o material de venta.</li></ul><p class="pack-result">Resultado: un lanzamiento visual completo para captar atención y generar confianza.</p><a href="#contacto" class="svc-cta-link">Preparar lanzamiento →</a></article>
-        <article class="premium-card pack-card reveal"><h3>Immersive Growth</h3><p>Para marcas que quieren diferenciarse con experiencia completa y continuidad.</p><ul><li>Estrategia visual.</li><li>Web premium.</li><li>Contenido mensual.</li><li>Tours o experiencias.</li><li>Campañas y reporting.</li></ul><p class="pack-result">Resultado: un sistema comercial visual para posicionar, captar y convertir.</p><a href="#contacto" class="svc-cta-link">Diseñar sistema →</a></article>
+        <article class="premium-card pack-card reveal"><h3>Listing Boost</h3><p><strong>Para quién:</strong> inmobiliarias que necesitan destacar una propiedad concreta.</p><p><strong>Problema:</strong> el anuncio parece uno más y genera visitas poco cualificadas.</p><ul><li>Vídeo corto o pieza principal.</li><li>Selección visual para redes.</li><li>Copy comercial de la propiedad.</li><li>Adaptación básica para ficha o landing.</li></ul><p class="pack-result">Resultado: más deseo antes de la visita y mejores solicitudes.</p><a href="#contacto" class="svc-cta-link">Impulsar propiedad →</a></article>
+        <article class="premium-card pack-card featured reveal"><h3>Premium Property Experience</h3><p><strong>Para quién:</strong> viviendas premium, reformas, interiorismo y activos singulares.</p><p><strong>Problema:</strong> el valor real no se entiende con fotos sueltas.</p><ul><li>Vídeo principal.</li><li>Renders o carrusel visual.</li><li>Landing o sección web.</li><li>Dossier comercial.</li><li>Piezas sociales.</li></ul><p class="pack-result">Resultado: una presentación completa para justificar valor y acelerar decisión.</p><a href="#contacto" class="svc-cta-link">Crear experiencia →</a></article>
+        <article class="premium-card pack-card reveal"><h3>Developer Launch</h3><p><strong>Para quién:</strong> promotoras, obra nueva y lanzamientos sobre plano.</p><p><strong>Problema:</strong> vender antes de construir exige confianza inmediata.</p><ul><li>Narrativa de promoción.</li><li>Renders y vídeo de lanzamiento.</li><li>Landing de campaña.</li><li>Dossier para compradores o inversores.</li><li>Piezas para anuncios.</li></ul><p class="pack-result">Resultado: un lanzamiento preparado para captar interés desde fase temprana.</p><a href="#contacto" class="svc-cta-link">Lanzar promoción →</a></article>
+        <article class="premium-card pack-card reveal"><h3>Visual Growth Retainer</h3><p><strong>Para quién:</strong> marcas que necesitan continuidad visual y campañas recurrentes.</p><p><strong>Problema:</strong> la comunicación aparece a impulsos y pierde consistencia.</p><ul><li>Estrategia visual mensual.</li><li>Contenido para redes y web.</li><li>Campañas y creatividades.</li><li>SEO/GEO y optimización.</li><li>Reporting comercial.</li></ul><p class="pack-result">Resultado: un sistema visual estable para posicionar, captar y convertir.</p><a href="#contacto" class="svc-cta-link">Diseñar crecimiento →</a></article>
       </div>
     </div>
   </section>
@@ -739,14 +741,14 @@
       <div class="commercial-head reveal">
         <span class="commercial-badge">Para quién es</span>
         <h2 class="commercial-title">Sectores que necesitan explicar mejor sus espacios</h2>
-        <p class="commercial-sub">La misma tecnología visual cambia de objetivo según el negocio: captar, vender, presentar, diferenciar o lanzar.</p>
+        <p class="commercial-sub">Cada sector necesita una historia comercial distinta: captar propietarios, vender sobre plano, explicar una reforma o elevar una marca.</p>
       </div>
       <div class="sector-grid">
-        <article class="premium-card reveal"><h3>Inmobiliarias</h3><p>Convierte propiedades en piezas visuales que captan compradores y propietarios antes de la visita.</p></article>
-        <article class="premium-card reveal"><h3>Constructoras y reformas</h3><p>Explica procesos, antes/después y resultados para generar confianza y reducir dudas.</p></article>
-        <article class="premium-card reveal"><h3>Estudios de arquitectura</h3><p>Presenta proyectos con emoción, claridad y autoridad antes de construirse.</p></article>
-        <article class="premium-card reveal"><h3>Interioristas y decoradores</h3><p>Transforma ambientes, materiales y estilo en contenido comercial deseable.</p></article>
-        <article class="premium-card reveal"><h3>Promotoras</h3><p>Lanza promociones con narrativa visual, renders, dossier y campaña para acelerar interés comercial.</p></article>
+        <article class="premium-card reveal"><h3>Inmobiliarias</h3><p><strong>Dolor:</strong> propiedades que compiten por precio.</p><p><strong>Solución:</strong> vídeo, copy, landing y piezas sociales.</p><p><strong>Resultado:</strong> compradores y propietarios llegan con más intención.</p></article>
+        <article class="premium-card reveal"><h3>Constructoras y reformas</h3><p><strong>Dolor:</strong> el cliente teme plazos, proceso y resultado.</p><p><strong>Solución:</strong> antes/después, proceso de obra y visualización final.</p><p><strong>Resultado:</strong> más confianza y menos fricción comercial.</p></article>
+        <article class="premium-card reveal"><h3>Estudios de arquitectura</h3><p><strong>Dolor:</strong> proyectos difíciles de imaginar en plano.</p><p><strong>Solución:</strong> renders, vídeo y relato editorial del concepto.</p><p><strong>Resultado:</strong> reuniones más claras y decisiones más rápidas.</p></article>
+        <article class="premium-card reveal"><h3>Interioristas y decoradores</h3><p><strong>Dolor:</strong> el estilo se entiende tarde o queda plano en fotos.</p><p><strong>Solución:</strong> ambientes, materiales y sensaciones convertidos en piezas visuales.</p><p><strong>Resultado:</strong> más percepción premium y deseo de marca.</p></article>
+        <article class="premium-card reveal"><h3>Promotoras</h3><p><strong>Dolor:</strong> vender sobre plano exige confianza inmediata.</p><p><strong>Solución:</strong> narrativa de promoción, renders, dossier, web y campaña.</p><p><strong>Resultado:</strong> más interés comercial desde fase temprana.</p></article>
         <article class="premium-card reveal"><h3>Hoteles, showrooms y espacios comerciales</h3><p>Reduce incertidumbre y aumenta deseo antes de reservar, comprar o visitar.</p></article>
       </div>
     </div>
@@ -777,9 +779,10 @@
         <h2 class="commercial-title">Hablemos de cómo aplicar Immersphere a tu proyecto</h2>
         <p class="commercial-sub">Cuéntanos si necesitas vender una propiedad, lanzar una promoción, presentar un estudio, explicar una reforma o construir un sistema visual completo.</p>
         <div class="contact-actions">
-          <a href="mailto:hola@immersphere.pro?subject=Solicitud%20de%20propuesta%20Immersphere" class="svc-primary-cta">Solicitar propuesta</a>
+          <a href="mailto:hola@immersphere.pro?subject=Solicitud%20de%20propuesta%20Immersphere&amp;body=Hola%2C%0A%0AMe%20gustaria%20solicitar%20una%20propuesta%20Immersphere.%0A%0ASector%3A%20%0ANombre%3A%20%0ATelefono%3A%20%0A%0AGracias." class="svc-primary-cta">Solicitar propuesta por email</a>
           <a href="tel:+34629554870" class="svc-secondary-cta">Llamar · 629 554 870</a>
-          <a href="index.html#contacto" class="svc-secondary-cta">Ir al formulario principal</a>
+          <a href="https://wa.me/34629554870?text=Hola%2C%20me%20gustaria%20solicitar%20una%20propuesta%20Immersphere." class="svc-secondary-cta" style="background:rgba(37,211,102,.08);border-color:rgba(37,211,102,.35);color:#25D366">WhatsApp</a>
+          <button type="button" class="svc-secondary-cta" onclick="navigator.clipboard.writeText('hola@immersphere.pro');this.textContent='Email copiado ✓';setTimeout(()=>this.textContent='Copiar email',2000)">Copiar email</button>
         </div>
       </div>
     </div>

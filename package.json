@@ -1,8 +1,8 @@
 {
-  "name": "immersphere-crm",
+  "name": "immersphere-pro-inmobiliarias",
   "version": "1.8.0",
   "private": true,
-  "description": "Immersphere Pro CRM — Backend Serverless (Vercel Functions). v1.8A dry-run.",
+  "description": "Web comercial Immersphere Pro Inmobiliarias para servicios visuales, marketing y comunicacion inmobiliaria.",
   "engines": {
     "node": "24.x"
   },
