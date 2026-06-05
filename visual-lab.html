@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laboratorio visual Immersphere · Sprint 3</title>
+  <meta name="description" content="Laboratorio interno de prototipos visuales Immersphere para I+D controlada." />
+  <style>
+    :root{--bg:#060A10;--panel:#0D1520;--panel2:#111B28;--cyan:#00D4FF;--blue:#0068FF;--gold:#C9A96E;--text:#EDF1F5;--muted:#8A9BB5;--line:rgba(255,255,255,.08);--font:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--display:Outfit,Inter,system-ui,sans-serif}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font);background:radial-gradient(circle at 12% 0,rgba(0,212,255,.14),transparent 30%),linear-gradient(180deg,#04070C,var(--bg) 42%,#08111B);color:var(--text);line-height:1.6;overflow-x:hidden}
+    a{color:var(--cyan);text-decoration:none}
+    button{font:inherit}
+    .shell{width:min(1180px,calc(100% - 32px));margin:0 auto}
+    .hero{min-height:78vh;display:grid;place-items:center;position:relative;padding:7rem 0 4rem;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:10% -20%;background:conic-gradient(from 180deg,transparent,rgba(0,212,255,.13),transparent,rgba(201,169,110,.12),transparent);filter:blur(80px);opacity:.8;animation:slowSpin 18s linear infinite}
+    .hero-inner{position:relative;z-index:1;text-align:center;max-width:900px}
+    .badge,.section-kicker{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(0,212,255,.32);border-radius:999px;background:rgba(0,212,255,.06);color:var(--cyan);font-size:.68rem;font-weight:800;letter-spacing:2.4px;text-transform:uppercase;padding:.45rem .85rem}
+    h1{font-family:var(--display);font-size:clamp(3rem,8vw,6.6rem);line-height:.96;letter-spacing:-.06em;margin:1.2rem 0 1rem}
+    .hero p{color:var(--muted);font-size:clamp(1rem,2vw,1.25rem);max-width:760px;margin:0 auto}
+    .notice{margin:1.8rem auto 0;padding:1rem 1.2rem;border:1px solid rgba(201,169,110,.25);border-radius:14px;background:rgba(201,169,110,.08);color:#E8D5A5;font-size:.92rem;max-width:720px}
+    .index-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.8rem;margin:2.5rem auto 0;max-width:980px}
+    .index-grid a{border:1px solid var(--line);border-radius:14px;padding:.9rem;background:rgba(13,21,32,.7);color:var(--text);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;transition:.3s ease}
+    .index-grid a:hover{border-color:rgba(0,212,255,.45);color:var(--cyan);transform:translateY(-2px)}
+    section{padding:5.8rem 0;border-top:1px solid var(--line);position:relative}
+    .section-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,420px);gap:2rem;align-items:end;margin-bottom:2.2rem}
+    h2{font-family:var(--display);font-size:clamp(2rem,5vw,4rem);letter-spacing:-.045em;line-height:1.02}
+    .section-copy{color:var(--muted);font-size:1rem}
+    .prototype-card{border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,rgba(17,27,40,.86),rgba(6,10,16,.82));box-shadow:0 24px 70px rgba(0,0,0,.28);overflow:hidden}
+    .lab-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:1rem}
+    .demo-pane{min-height:420px;position:relative;overflow:hidden;background:#07101A}
+    .demo-notes{padding:1.5rem;display:grid;gap:1rem}
+    .note{border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:1rem;background:rgba(255,255,255,.025)}
+    .note b{display:block;color:var(--cyan);font-size:.68rem;text-transform:uppercase;letter-spacing:1.8px;margin-bottom:.35rem}
+    .note p,.note li{color:var(--muted);font-size:.9rem}
+    .note ul{padding-left:1.1rem}
+    .distort-card{position:absolute;inset:24px;border-radius:22px;overflow:hidden;border:1px solid rgba(0,212,255,.22);background:linear-gradient(135deg,#0D1520,#15283B 48%,#08111B);isolation:isolate}
+    .distort-card::before{content:"";position:absolute;inset:-20%;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(0,212,255,.36),transparent 22%),linear-gradient(120deg,transparent,rgba(255,255,255,.12),transparent);transform:translate3d(calc((var(--mxn,0) - .5)*18px),calc((var(--myn,0) - .5)*18px),0);transition:transform .12s ease}
+    .distort-card::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,transparent 1px 42px),repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 1px,transparent 1px 42px);mix-blend-mode:screen;opacity:.45;transform:perspective(800px) rotateX(calc((.5 - var(--myn,0))*7deg)) rotateY(calc((var(--mxn,0) - .5)*9deg));transition:transform .18s ease}
+    .distort-content{position:absolute;inset:auto 26px 26px;z-index:2}
+    .distort-content span{font-size:.66rem;color:var(--gold);letter-spacing:2.4px;text-transform:uppercase;font-weight:800}
+    .distort-content h3{font-family:var(--display);font-size:clamp(2rem,5vw,3.4rem);line-height:1;margin-top:.6rem}
+    .distort-fallback{position:absolute;right:22px;top:22px;z-index:2;color:rgba(237,241,245,.66);font-size:.7rem;text-transform:uppercase;letter-spacing:1.5px}
+    #threeCanvas{width:100%;height:100%;display:block}
+    .three-fallback{position:absolute;inset:0;display:none;place-items:center;text-align:center;padding:2rem;color:var(--muted);background:radial-gradient(circle at center,rgba(0,212,255,.14),transparent 34%),#07101A}
+    .three-fallback.visible{display:grid}
+    .tour-mock{position:absolute;inset:24px;border-radius:22px;border:1px solid rgba(255,255,255,.1);background:radial-gradient(circle at 50% 46%,rgba(0,212,255,.18),transparent 20%),linear-gradient(90deg,#0a1624,#13263a,#0a1624);overflow:hidden}
+    .tour-mock::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.05),transparent 25%,rgba(255,255,255,.08) 50%,transparent 75%,rgba(255,255,255,.05));transform:translateX(var(--pan,-10%));transition:transform .4s ease}
+    .tour-ui{position:absolute;left:22px;right:22px;bottom:22px;display:flex;justify-content:space-between;gap:.8rem;z-index:2;flex-wrap:wrap}
+    .tour-ui span,.pill{border:1px solid rgba(0,212,255,.25);border-radius:999px;background:rgba(6,10,16,.7);padding:.55rem .8rem;font-size:.72rem;color:var(--cyan);font-weight:800;letter-spacing:1.2px;text-transform:uppercase}
+    .splat-board{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+    .signal{border:1px solid var(--line);border-radius:16px;padding:1rem;background:rgba(255,255,255,.025)}
+    .signal strong{display:block;font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.45rem}
+    .green strong{color:#5FF0A0}.yellow strong{color:#FFD166}.red strong{color:#FF6B6B}
+    .eval-grid{display:grid;gap:.8rem}
+    .eval-row{display:grid;grid-template-columns:1.1fr .8fr .9fr .75fr .75fr .95fr 1.35fr;gap:.75rem;align-items:start;border:1px solid var(--line);border-radius:14px;padding:1rem;background:rgba(255,255,255,.025)}
+    .eval-row.header{color:var(--cyan);font-size:.68rem;text-transform:uppercase;letter-spacing:1.4px;font-weight:800;background:rgba(0,212,255,.06)}
+    .eval-row span{color:var(--muted);font-size:.88rem}
+    .eval-row strong{color:var(--text)}
+    footer{padding:3rem 0;color:var(--muted);text-align:center;border-top:1px solid var(--line)}
+    @keyframes slowSpin{to{transform:rotate(360deg)}}
+    @media(max-width:900px){.index-grid{grid-template-columns:1fr 1fr}.section-head,.lab-grid{grid-template-columns:1fr}.demo-pane{min-height:360px}.eval-row,.eval-row.header{grid-template-columns:1fr}.eval-row.header{display:none}.splat-board{grid-template-columns:1fr}}
+    @media(max-width:560px){.index-grid{grid-template-columns:1fr}.hero{padding-top:5rem}.distort-card,.tour-mock{inset:14px}.tour-ui{left:14px;right:14px}.demo-pane{min-height:320px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="shell hero-inner">
+      <span class="badge">Sprint 3 · I+D visual</span>
+      <h1>Laboratorio visual Immersphere</h1>
+      <p>Prototipos de interacción, 3D web y experiencias inmersivas para elevar la presentación de espacios.</p>
+      <div class="notice">Esta página es un laboratorio interno. No forma parte de la experiencia comercial principal.</div>
+      <nav class="index-grid" aria-label="Índice de prototipos">
+        <a href="#hover">WebGL hover</a>
+        <a href="#three">Three.js mini scene</a>
+        <a href="#tour360">Demo 360</a>
+        <a href="#splat">Demo 3DGS futura</a>
+        <a href="#evaluacion">Evaluación</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="hover">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-kicker">Prototipo 1</span><h2>WebGL hover / image distortion</h2></div>
+          <p class="section-copy">Prueba de una interacción premium para cards de proyectos, renders o casos. Se implementa con CSS/cursor follow para evitar dependencia pesada; si WebGL no existe, el fallback visual ya es la experiencia base.</p>
+        </div>
+        <div class="prototype-card lab-grid">
+          <div class="demo-pane" id="distortPane">
+            <article class="distort-card" id="distortCard">
+              <span class="distort-fallback">CSS fallback activo</span>
+              <div class="distort-content"><span>Render comercial · interacción</span><h3>Espacio que responde al cursor</h3></div>
+            </article>
+          </div>
+          <div class="demo-notes">
+            <div class="note"><b>Problema que resuelve</b><p>Añade percepción de profundidad y calidad a una card sin cargar vídeo ni abrir visor.</p></div>
+            <div class="note"><b>Aplicación en producción</b><p>Cards de casos, renders destacados o selector de sectores, siempre en pocas piezas.</p></div>
+            <div class="note"><b>Riesgo</b><p>Medio. Si se exagera puede parecer decorativo. Debe limitarse a una o dos cards por viewport.</p></div>
+            <div class="note"><b>Recomendación</b><p>Probar en una sección concreta si el rendimiento móvil queda estable.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="three">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-kicker">Prototipo 2</span><h2>Three.js mini scene</h2></div>
+          <p class="section-copy">Escena procedural ligera: núcleo visual, líneas arquitectónicas y movimiento lento. No carga modelos ni assets externos; Three.js solo entra por CDN en esta página de laboratorio.</p>
+        </div>
+        <div class="prototype-card lab-grid">
+          <div class="demo-pane">
+            <canvas id="threeCanvas" aria-label="Escena procedural 3D"></canvas>
+            <div class="three-fallback" id="threeFallback"><p>Fallback activo: WebGL o Three.js no disponible. La producción debería mostrar una imagen estática o patrón CSS equivalente.</p></div>
+          </div>
+          <div class="demo-notes">
+            <div class="note"><b>Descripción comercial</b><p>Refuerza a Immersphere como estudio avanzado sin convertir la home en una demo técnica.</p></div>
+            <div class="note"><b>Aplicación posible</b><p><span class="pill">Hero secundario</span> <span class="pill">Sección I+D</span> <span class="pill">Demo premium</span></p></div>
+            <div class="note"><b>Impacto / riesgo</b><p>Impacto alto, riesgo medio/alto por peso de librería y compatibilidad WebGL. Mantener fuera de la home principal hasta medir.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tour360">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-kicker">Prototipo 3</span><h2>Demo 360 controlada</h2></div>
+          <p class="section-copy">No se ha encontrado panorama equirectangular ni viewer 360 local. Por honestidad técnica, este bloque es un mockup de producto y define lo necesario para una demo real.</p>
+        </div>
+        <div class="prototype-card lab-grid">
+          <div class="demo-pane" id="tourPane">
+            <div class="tour-mock"><div class="tour-ui"><span>Demo 360 pendiente de asset real</span><span>Drag simulado</span><span>Hotspot UI</span></div></div>
+          </div>
+          <div class="demo-notes">
+            <div class="note"><b>Valor comercial</b><p>Permite que inmobiliarias, interioristas y hoteles reduzcan incertidumbre antes de la visita o reserva.</p></div>
+            <div class="note"><b>Requisitos técnicos</b><ul><li>Panorama equirectangular 2:1 propio.</li><li>Licencia y autorización de captura.</li><li>Viewer ligero y medición móvil.</li></ul></div>
+            <div class="note"><b>Riesgo</b><p>Medio. Sin asset real no debe venderse como funcional. Preparar captura real antes de integrar librerías como Pannellum o Marzipano.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="splat">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-kicker">Prototipo 4</span><h2>3D Gaussian Splatting · Futuro Immersphere</h2></div>
+          <p class="section-copy">Línea futura para recorridos de espacios reales, patrimonio, hoteles, viviendas singulares, showrooms y entornos comerciales. Estado: I+D, no producción principal.</p>
+        </div>
+        <div class="prototype-card demo-notes">
+          <div class="note"><b>Qué falta</b><ul><li>Asset compatible validado.</li><li>Pipeline de conversión.</li><li>Storage/CDN y presupuesto de transferencia.</li><li>Rendimiento móvil estable.</li><li>Fuentes autorizadas y revisión legal.</li></ul></div>
+          <div class="splat-board">
+            <div class="signal green"><strong>Verde</strong><p>Capturas propias con permisos claros.</p></div>
+            <div class="signal yellow"><strong>Amarillo</strong><p>Datasets o demos con licencias revisadas.</p></div>
+            <div class="signal red"><strong>Rojo</strong><p>Scraping, fuentes sin permiso o assets incompatibles.</p></div>
+          </div>
+          <div class="note"><b>Decisión</b><p>No integrar en home hasta tener flujo estable, asset propio, viewer validado y presupuesto de rendimiento móvil.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="evaluacion">
+      <div class="shell">
+        <div class="section-head">
+          <div><span class="section-kicker">Evaluación</span><h2>Impacto, riesgo y próximos pasos</h2></div>
+          <p class="section-copy">Criterio de decisión para separar lo que aporta valor comercial real de lo que debe permanecer en I+D.</p>
+        </div>
+        <div class="eval-grid">
+          <div class="eval-row header"><span>Prototipo</span><span>Impacto visual</span><span>Impacto comercial</span><span>Dificultad</span><span>Riesgo</span><span>Peso/rendimiento</span><span>Recomendación</span></div>
+          <div class="eval-row"><strong>WebGL hover</strong><span>Alto</span><span>Medio/alto</span><span>Media</span><span>Medio</span><span>Bajo si es CSS/canvas</span><span>Probar en una sección concreta si rendimiento OK.</span></div>
+          <div class="eval-row"><strong>Three.js mini scene</strong><span>Alto</span><span>Medio</span><span>Media/alta</span><span>Medio/alto</span><span>Medio por CDN y WebGL</span><span>Usar solo en lab o hero secundario, no home principal todavía.</span></div>
+          <div class="eval-row"><strong>Demo 360</strong><span>Medio/alto</span><span>Alto</span><span>Media</span><span>Medio</span><span>Depende del viewer y asset</span><span>Preparar asset real propio antes de implementar.</span></div>
+          <div class="eval-row"><strong>3DGS</strong><span>Muy alto</span><span>Alto en espacios singulares</span><span>Alta</span><span>Alto</span><span>Alto, especialmente móvil</span><span>Mantener como I+D separada.</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">IMMERSPHERE PRO · Sprint 3 visual lab · Página aislada sin enlace desde producción principal.</div>
+  </footer>
+
+  <script type="module">
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hoverCard = document.querySelector('#distortCard');
+    hoverCard?.addEventListener('pointermove', event => {
+      const rect = hoverCard.getBoundingClientRect();
+      const x = Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width));
+      const y = Math.max(0, Math.min(1, (event.clientY - rect.top) / rect.height));
+      hoverCard.style.setProperty('--mx', `${x * 100}%`);
+      hoverCard.style.setProperty('--my', `${y * 100}%`);
+      hoverCard.style.setProperty('--mxn', x.toFixed(3));
+      hoverCard.style.setProperty('--myn', y.toFixed(3));
+    });
+
+    const tourPane = document.querySelector('#tourPane');
+    tourPane?.addEventListener('pointermove', event => {
+      const rect = tourPane.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width - .5) * 24;
+      tourPane.style.setProperty('--pan', `${x}%`);
+    });
+
+    async function initThreeLab(){
+      const canvas = document.querySelector('#threeCanvas');
+      const fallback = document.querySelector('#threeFallback');
+      if(!canvas || reduceMotion){fallback?.classList.add('visible');return}
+      const gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
+      if(!gl){fallback?.classList.add('visible');return}
+      try{
+        const THREE = await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js');
+        const renderer = new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:'low-power'});
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45,1,.1,100);
+        camera.position.set(0,1.2,5.2);
+        const group = new THREE.Group();
+        scene.add(group);
+        const core = new THREE.Mesh(new THREE.IcosahedronGeometry(1.05,2),new THREE.MeshBasicMaterial({color:0x00d4ff,wireframe:true,transparent:true,opacity:.72}));
+        group.add(core);
+        const ring = new THREE.Mesh(new THREE.TorusGeometry(1.75,.01,8,96),new THREE.MeshBasicMaterial({color:0xc9a96e,transparent:true,opacity:.65}));
+        ring.rotation.x = Math.PI / 2.7;
+        group.add(ring);
+        const grid = new THREE.GridHelper(7,18,0x00d4ff,0x1b3448);
+        grid.position.y = -1.45;
+        grid.material.transparent = true;
+        grid.material.opacity = .35;
+        scene.add(grid);
+        const particles = new THREE.Points(new THREE.BufferGeometry(),new THREE.PointsMaterial({color:0xedf1f5,size:.018,transparent:true,opacity:.55}));
+        const positions = new Float32Array(240 * 3);
+        for(let i=0;i<positions.length;i+=3){positions[i]=(Math.random()-.5)*5;positions[i+1]=(Math.random()-.5)*2.8;positions[i+2]=(Math.random()-.5)*3.8}
+        particles.geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));
+        scene.add(particles);
+        let raf = 0;
+        function resize(){
+          const rect = canvas.parentElement.getBoundingClientRect();
+          renderer.setSize(rect.width,rect.height,false);
+          camera.aspect = rect.width / Math.max(1,rect.height);
+          camera.updateProjectionMatrix();
+        }
+        function tick(time){
+          if(document.hidden){raf = requestAnimationFrame(tick);return}
+          const t = time * .00035;
+          group.rotation.y = t;
+          group.rotation.x = Math.sin(t) * .08;
+          particles.rotation.y = -t * .35;
+          renderer.render(scene,camera);
+          raf = requestAnimationFrame(tick);
+        }
+        resize();
+        window.addEventListener('resize',resize,{passive:true});
+        document.addEventListener('visibilitychange',()=>{if(!document.hidden && !raf) raf = requestAnimationFrame(tick)});
+        raf = requestAnimationFrame(tick);
+      }catch(error){
+        fallback?.classList.add('visible');
+      }
+    }
+    initThreeLab();
+  </script>
+</body>
+</html>
