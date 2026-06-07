@@ -14,6 +14,8 @@ node_modules/
 # Large binary assets (local only, not part of the CRM repo)
 *.mp4
 *.png
+!media/decor-asset-lab/
+!media/decor-asset-lab/*.png
 *.jpg
 *.jpeg
 
