@@ -172,11 +172,11 @@
         /* ── Atmospheric video backgrounds ───────────────────────────── */
         .has-atmospheric-video{position:relative;overflow:hidden}
         .atmospheric-video-wrap{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-        .atmospheric-video-wrap video{width:100%;height:100%;object-fit:cover;opacity:.2}
-        .atmospheric-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(6,10,16,.88) 0%,rgba(6,10,16,.75) 50%,rgba(6,10,16,.88) 100%);pointer-events:none}
+        .atmospheric-video-wrap video{width:100%;height:100%;object-fit:cover;opacity:.42;filter:brightness(1.05) contrast(1.08) saturate(1.05)}
+        .atmospheric-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(6,10,16,.58) 0%,rgba(6,10,16,.34) 48%,rgba(6,10,16,.68) 100%);pointer-events:none}
         .has-atmospheric-video > .section-container,
         .has-atmospheric-video > .positioning-inner{position:relative;z-index:2}
-        @media(max-width:768px){.atmospheric-video-wrap video{opacity:.12}}
+        @media(max-width:768px){.atmospheric-video-wrap video{opacity:.28}.atmospheric-overlay{background:linear-gradient(to bottom,rgba(6,10,16,.68) 0%,rgba(6,10,16,.48) 50%,rgba(6,10,16,.78) 100%)}}
 
         .video-grid{display:grid;grid-template-columns:1fr;gap:10px}
         .video-grid.video-collapsible{overflow:hidden;max-height:0;opacity:0;transform:translateY(-10px);pointer-events:none;transition:max-height .75s cubic-bezier(0.22,1,0.36,1),opacity .45s ease,transform .55s cubic-bezier(0.22,1,0.36,1);max-width:1180px;margin:0 auto}
